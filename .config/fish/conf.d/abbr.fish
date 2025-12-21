@@ -5,6 +5,14 @@ abbr eff "code ~/.config/fish/functions"
 
 # System abbreviations.
 abbr ff "fastfetch"
+abbr kbcs "keybindings_cheat_sheet"
+abbr us "brew update && brew upgrade && brew upgrade --cask && mas upgrade"
+abbr pi "brew install"
+abbr pr "brew uninstall"
+abbr ip "printf 'IPv4 (en0): %s\n' $(ipconfig getifaddr en0)"
+abbr ks "sudo killall coreaudiod bluetoothd bluetoothaudiod"
+abbr po "sudo shutdown -h now"
+abbr zzz "sudo pmset sleepnow"
 
 # Terminal tools abbreviations.
 abbr cat "bat"
@@ -89,15 +97,6 @@ abbr dcu "docker compose up --build -d"
 abbr dcd "docker compose down"
 abbr de "docker compose exec --it /bin/bash"
 abbr dcp "docker compose down -v --remove-orphans && echo y | docker system prune -a --volumes"
-
-# System abbreviations.
-abbr us "brew update && brew upgrade && brew upgrade --cask && mas upgrade"
-abbr pi "brew install"
-abbr pr "brew uninstall"
-abbr ip "printf 'IPv4 (en0): %s\n' $(ipconfig getifaddr en0)"
-abbr ks "sudo killall coreaudiod bluetoothd bluetoothaudiod"
-abbr po "sudo shutdown -h now"
-abbr zzz "sudo pmset sleepnow"
 
 # Services abbreviations.
 abbr sc "sudo launchctl"
