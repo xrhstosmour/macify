@@ -48,7 +48,7 @@ function keybindings_cheat_sheet --description "Display all keybindings with des
     echo "  - CTRL + K                      Obsidian"
     echo "  - CTRL + /                      Perplexity"
     echo "  - CTRL + ;                      WezTerm"
-    echo "  - CTRL + \`                     Finder"
+    echo "  - CTRL + ~                      Finder"
     echo "  - CTRL + '                      System Settings"
     echo "  - CTRL + SHIFT + V              Maccy"
     echo ""
