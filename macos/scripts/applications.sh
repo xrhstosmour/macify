@@ -17,19 +17,16 @@ source "$APPLICATIONS_SCRIPT_DIRECTORY/../../helpers/logs.sh"
 APPLICATIONS_SOURCES=(
   "$APPLICATIONS_SCRIPT_DIRECTORY/../../settings/macos/aerospace.toml"
   "$APPLICATIONS_SCRIPT_DIRECTORY/../../settings/macos/org.p0deje.Maccy.plist.xml"
-  "$APPLICATIONS_SCRIPT_DIRECTORY/../../settings/keepassxc.ini"
 )
 
 APPLICATIONS_DESTINATIONS=(
   "$HOME/.config/aerospace/aerospace.toml"
   "$HOME/Library/Containers/org.p0deje.Maccy/Data/Library/Preferences/org.p0deje.Maccy.plist"
-  "$HOME/Library/Application Support/KeePassXC/keepassxc.ini"
 )
 
 APPLICATIONS_NAMES=(
   "Aerospace"
   "Maccy"
-  "KeePassXC"
 )
 
 # Loop over all arrays in parallel.
