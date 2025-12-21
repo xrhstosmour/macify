@@ -60,7 +60,6 @@ cask 'postman'
 cask 'signal'
 cask 'spotify'
 cask 'steam'
-cask 'stremio'
 cask 'sublime-text'
 cask 'syncthing'
 # TODO: Check if we can replace `utm` with `quickemu` and `quickgui`.
