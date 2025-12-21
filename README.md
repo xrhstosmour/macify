@@ -28,6 +28,7 @@ The installer will prompt for approvals before making changes.
 
 **CLI Tools**
 
+- `1password-cli`
 - `aria2`
 - `atuin`
 - `bat`
@@ -46,6 +47,7 @@ The installer will prompt for approvals before making changes.
 - `goto-ssh`
 - `helix`
 - `jless`
+- `kdiff3`
 - `mas`
 - `mise`
 - `scrcpy`
@@ -60,7 +62,6 @@ The installer will prompt for approvals before making changes.
 **GUI Apps**
 
 - `1password`
-- `1password-cli`
 - `android-platform-tools`
 - `aerospace`
 - `brave-browser`
@@ -69,7 +70,6 @@ The installer will prompt for approvals before making changes.
 - `font-fira-code`
 - `google-chrome`
 - `jordanbaird-ice`
-- `kdiff3`
 - `localsend`
 - `maccy`
 - `macfuse`
