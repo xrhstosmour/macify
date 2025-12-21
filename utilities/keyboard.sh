@@ -62,19 +62,85 @@ apply_keyboard_configuration() {
     log_divider
 }
 
-# Function to clear all existing keyboard mappings.
-# Removes both per-keyboard defaults and `hidutil` mappings to start with a clean slate.
+# Function to clear keyboard mappings only for currently connected keyboards.
+# Preserves mappings for keyboards that are not currently connected.
+# This allows safe configuration of multiple keyboards at different locations.
 # Usage:
 #   keyboard_clear_all_mappings
 keyboard_clear_all_mappings() {
-    log_info "Clearing all existing keyboard mappings..."
+    log_info "Detecting currently connected keyboards..."
 
-    # Clear all per-keyboard modifier mappings.
-    for mapping_key in $(defaults -currentHost read -g 2>/dev/null | grep "com.apple.keyboard.modifiermapping" | cut -d '"' -f2); do
-        defaults -currentHost delete -g "$mapping_key" 2>/dev/null || true
-    done
+    # Detect currently connected keyboards and extract their vendor:product IDs.
+    local keyboard_temp_file="/tmp/keyboard_detect_$$.txt"
+    keyboard_detect_all_keyboards >"$keyboard_temp_file"
+    local device_data=$(cat "$keyboard_temp_file")
+    rm -f "$keyboard_temp_file"
 
-    # Clear all `hidutil` mappings.
+    # Build array of connected keyboard vendor-product pairs.
+    local connected_keyboards=()
+
+    # Extract vendor and product IDs from device data.
+    while IFS= read -r line; do
+        if [[ "$line" =~ Vendor\ ID:\ 0x([0-9A-Fa-f]+) ]]; then
+            vendor_hex="${BASH_REMATCH[1]}"
+            vendor_id=$((16#$vendor_hex))
+        fi
+
+        if [[ "$line" =~ Product\ ID:\ 0x([0-9A-Fa-f]+) ]]; then
+            product_hex="${BASH_REMATCH[1]}"
+            product_id=$((16#$product_hex))
+
+            # Add to connected keyboards if we have both vendor and product ID.
+            if [[ -n "$vendor_id" && -n "$product_id" ]]; then
+                connected_keyboards+=("${vendor_id}-${product_id}")
+                vendor_id=""
+                product_id=""
+            fi
+        fi
+    done <<< "$device_data"
+
+    # Clear mappings only for currently connected keyboards.
+    if [ ${#connected_keyboards[@]} -gt 0 ]; then
+        log_info "Clearing mappings for ${#connected_keyboards[@]} connected keyboard(s)..."
+
+        for keyboard_pair in "${connected_keyboards[@]}"; do
+            local mapping_key="com.apple.keyboard.modifiermapping.${keyboard_pair}-0"
+            if defaults -currentHost read -g "$mapping_key" >/dev/null 2>&1; then
+                log_info "  - Clearing: $mapping_key"
+                defaults -currentHost delete -g "$mapping_key" 2>/dev/null || true
+            fi
+        done
+    else
+        log_warning "No connected keyboards detected."
+    fi
+
+    # Check for and log preserved mappings from disconnected keyboards.
+    local all_mapping_keys=$(defaults -currentHost read -g 2>/dev/null | grep "com.apple.keyboard.modifiermapping" | cut -d '"' -f2)
+    local preserved_count=0
+
+    if [[ -n "$all_mapping_keys" ]]; then
+        while IFS= read -r mapping_key; do
+            # Extract vendor-product pair from the mapping key.
+            local key_pair=$(echo "$mapping_key" | sed 's/com.apple.keyboard.modifiermapping.\(.*\)-0/\1/')
+
+            # Check if this keyboard is currently connected.
+            local is_connected=false
+            for keyboard_pair in "${connected_keyboards[@]}"; do
+                if [[ "$key_pair" == "$keyboard_pair" ]]; then
+                    is_connected=true
+                    break
+                fi
+            done
+
+            # Log preserved mappings from disconnected keyboards.
+            if [[ "$is_connected" == "false" ]]; then
+                log_info "  - Preserving mapping from disconnected keyboard: $key_pair"
+                preserved_count=$((preserved_count + 1))
+            fi
+        done <<< "$all_mapping_keys"
+    fi
+
+    # Clear `hidutil` mappings.
     log_info "Clearing 'hidutil' mappings..."
     /usr/bin/hidutil property --set '{"UserKeyMapping":[]}' >/dev/null 2>&1
 
@@ -88,7 +154,11 @@ keyboard_clear_all_mappings() {
     # Force reload of preferences.
     sudo killall -HUP cfprefsd 2>/dev/null || true
 
-    log_success "All keyboard mappings cleared."
+    if [ $preserved_count -gt 0 ]; then
+        log_success "Keyboard mappings cleared while preserving $preserved_count disconnected keyboard(s)."
+    else
+        log_success "Keyboard mappings cleared for connected keyboards."
+    fi
 }
 
 # Function to configure external non Apple keyboards.
