@@ -1,65 +1,26 @@
-# Dotfiles Utilities
+# Dotfiles
 
-This repository configures macOS system settings via seamless shell scripts.
+This repository configures `macOS` system settings via seamless shell scripts.
 
-## Overview
+## Changes
 
-- Copy dotfiles to `~/.config` and `.gitconfig` to the home directory.
-- Automatically setup macOS system configuration.
+- **Developer Setup**: `Xcode` Command Line Tools, `Homebrew`, `Fish` shell.
+- **System Configuration**: `Finder`, Dock, Menu Bar, Display, Audio, Trackpad.
+- **Keyboard Management**: Key remapping with `LaunchAgent` persistence.
+- **Window Manager**: `AeroSpace` with dual keyboard support (internal/external).
+- **Appearance**: Themes, wallpapers, dark mode.
+- **Security**: Firewall, stealth mode, file-sharing whitelist.
+- **Cleanup**: Remove default `macOS` applications.
 
-## `macOS` Configuration
+## Setup
 
-- **Developer Tools**: Install `Xcode` Command Line Tools.
-- **Package Management**: Install `Homebrew` and apply `Brewfile` packages.
-- **Shell**: Switch default shell to `Fish` and add to `/etc/shells`.
-- **`Finder`**: Apply tweaks (show path/status bar, hidden files, list view, disable `.DS_Store` on network/USB drives).
-- **`Dock` & Menu Bar**: Configure layout (clear existing, add preferred apps, autohide, hide recents, show battery/volume/`Bluetooth` icons).
-- **Keyboard Remapping**: Swaps (Control⇄Option/Command⇄Control), Globe→Command, Section Sign→Tilde, Right Shift→Delete, persisted via LaunchAgent.
-- **`AeroSpace` Window Manager**: Dual keyboard support with:
-  - Window navigation (H/J/K/L), movement, and resizing with consistent bindings.
-  - Workspace switching and window-to-workspace movement (1-10).
-  - Application shortcuts: Spotlight (A), Chrome (B), VS Code (E), Finder (F), Spotify (M), Obsidian (N), System Settings (S), Sublime Text (T), Terminal (Enter).
-  - Input source switching (Space) and layout rotation (R).
-  - Layout floating/tiling toggle (Option/Alt + Shift + F).
-  - Service mode (; key) for configuration reload (L), for layout reset (R), for workspace dynamic re-split (W), for closing all windows except the current one (Backspace).
-  - Dual bindings for internal (Alt) and external keyboards (Ctrl) to handle key remapping.
-- **Reload Configured Environment Keybinding:** Reloads `Aerospace` configuration, flattens the workspace tree, re-splits workspaces across monitors and reloads all keyboard mappings and keybindings (SUPER + \\)
-- **Display**: Adjust settings (hide the notch by stepping down resolution, cache original resolution).
-- **Appearance**: Configure themes, wallpapers, dark mode.
-- **Audio**: Configure sound settings.
-- **Trackpad**: Configure gestures and click behavior.
-- **`Bluetooth`**: Turn off when unneeded.
-- **Screenshots**: Save to Desktop in PNG format.
-- **Scroll Bars**: Set always displayed.
-- **System**: Disable Siri and password hints.
-- **Clock**: Set 24-hour format and custom date format.
-- **Security**: Enable firewall and stealth mode; whitelist file-sharing apps.
-- **Monitoring**: Configure Activity Monitor and Login Items.
-- **Default App Removal & Cleanup**: The following default `macOS` applications and their Library data are removed for a cleaner system:
-  - `GarageBand`
-  - `iMovie`
-  - `Pages`
-  - `Keynote`
-  - `Books`
-  - `Chess`
-  - `Dictionary`
-  - `Numbers`
-  - `News`
-  - `Podcasts`
-  - `Stocks`
-  - `TV`
-  - `Music`
+Execute with administrative privileges: `./install.sh`
 
-## ToDos
+## Permissions Required
 
-- Disable True Tone on `macOS`.
-- Disable Automatically Adjust Brightness on `macOS`.
-- Skip display changes if resolution is already non-default.
-- Cycle through active windows/applications using `Globe+Tab` (internal) or `Ctrl+Tab` (external) on `macOS`.
-- Add keybindings to trigger system shutdown and restart on `macOS`.
-
-## Notes
-
-- **`macOS` 15+ Permissions**: Grant Input Monitoring permission to `/usr/bin/hidutil` and `/usr/bin/sudo` via System Settings → Privacy & Security → Input Monitoring.
-- **AeroSpace Permissions**: Scripts require Accessibility permissions via System Settings → Privacy & Security → Accessibility for `Spotlight` functionality to work properly.
-- **Full Disk Access Required**: For system cleanup and quarantine removal, you must grant Full Disk Access to your Terminal (or script runner). Go to System Settings → Privacy & Security → Full Disk Access, add your Terminal app, and restart it before running this script. This is required for modifying protected files and attributes.
+- **Input Monitoring**: `System Settings` → `Privacy & Security` → `Input Monitoring`.
+  - `/usr/bin/hidutil`, `/usr/bin/sudo`.
+- **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`.
+  - Required for `AeroSpace` and Spotlight functionality.
+- **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`.
+  - Required for system cleanup and file modifications.
