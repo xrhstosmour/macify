@@ -107,21 +107,44 @@ apply_system_configuration() {
 
     log_info "Configuring 'Login Items'..."
 
-    # Get all current `Login Items` names and remove them
+    # Define desired `Login Items`.
+    desired_login_items=("1Password" "Filen" "Ice" "Maccy" "SwipeAeroSpace" "Syncthing")
+
+    # Get all current `Login Items` names.
     current_login_items=$(osascript -e 'tell application "System Events" to get the name of every login item' | tr ', ' '\n')
+
+    # Remove `Login Items` that are not in the desired list.
     for current_login_item in $current_login_items; do
         if [ -n "$current_login_item" ]; then
-            osascript -e "tell application \"System Events\" to delete login item \"$current_login_item\""
+            # Check if the current item is in the desired list.
+            item_found=false
+            for desired_item in "${desired_login_items[@]}"; do
+                if [ "$current_login_item" = "$desired_item" ]; then
+                    item_found=true
+                    break
+                fi
+            done
+
+            # Remove only if not found in desired list.
+            if [ "$item_found" = false ]; then
+                osascript -e "tell application \"System Events\" to delete login item \"$current_login_item\""
+            fi
         fi
     done
 
-    # Add desired applications to `Login Items`.
-    for application in "1Password" "Filen" "Ice" "Maccy" "SwipeAeroSpace" "Syncthing"; do
+    # Add desired applications to `Login Items` if not already there.
+    items_to_add=0
+    for application in "${desired_login_items[@]}"; do
         if ! osascript -e 'tell application "System Events" to get the name of every login item' | tr ', ' '\n' | grep -Fxq "$application"; then
             log_info "Adding '$application' to 'Login Items'..."
             osascript -e "tell application \"System Events\" to make login item at end with properties {name: \"$application\", path:\"/Applications/$application.app\", hidden:true}"
+            ((items_to_add++))
         fi
     done
+
+    if [ $items_to_add -eq 0 ]; then
+        log_info "All needed login items are already included."
+    fi
 
     log_success "System configuration applied successfully."
     log_divider
