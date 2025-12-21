@@ -17,10 +17,6 @@ source "$MENU_BAR_SCRIPT_DIRECTORY/../helpers/logs.sh"
 apply_menu_bar_configuration() {
     log_info "Applying 'Menu Bar' configuration..."
 
-    # Show battery percentage in the `Menu Bar`.
-    log_info "Showing battery percentage in the 'Menu Bar'..."
-    defaults write com.apple.controlcenter BatteryShowPercentage -bool true
-
     # Show volume icon in the `Menu Bar`.
     log_info "Showing volume icon in the 'Menu Bar'..."
     defaults write com.apple.controlcenter Sound -int 18
