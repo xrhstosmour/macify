@@ -50,6 +50,7 @@ The installer will prompt for approvals before making changes.
 - `kdiff3`
 - `mas`
 - `mise`
+- `mole`
 - `scrcpy`
 - `sd`
 - `starship`
