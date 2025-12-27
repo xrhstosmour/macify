@@ -70,7 +70,6 @@ The installer will prompt for approvals before making changes.
 - `filen`
 - `font-fira-code`
 - `google-chrome`
-- `jordanbaird-ice`
 - `localsend`
 - `maccy`
 - `macfuse`
@@ -106,7 +105,6 @@ The installer will prompt for approvals before making changes.
 - **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
   - Terminal used for running the installation script.
   - `AeroSpace`
-  - `Ice`
   - `Maccy`
   - `SwipeAeroSpace`
   - `WezTerm`

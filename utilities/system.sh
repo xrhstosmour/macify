@@ -117,7 +117,7 @@ apply_system_configuration() {
     log_info "Configuring 'Login Items'..."
 
     # Define desired `Login Items`.
-    desired_login_items=("1Password" "Filen" "Ice" "Maccy" "SwipeAeroSpace" "Syncthing")
+    desired_login_items=("1Password" "Filen" "Maccy" "SwipeAeroSpace" "Syncthing")
 
     # Get all current `Login Items` names.
     current_login_items=$(osascript -e 'tell application "System Events" to get the name of every login item' | tr ', ' '\n')
