@@ -7,7 +7,7 @@ macOS system configuration via shell scripts.
 - Developer Setup
   - Setup: `Xcode`, `Homebrew`, `Git`, `Fish`, `Starship`, `mise`
   - Languages: `.NET Core`, `Go`, `Java`, `Node.js`, `Python`, `Ruby`
-- System configuration (`Finder`, Dock, Menu Bar, Display, Audio, Trackpad)
+- System configuration (`Finder`, Dock, Menu Bar, Display, Audio, Trackpad, `TouchID`)
 - Keyboard remapping with persistence and cheat sheet
 - Window/Tiling manager (`AeroSpace`)
 - Appearance (themes, wallpapers, dark mode)
