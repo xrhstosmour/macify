@@ -66,8 +66,8 @@ apply_system_configuration() {
     for app in "LocalSend" "Syncthing"; do
         if [ -d "/Applications/$app.app" ]; then
             log_info "Adding $app to firewall exceptions..."
-            /usr/libexec/ApplicationFirewall/socketfilterfw --add "/Applications/$app.app"
-            /usr/libexec/ApplicationFirewall/socketfilterfw --unblock "/Applications/$app.app"
+            sudo /usr/libexec/ApplicationFirewall/socketfilterfw --add "/Applications/$app.app"
+            sudo /usr/libexec/ApplicationFirewall/socketfilterfw --unblock "/Applications/$app.app"
         fi
     done
 
