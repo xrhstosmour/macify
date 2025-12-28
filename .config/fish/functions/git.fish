@@ -534,15 +534,19 @@ function git_merge_to_default_branch
     log_warning "Do you want to merge and push these commits to `$default_branch`? (Y/N):"
     read user_confirm
     if test "$user_confirm" = "y" -o "$user_confirm" = "Y"
-        if test -n "$merge_commit_title"
-            if test -n "$merge_commit_body"
-                git merge FETCH_HEAD $no_ff_option -m "$merge_commit_title" -m "$merge_commit_body"
-            else
-                git merge FETCH_HEAD $no_ff_option -m "$merge_commit_title"
-            end
-        else
-            git merge FETCH_HEAD $no_ff_option
+        # Build merge arguments array.
+        set merge_args "FETCH_HEAD"
+        if test -n "$no_ff_option"
+            set merge_args $merge_args $no_ff_option
         end
+        if test -n "$merge_commit_title"
+            set merge_args $merge_args -m "$merge_commit_title"
+            if test -n "$merge_commit_body"
+                set merge_args $merge_args -m "$merge_commit_body"
+            end
+        end
+
+        git merge $merge_args
 
         if test $status -ne 0
             log_error "Merge failed!"
