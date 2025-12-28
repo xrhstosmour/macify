@@ -57,6 +57,7 @@ The installer will prompt for approvals before making changes.
 - `superfile`
 - `telnet`
 - `tig`
+- `witr`
 - `xh`
 - `zoxide`
 

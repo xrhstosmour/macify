@@ -12,6 +12,8 @@ abbr pi "brew install"
 abbr pr "brew uninstall"
 abbr ip "printf 'IPv4 (en0): %s\n' $(ipconfig getifaddr en0)"
 abbr ks "sudo killall coreaudiod bluetoothd bluetoothaudiod"
+abbr wrip "witr --port"
+abbr wpi "witr --pid"
 abbr po "sudo shutdown -h now"
 abbr zzz "sudo pmset sleepnow"
 
