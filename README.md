@@ -94,7 +94,7 @@ The installer will prompt for approvals before making changes.
 
 **App Store**: `Perplexity AI`, `Amphetamine`
 
-## Permissions/Requirements
+## Prerequisites
 
 - **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`
   - Terminal used for running the installation script.
