@@ -68,6 +68,7 @@ The installer will prompt for approvals before making changes.
 - `brave-browser`
 - `docker`
 - `filen`
+- `flameshot`
 - `font-fira-code`
 - `google-chrome`
 - `localsend`
