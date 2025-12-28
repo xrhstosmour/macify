@@ -378,7 +378,7 @@ function git_list_branches
         else
             echo -e "$BOLD_GREEN$line$NO_COLOR"
         end
-    end | fzf --ansi --bind 'enter:execute(git checkout {1})+abort,delete:execute(git branch -d {1})+abort,tab:execute(git diff {1})+abort,?:toggle-preview' --preview '
+    end | fzf --ansi --bind 'enter:execute(git checkout {1})+abort,delete:execute(git branch -D {1})+abort,tab:execute(git diff {1})+abort,?:toggle-preview' --preview '
         set branch_name {1}
         set author (git log -1 --pretty=format:"%an" $branch_name)
         set date (git log -1 --pretty=format:"%ad" --date=format-local:"%d/%m/%Y at %H:%M:%S" $branch_name)
