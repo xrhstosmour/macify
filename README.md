@@ -72,6 +72,7 @@ The installer will prompt for approvals before making changes.
 - `flameshot`
 - `font-fira-code`
 - `google-chrome`
+- `google-drive`
 - `localsend`
 - `maccy`
 - `macfuse`
