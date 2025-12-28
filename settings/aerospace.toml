@@ -163,9 +163,6 @@ cmd-k = 'exec-and-forget open -a /Applications/Obsidian.app'
 ctrl-quote = 'exec-and-forget open -a "/System/Applications/System Settings.app"'
 cmd-quote = 'exec-and-forget open -a "/System/Applications/System Settings.app"'
 
-ctrl-t = 'exec-and-forget open -a "/Applications/Sublime Text.app"'
-cmd-t = 'exec-and-forget open -a "/Applications/Sublime Text.app"'
-
 ctrl-slash = 'exec-and-forget open -a "/Applications/Perplexity.app"'
 cmd-slash = 'exec-and-forget open -a "/Applications/Perplexity.app"'
 

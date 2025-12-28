@@ -44,7 +44,6 @@ function keybindings_cheat_sheet --description "Display all keybindings with des
     echo "🚀 APPLICATIONS:"
     echo "  - CTRL + B                      Google Chrome"
     echo "  - CTRL + E                      Visual Studio Code"
-    echo "  - CTRL + T                      Sublime Text"
     echo "  - CTRL + M                      Spotify"
     echo "  - CTRL + K                      Obsidian"
     echo "  - CTRL + /                      Perplexity"
