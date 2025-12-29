@@ -51,6 +51,7 @@ function keybindings_cheat_sheet --description "Display all keybindings with des
     echo "  - SUPER + ~                      Finder"
     echo "  - SUPER + '                      System Settings"
     echo "  - SUPER + SHIFT + V              Maccy"
+    echo "  - SUPER + SHIFT + X              Flameshot Screenshot"
     echo ""
 
     # System Actions.
