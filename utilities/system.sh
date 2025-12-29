@@ -44,7 +44,7 @@ apply_system_configuration() {
 
     # Disable `Spotlight` from `Menu Bar`.
     log_info "Disabling 'Spotlight' from menu bar..."
-    defaults write com.apple.spotlightui MenuItemHidden -bool true
+    defaults write com.apple.Spotlight MenuItemHidden -int 1
 
     # Disable `AirDrop`.
     log_info "Disabling 'AirDrop'..."
