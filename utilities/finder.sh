@@ -17,6 +17,10 @@ source "$FINDER_SCRIPT_DIRECTORY/../helpers/logs.sh"
 apply_finder_configuration() {
     log_info "Applying 'Finder' configuration..."
 
+    # Disable all `Finder` animations.
+    log_info "Disabling all 'Finder' animations..."
+    defaults write com.apple.finder DisableAllAnimations -bool true
+
     # Display path in `Finder` windows.
     log_info "Showing path bar in 'Finder' windows..."
     defaults write com.apple.finder ShowPathbar -bool true
