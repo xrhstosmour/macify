@@ -16,7 +16,34 @@ macOS system configuration via shell scripts.
 
 ## Requirements
 
-- macOS 12+ (Intel or Apple Silicon)
+Due to `macOS` security restrictions, configure the following:
+
+### Before Installation
+
+- **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`
+  - Add Terminal application which will be used for running the installation script.
+- **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
+  - Add Terminal application which will be used for running the installation script.
+
+### After Installation
+
+- **Reduce Motion**: `System Settings` → `Accessibility` → `Display` → `Reduce motion`
+  - Enable it.
+- **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`
+  - Add `WezTerm` application.
+- **Developer Tools**: `System Settings` → `Privacy & Security` → `Developer Tools`
+  - Add `WezTerm` application.
+  - Add `Visual Studio Code` application.
+- **Input Monitoring**: `System Settings` → `Privacy & Security` → `Input Monitoring`
+  - Add `/usr/bin/hidutil` executable, for keyboard remapping scripts.
+  - Add `/usr/bin/sudo` executable, for keyboard remapping scripts.
+- **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
+  - Add `AeroSpace` application.
+  - Add `Maccy` application.
+  - Add `SwipeAeroSpace` application.
+  - Add `WezTerm` application.
+- **GitHub CLI**:
+  - Run `gh auth login` to authenticate.
 
 ## Installation
 
@@ -93,22 +120,3 @@ The installer will prompt for approvals before making changes.
 - `whatsapp`
 
 **App Store**: `Perplexity AI`, `Amphetamine`
-
-## Prerequisites
-
-- **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`
-  - Terminal used for running the installation script.
-  - `WezTerm`
-- **Developer Tools**: `System Settings` → `Privacy & Security` → `Developer Tools`
-  - `WezTerm`
-  - `Visual Studio Code`
-- **Input Monitoring**: `System Settings` → `Privacy & Security` → `Input Monitoring`
-  - `/usr/bin/hidutil`, for keyboard remapping scripts.
-  - `/usr/bin/sudo`, for keyboard remapping scripts.
-- **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
-  - Terminal used for running the installation script.
-  - `AeroSpace`
-  - `Maccy`
-  - `SwipeAeroSpace`
-  - `WezTerm`
-- **GitHub CLI**: Run `gh auth login` to authenticate with `GitHub CLI` before using corresponding abbreviations/functions.
