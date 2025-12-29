@@ -30,7 +30,6 @@ apply_dock_configuration() {
         "/Applications/Perplexity.app"
         "/Applications/Viber.app"
         "/Applications/WhatsApp.app"
-        "/Applications/Signal.app"
         "/Applications/Visual Studio Code.app"
         "/Applications/Sublime Text.app"
         "/Applications/Docker.app"
