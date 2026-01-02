@@ -46,6 +46,12 @@ for i in "${!LANGUAGE_DISPLAY_NAMES[@]}"; do
     fi
 
     message="Do you want to install $display_name?"
+
+    # `Ruby` specific requirements needed for installation (`libyaml`, `rust` and `YJIT` support).
+    if [ "$mise_name" = "ruby" ]; then
+        command="brew install libyaml rust && RUBY_CONFIGURE_OPTS='--enable-yjit' $command"
+    fi
+
     user_answer=$(ask_user_before_execution "$message" "true" "$command")
     if [ "$user_answer" = "y" ]; then
         log_success "$display_name installation finished!"
