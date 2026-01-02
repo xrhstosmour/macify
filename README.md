@@ -24,6 +24,8 @@ Due to `macOS` security restrictions, configure the following:
   - Add Terminal application which will be used for running the installation script.
 - **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
   - Add Terminal application which will be used for running the installation script.
+- **Applications**: Edit [packages/Brewfile](packages/Brewfile)
+  - Modify the list of `CLI` tools and `GUI` applications to match your preferences.
 
 ### After Installation
 
