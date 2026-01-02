@@ -130,9 +130,6 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # TODO: Cycle through active windows/applications using `OPT+Tab` (internal) or `ALT+Tab` (external).
 
-# Reload environment.
-alt-backslash = 'exec-and-forget ~/.config/scripts/reload_environment.sh'
-
 # Enter service mode.
 alt-semicolon = 'mode service'
 
@@ -185,14 +182,8 @@ cmd-shift-b = 'exec-and-forget open -a Screenshot'
 # 'service' binding mode declaration.
 [mode.service.binding]
 
-# After entering service mode, press L to reload the configuration.
-l = ['reload-config', 'mode main']
-
-# After entering service mode, press R to reload the configuration and return to the main mode.
-r = ['flatten-workspace-tree', 'mode main']
-
-# After entering service mode, press W to configure workspaces based on current displays setup.
-w = ['exec-and-forget ~/.config/scripts/configure_workspaces.sh', 'mode main']
+# After entering service mode, press R to reload environment (configuration, workspace tree, and workspaces), then return to the main mode.
+r = ['exec-and-forget ~/.config/scripts/reload_environment.sh', 'mode main']
 
 # After entering service mode, press Backspace to close all windows except the current one.
 backspace = ['close-all-windows-but-current', 'mode main']

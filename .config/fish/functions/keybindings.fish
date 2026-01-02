@@ -66,9 +66,7 @@ function keybindings_cheat_sheet --description "Display all keybindings with des
     # Service Mode.
     echo "🔧 SERVICE MODE:"
     echo "     First, press ALT + ; to enter and then choose:"
-    echo "  - L                             Reload Aerospace config"
-    echo "  - R                             Flatten workspace tree"
-    echo "  - W                             Configure workspaces"
+    echo "  - R                             Reload environment"
     echo "  - Backspace                     Close all except current"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
