@@ -117,3 +117,8 @@ abbr scrr "sudo launchctl kickstart -k"
 
 # Emulators abbreviations.
 abbr des "disable_android_emulators_audio"
+
+# `WezTerm` abbreviations.
+abbr sprd "printf '\\033]1337;SetUserVar=%s=%s\\007' tab_color cmVk"
+abbr sstg "printf '\\033]1337;SetUserVar=%s=%s\\007' tab_color eWVsbG93"
+abbr sdvl "printf '\\033]1337;SetUserVar=%s=%s\\007' tab_color Z3JlZW4="

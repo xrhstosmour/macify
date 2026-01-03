@@ -30,28 +30,45 @@ local function apply_configuration(configuration)
         inactive_tab_hover = {
             bg_color = constants.palette.dark_gray,
             fg_color = constants.palette.light_gray
-        },
+        }
     }
 
-    wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-        local title = tostring(tab.tab_index + 1)
-        local background = config.colors.tab_bar.inactive_tab.bg_color
-        local foreground = config.colors.tab_bar.inactive_tab.fg_color
+    wezterm.on(
+        "format-tab-title",
+        function(tab, tabs, panes, config, hover, max_width)
+            local title = tostring(tab.tab_index + 1)
+            local background = config.colors.tab_bar.inactive_tab.bg_color
+            local foreground = config.colors.tab_bar.inactive_tab.fg_color
 
-        if tab.is_active then
-            background = config.colors.tab_bar.active_tab.bg_color
-            foreground = config.colors.tab_bar.active_tab.fg_color
-        elseif hover then
-            background = config.colors.tab_bar.inactive_tab_hover.bg_color
-            foreground = config.colors.tab_bar.inactive_tab_hover.fg_color
+            if tab.is_active then
+                background = config.colors.tab_bar.active_tab.bg_color
+                foreground = config.colors.tab_bar.active_tab.fg_color
+            elseif hover then
+                background = config.colors.tab_bar.inactive_tab_hover.bg_color
+                foreground = config.colors.tab_bar.inactive_tab_hover.fg_color
+            end
+
+            local tab_color = tab.active_pane.user_vars.tab_color
+            if tab_color then
+                if tab_color == "red" then
+                    background = constants.palette.red
+                    foreground = constants.palette.black
+                elseif tab_color == "yellow" then
+                    background = constants.palette.yellow
+                    foreground = constants.palette.black
+                elseif tab_color == "green" then
+                    background = constants.palette.green
+                    foreground = constants.palette.black
+                end
+            end
+
+            return {
+                { Background = { Color = background } },
+                { Foreground = { Color = foreground } },
+                { Text = " " .. title .. " " },
+            }
         end
-
-        return {
-            { Background = { Color = background } },
-            { Foreground = { Color = foreground } },
-            { Text = " " .. title .. " " },
-        }
-    end)
+    )
 end
 
 return apply_configuration
