@@ -17,9 +17,6 @@ source "$INSTALL_SCRIPT_DIRECTORY/helpers/ui.sh"
 log_info "Copying configuration files to '~/.config'..."
 mkdir -p ~/.config && cp -R .config/* ~/.config/
 
-# Copy `keyboard.sh` without any logs in order to reload them.
-sed '/^log_\w\+()/,/^}/d;/log_\w\+ /d;/^source /d' "$INSTALL_SCRIPT_DIRECTORY/utilities/keyboard.sh" > ~/.config/scripts/keyboard.sh
-
 # Give execute permission to all scripts in the directory.
 chmod +x ~/.config/scripts/*.sh
 
