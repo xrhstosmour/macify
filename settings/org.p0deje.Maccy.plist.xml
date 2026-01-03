@@ -45,7 +45,7 @@
 		<true/>
 	</dict>
 	<key>pasteByDefault</key>
-	<false/>
+	<true/>
 	<key>pinTo</key>
 	<string>bottom</string>
 	<key>popupPosition</key>
