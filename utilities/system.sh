@@ -148,10 +148,12 @@ apply_system_configuration() {
     # Add desired applications to `Login Items` if not already there.
     items_to_add=0
     for application in "${desired_login_items[@]}"; do
-        if ! osascript -e 'tell application "System Events" to get the name of every login item' | sed 's/, /\n/g' | grep -Fxq "$application"; then
-            log_info "Adding '$application' to 'Login Items'..."
-            osascript -e "tell application \"System Events\" to make login item at end with properties {name: \"$application\", path:\"/Applications/$application.app\", hidden:true}"
-            ((items_to_add++))
+        if [ -d "/Applications/$application.app" ]; then
+            if ! osascript -e 'tell application "System Events" to get the name of every login item' | sed 's/, /\n/g' | grep -Fxq "$application"; then
+                log_info "Adding '$application' to 'Login Items'..."
+                osascript -e "tell application \"System Events\" to make login item at end with properties {name: \"$application\", path:\"/Applications/$application.app\", hidden:true}"
+                ((items_to_add++))
+            fi
         fi
     done
 
