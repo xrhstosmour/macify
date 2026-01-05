@@ -75,6 +75,12 @@ apply_finder_configuration() {
     log_info "Setting new 'Finder' windows to point to home directory..."
     defaults write com.apple.finder NewWindowTarget -string "PfHm"
 
+    # Remove all tags from files and folders and hide them from `Finder` sidebar.
+    log_info "Removing all tags from 'Finder' sidebar..."
+    plutil -replace SidebarTagsSctionDisclosedState -bool false ~/Library/Preferences/com.apple.finder.plist
+    plutil -replace SidebarTagsListShowAll -bool false ~/Library/Preferences/com.apple.finder.plist
+    plutil -replace ShowRecentTags -bool false ~/Library/Preferences/com.apple.finder.plist
+
     # Disable the warning when changing a file extension.
     log_info "Disabling the warning when changing a file extension..."
     defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
