@@ -106,6 +106,7 @@ function aliases_cheat_sheet --description "Display all command abbreviations an
     echo "  - grc              Revert commit"
     echo "  - gra              Abort revert"
     echo "  - gsu              Add upstream"
+    echo "  - gbs              Lines of code per author"
     echo ""
 
     echo "🌳 GITHUB:"

@@ -715,3 +715,15 @@ Resolves [task_id](https://link/to/task_id).
         return 1
     end
 end
+
+# Function to see lines of code per author for a file.
+# Usage:
+#   git_blame_stats <filename>
+function git_blame_stats
+    if test -z "$argv[1]"
+        log_error "Please provide a filename"
+        return 1
+    end
+
+    git blame --line-porcelain "$argv[1]" | grep "^author " | grep -v "^author-mail" | sed 's/^author //' | sort | uniq -c | sort -n | awk '{num=$1; $1=""; gsub(/^[[:space:]]+/, ""); printf "%s | %d\n", $0, num}'
+end
