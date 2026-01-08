@@ -120,7 +120,7 @@ function aliases_cheat_sheet --description "Display all command abbreviations an
     echo "  - dcu              Run Docker compose in detached mode"
     echo "  - dcd              Stop Docker compose"
     echo "  - de               Execute command in Docker compose service"
-    echo "  - dcp              Clean Docker compose"
+    echo "  - dcl              Clean Docker compose"
     echo ""
 
     echo "⚙️  SYSTEM SERVICES:"
