@@ -12,7 +12,7 @@ KEYBOARD_SCRIPT_DIRECTORY=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 source "$KEYBOARD_SCRIPT_DIRECTORY/../helpers/logs.sh"
 
 # Function to apply Keyboard configuration.
-#
+# TODO: Check if `Input Monitoring` permissions for `hidutil` and `sudo` are still needed or not.
 # ! Head to `System Settings → Privacy & Security → Input Monitoring` and:
 # !     - Grant permission to `/usr/bin/hidutil`.
 # !     - Grant permission to `usr/bin/sudo`.
