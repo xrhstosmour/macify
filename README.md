@@ -116,7 +116,6 @@ The installer will prompt for approvals before making changes.
 - `veracrypt`
 - `viber`
 - `visual-studio-code`
-- `vlc`
 - `wailbrew`
 - `wezterm`
 - `whatsapp`
