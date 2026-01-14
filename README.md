@@ -80,6 +80,7 @@ The installer will prompt for approvals before making changes.
 - `mas`
 - `mise`
 - `mole`
+- `opencode`
 - `scrcpy`
 - `sd`
 - `starship`
