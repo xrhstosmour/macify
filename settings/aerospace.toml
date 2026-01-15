@@ -15,6 +15,10 @@
 #   - We are going to use Option/Alt as the main modifier key for window management.
 #   - Dual bindings (Control and Command) are provided for launching applications and system actions like `Spotlight` and input source switching.
 
+# TODO: Check if we can remove duplicate `CTRL` and `CMD` keybindings and keep only the `CMD` ones.
+# To do so, in a terminal type `aerospace debug-key-bindings` and then press the leftmost modifier on each keyboard.
+# If they both register as `CMD`, then we can safely remove the `CTRL` bindings.
+
 # Start `Aerospace` at login.
 start-at-login = true
 
