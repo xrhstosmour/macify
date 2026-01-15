@@ -39,6 +39,7 @@ abbr rmdp "keep_best_file | xargs rm -v"
 abbr dl "aria2c -x 10 "
 abbr ct "gg"
 abbr fm "spf"
+abbr oc "opencode"
 
 # `Git` abbreviations.
 abbr egc "code ~/.gitconfig"

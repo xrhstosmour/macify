@@ -48,6 +48,7 @@ function aliases_cheat_sheet --description "Display all command abbreviations an
     echo "  - rmdp             Remove duplicates files"
     echo "  - dl <url>         Download file"
     echo "  - fm               Open TUI file manager"
+    echo "  - oc               Open OpenCore CLI"
     echo "  - cl               Clear screen"
     echo "  - eva <expr>       Calculate expression"
     echo "  - cd <dir>         Change directory"
