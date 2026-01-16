@@ -29,6 +29,10 @@ macOS system configuration via shell scripts.
     - Control → Command
     - Command → Option
     - Option → Control
+- **Spotlight**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Spotlight`
+  - Enable only `Show Spotlight search` and set it to internal Control/external Super + `.`.
+- **Input Sources**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Input Sources`
+  - Enable only `Select the previous input source` and set it to internal Control/external Super + space.
 - **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`
   - Add Terminal application which will be used for running the installation script.
 - **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
