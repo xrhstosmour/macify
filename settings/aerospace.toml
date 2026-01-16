@@ -3,7 +3,12 @@
 # KEYBOARD LAYOUT:
 #   Physical keys:     1 (leftmost)  |  2 (middle)  |  3 (right)
 #   Internal:          fn            |  control     |  option
-#   External:          CTRL          |  WIN         |  ALT
+#   External:          CTRL          |  SUPER       |  ALT
+#
+# KEY USAGE:
+#   Key 1 → In-app shortcuts
+#   Key 2 → Open applications & system actions
+#   Key 3 → Window tiling & workspace management
 #
 # EXPECTED KEYBOARD CONFIGURATION:
 #   - Apple Internal Keyboard/Trackpad:
@@ -125,6 +130,7 @@ ctrl-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
 ctrl-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
 ctrl-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
 ctrl-shift-0 = 'move-node-to-workspace 10 --focus-follows-window'
+
 # Change workspace and focus it.
 ctrl-right = 'workspace next'
 ctrl-left = 'workspace prev'
