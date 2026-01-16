@@ -36,14 +36,20 @@ Due to `macOS` security restrictions, configure the following:
 - **Developer Tools**: `System Settings` → `Privacy & Security` → `Developer Tools`
   - Add `WezTerm` application.
   - Add `Visual Studio Code` application.
-- **Input Monitoring**: `System Settings` → `Privacy & Security` → `Input Monitoring`
-  - Add `/usr/bin/hidutil` executable, for keyboard remapping scripts.
-  - Add `/usr/bin/sudo` executable, for keyboard remapping scripts.
 - **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
   - Add `AeroSpace` application.
   - Add `Maccy` application.
   - Add `SwipeAeroSpace` application.
   - Add `WezTerm` application.
+- **Keyboard Modifier Keys**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Modifier Keys`
+  - Select **Apple Internal Keyboard/Trackpad** from the dropdown and configure:
+    - Globe → Command
+    - Control → Option
+    - Option → Control
+  - Select **Bluetooth keyboard** from the dropdown and configure:
+    - Control → Command
+    - Command → Option
+    - Option → Control
 - **GitHub CLI**:
   - Run `gh auth login` to authenticate.
 
