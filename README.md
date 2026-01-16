@@ -102,6 +102,7 @@ The installer will prompt for approvals before making changes.
 **GUI Apps**
 
 - `1password`
+- `adobe-acrobat-reader`
 - `android-platform-tools`
 - `aerospace`
 - `brave-browser`

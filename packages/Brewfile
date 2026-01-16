@@ -44,6 +44,7 @@ brew 'zoxide'
 # Install applications.
 cask '1password'
 cask '1password-cli'
+cask 'adobe-acrobat-reader'
 cask 'android-platform-tools'
 cask 'brave-browser'
 # TODO: Maybe replace `docker-desktop` with `podman-desktop` to support kubernetes too.
