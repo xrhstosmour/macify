@@ -52,6 +52,8 @@ Due to `macOS` security restrictions, configure the following:
     - Option → Control
 - **GitHub CLI**:
   - Run `gh auth login` to authenticate.
+- **OpenCode CLI**:
+  - Run `opencode`, then type `/connect` and choose your provider.
 
 ## Installation
 
