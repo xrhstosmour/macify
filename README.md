@@ -97,6 +97,7 @@ The installer will prompt for approvals before making changes.
 - `superfile`
 - `telnet`
 - `tig`
+- `tmux`
 - `witr`
 - `xh`
 - `zoxide`
