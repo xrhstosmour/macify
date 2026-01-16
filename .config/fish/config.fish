@@ -19,6 +19,9 @@ bind -M insert \ch _atuin_search
 # Disable welcome message.
 set -U fish_greeting
 
+# Activate `mise` environment for `Fish` shell.
+mise activate fish | source
+
 # Source needed `Fish` constants.
 source $HOME/.config/fish/constants/colors.fish
 
