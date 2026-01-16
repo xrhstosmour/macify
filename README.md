@@ -20,6 +20,16 @@ Due to `macOS` security restrictions, configure the following:
 
 ### Before Installation
 
+- **Reduce Motion**: `System Settings` → `Accessibility` → `Display` → `Reduce motion`
+  - Enable it.
+- **Keyboard Modifier Keys**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Modifier Keys`
+  - For Apple internal or external keyboards, select **Apple Internal Keyboard/Trackpad** or **Bluetooth keyboard** from the dropdown and configure:
+    - Globe → Command
+    - Control → Option
+    - Option → Control
+  - For non-Apple keyboards, select **Bluetooth keyboard** from the dropdown and configure:
+    - Control → Command
+    - Command → Control
 - **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`
   - Add Terminal application which will be used for running the installation script.
 - **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
@@ -31,8 +41,6 @@ Due to `macOS` security restrictions, configure the following:
 
 ### After Installation
 
-- **Reduce Motion**: `System Settings` → `Accessibility` → `Display` → `Reduce motion`
-  - Enable it.
 - **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`
   - Add `WezTerm` application.
 - **Developer Tools**: `System Settings` → `Privacy & Security` → `Developer Tools`
@@ -43,14 +51,6 @@ Due to `macOS` security restrictions, configure the following:
   - Add `Maccy` application.
   - Add `SwipeAeroSpace` application.
   - Add `WezTerm` application.
-- **Keyboard Modifier Keys**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Modifier Keys`
-  - For Apple internal or external keyboards, select **Apple Internal Keyboard/Trackpad** or **Bluetooth keyboard** from the dropdown and configure:
-    - Globe → Command
-    - Control → Option
-    - Option → Control
-  - For non-Apple keyboards, select **Bluetooth keyboard** from the dropdown and configure:
-    - Control → Command
-    - Command → Control
 - **GitHub CLI**:
   - Run `gh auth login` to authenticate.
 - **OpenCode CLI**:
