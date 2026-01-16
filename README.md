@@ -44,14 +44,13 @@ Due to `macOS` security restrictions, configure the following:
   - Add `SwipeAeroSpace` application.
   - Add `WezTerm` application.
 - **Keyboard Modifier Keys**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Modifier Keys`
-  - Select **Apple Internal Keyboard/Trackpad** from the dropdown and configure:
+  - For Apple internal or external keyboards, select **Apple Internal Keyboard/Trackpad** or **Bluetooth keyboard** from the dropdown and configure:
     - Globe → Command
     - Control → Option
     - Option → Control
-  - Select **Bluetooth keyboard** from the dropdown and configure:
+  - For non-Apple keyboards, select **Bluetooth keyboard** from the dropdown and configure:
     - Control → Command
-    - Command → Option
-    - Option → Control
+    - Command → Control
 - **GitHub CLI**:
   - Run `gh auth login` to authenticate.
 - **OpenCode CLI**:

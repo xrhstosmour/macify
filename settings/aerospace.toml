@@ -1,9 +1,13 @@
 # This configuration supports both internal and external keyboards with key mappings applied via `macOS` keyboard settings.
 #
 # EXPECTED KEYBOARD LAYOUT:
-#   - Position 1 (leftmost): Command (Globe on internal, Control on external).
-#   - Position 2: Option (Control on internal, Super on external).
-#   - Position 3: Control (Option on internal, Alt on external).
+#   - Apple Internal Keyboard/Trackpad:
+#     - Globe → Command
+#     - Control → Option
+#     - Option → Control
+#   - Non-Apple Bluetooth Keyboard:
+#     - Control → Command
+#     - Command → Control
 #
 # SPECIAL KEY MAPPINGS:
 #   - Section Sign → Tilde
