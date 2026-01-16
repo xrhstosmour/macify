@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Adjust Volume For CDM Warning</key>
+	<integer>0</integer>
+	<key>Allow Closed-Display Sleep</key>
+	<integer>0</integer>
+	<key>Allow Display Sleep</key>
+	<integer>0</integer>
+	<key>Allow Display Sleep When Screen Is Locked</key>
+	<integer>0</integer>
+	<key>Allow Screen Saver</key>
+	<integer>0</integer>
+	<key>Always Ask to End For Low Battery</key>
+	<integer>0</integer>
+	<key>Ask To Install Power Protect</key>
+	<true/>
+	<key>Auto Remove Notifications</key>
+	<integer>1</integer>
+	<key>Default Duration</key>
+	<integer>0</integer>
+	<key>DefaultHotkeyAction</key>
+	<integer>0</integer>
+	<key>Drive Alive Data</key>
+	<array/>
+	<key>Drive Wake Interval</key>
+	<string>10</string>
+	<key>Enable CDM Warning</key>
+	<integer>0</integer>
+	<key>Enable Drive Alive</key>
+	<integer>0</integer>
+	<key>Enable Mouse Movement</key>
+	<integer>0</integer>
+	<key>Enable Notification Sound</key>
+	<integer>1</integer>
+	<key>Enable Session Auto End Notifications</key>
+	<integer>1</integer>
+	<key>Enable Session Auto Start Notifications</key>
+	<integer>1</integer>
+	<key>Enable Session Extend Sound</key>
+	<integer>1</integer>
+	<key>Enable Session Notifications</key>
+	<integer>0</integer>
+	<key>Enable Session State Sound</key>
+	<integer>1</integer>
+	<key>Enable Statistics</key>
+	<integer>0</integer>
+	<key>Enable Triggers</key>
+	<integer>0</integer>
+	<key>End Session On Low Battery</key>
+	<integer>1</integer>
+	<key>End Sessions On Forced Sleep</key>
+	<integer>0</integer>
+	<key>End Sessions when FUS</key>
+	<integer>0</integer>
+	<key>Hide Dock Icon</key>
+	<integer>1</integer>
+	<key>Icon Style</key>
+	<integer>5</integer>
+	<key>Ignore Battery on AC</key>
+	<integer>0</integer>
+	<key>Lock Screen After Inactivity</key>
+	<integer>0</integer>
+	<key>Lock Screen For CDM</key>
+	<integer>0</integer>
+	<key>Lock Screen Inactivity Delay</key>
+	<integer>60</integer>
+	<key>Low Battery Percent</key>
+	<integer>20</integer>
+	<key>Lower Icon Opacity</key>
+	<integer>0</integer>
+	<key>Manage Status Item Image Padding</key>
+	<integer>0</integer>
+	<key>Mouse Movement Inactivity Delay</key>
+	<integer>300</integer>
+	<key>Mouse Movement Interval</key>
+	<integer>60</integer>
+	<key>Mouse Movement Smoothness</key>
+	<integer>1</integer>
+	<key>NSStatusItem Preferred Position Amphetamine</key>
+	<real>423</real>
+	<key>Notification Sound End</key>
+	<integer>0</integer>
+	<key>Notification Sound Start</key>
+	<integer>0</integer>
+	<key>Reduce Motion</key>
+	<integer>0</integer>
+	<key>Repeat CDM Warning</key>
+	<integer>0</integer>
+	<key>Repeat Interval For CDM Warning</key>
+	<integer>300</integer>
+	<key>Restart DD Session on AC Reconnect</key>
+	<integer>0</integer>
+	<key>Screen Lock Uses Mouse Activity</key>
+	<integer>0</integer>
+	<key>Screen Saver Delay</key>
+	<integer>5</integer>
+	<key>Session Durations</key>
+	<array>
+		<integer>0</integer>
+		<integer>61</integer>
+		<integer>7648</integer>
+		<integer>40</integer>
+		<integer>23497</integer>
+		<integer>30316</integer>
+		<integer>31840</integer>
+		<integer>3188</integer>
+		<integer>2335</integer>
+		<integer>23989</integer>
+		<integer>5624</integer>
+		<integer>32876</integer>
+		<integer>3426</integer>
+		<integer>11749</integer>
+		<integer>5231</integer>
+		<integer>18265</integer>
+		<integer>31946</integer>
+		<integer>27611</integer>
+		<integer>3476</integer>
+		<integer>27096</integer>
+		<integer>31024</integer>
+		<integer>34826</integer>
+		<integer>877</integer>
+		<integer>32801</integer>
+		<integer>29110</integer>
+		<integer>214</integer>
+		<integer>1782</integer>
+		<integer>11835</integer>
+		<integer>2244</integer>
+		<integer>32364</integer>
+		<integer>32766</integer>
+		<integer>5658</integer>
+		<integer>31957</integer>
+		<integer>1769</integer>
+		<integer>29909</integer>
+		<integer>356</integer>
+		<integer>32133</integer>
+		<integer>1875</integer>
+		<integer>40511</integer>
+		<integer>33275</integer>
+		<integer>45650</integer>
+		<integer>35010</integer>
+		<integer>4401</integer>
+		<integer>29648</integer>
+		<integer>1198</integer>
+		<integer>113</integer>
+		<integer>30035</integer>
+		<integer>5984</integer>
+		<integer>22367</integer>
+		<integer>4244</integer>
+		<integer>32076</integer>
+		<integer>31509</integer>
+		<integer>30659</integer>
+		<integer>12395</integer>
+		<integer>34237</integer>
+		<integer>38781</integer>
+		<integer>16733</integer>
+		<integer>17473</integer>
+		<integer>3209</integer>
+		<integer>36141</integer>
+		<integer>1485</integer>
+		<integer>307</integer>
+		<integer>22454</integer>
+		<integer>3031</integer>
+		<integer>6485</integer>
+		<integer>30961</integer>
+		<integer>25511</integer>
+		<integer>45112</integer>
+		<integer>36134</integer>
+		<integer>459</integer>
+		<integer>28860</integer>
+		<integer>11123</integer>
+		<integer>29156</integer>
+		<integer>28607</integer>
+		<integer>1074</integer>
+		<integer>39967</integer>
+		<integer>24222</integer>
+		<integer>16649</integer>
+		<integer>35949</integer>
+		<integer>1859</integer>
+		<integer>5407</integer>
+		<integer>32210</integer>
+		<integer>30317</integer>
+		<integer>952</integer>
+		<integer>40388</integer>
+		<integer>29400</integer>
+		<integer>36748</integer>
+		<integer>33974</integer>
+		<integer>33779</integer>
+		<integer>4576</integer>
+		<integer>118</integer>
+		<integer>34381</integer>
+		<integer>36809</integer>
+		<integer>4332</integer>
+		<integer>32591</integer>
+		<integer>17712</integer>
+		<integer>8926</integer>
+		<integer>30990</integer>
+		<integer>896</integer>
+		<integer>6161</integer>
+		<integer>3209</integer>
+		<integer>18429</integer>
+		<integer>1114</integer>
+		<integer>38</integer>
+	</array>
+	<key>Session End Time Calcuation</key>
+	<integer>0</integer>
+	<key>Session Notification Interval</key>
+	<integer>60</integer>
+	<key>Show Seconds In Bar Time Remaining</key>
+	<integer>0</integer>
+	<key>Show Session Details In Menu</key>
+	<integer>1</integer>
+	<key>Show Session Time In Status Bar</key>
+	<integer>0</integer>
+	<key>Show Welcome Window</key>
+	<integer>0</integer>
+	<key>Show Woke Drives In Menu</key>
+	<integer>0</integer>
+	<key>Start Session At Launch</key>
+	<integer>1</integer>
+	<key>Start Session On Wake</key>
+	<integer>1</integer>
+	<key>StartNewSessionHotkeyDuration</key>
+	<integer>0</integer>
+	<key>Status Bar Font Size</key>
+	<integer>0</integer>
+	<key>Status Bar Session Time Format</key>
+	<integer>0</integer>
+	<key>Status Item Click</key>
+	<integer>2</integer>
+	<key>Status Item Image Padding</key>
+	<integer>8</integer>
+	<key>Stop Mouse Movement</key>
+	<integer>0</integer>
+	<key>Stop Mouse Movement Inactivity Delay</key>
+	<integer>1800</integer>
+	<key>Total Session Run Time</key>
+	<integer>1942225</integer>
+	<key>Trigger Data</key>
+	<array/>
+	<key>Use 24 Hour Clock</key>
+	<integer>0</integer>
+	<key>Volume Level For CDM Warning</key>
+	<integer>5</integer>
+	<key>cdmEnabled</key>
+	<true/>
+</dict>
+</plist>
