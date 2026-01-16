@@ -51,9 +51,10 @@
             "format": "{$3}{host-name}"
         },
         {
-            "type": "host",
+            "type": "command",
             "key": "{#90}│ {#93}Machine     {#90}│",
-            "format": "{$3}{name}"
+            "text": "system_profiler SPHardwareDataType | grep 'Model Name' | sed 's/.*: //'",
+            "format": "{$3}{result}"
         },
         {
             "type": "os",
