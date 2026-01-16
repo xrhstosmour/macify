@@ -1,23 +1,14 @@
-# This configuration supports both internal and external keyboards with key mappings applied via `macOS` keyboard settings:
+# This configuration supports both internal and external keyboards with key mappings applied via `macOS` keyboard settings.
 #
-# INTERNAL KEYBOARD MAPPINGS:
-#   - Option/Alt switched with Control.
-#   - Globe acts as Left Command.
-#   - Section Sign acts as Tilde.
-#   - Right Shift acts as Delete.
+# EXPECTED KEYBOARD LAYOUT:
+#   - Position 1 (leftmost): Command (Globe on internal, Control on external).
+#   - Position 2: Option (Control on internal, Super on external).
+#   - Position 3: Control (Option on internal, Alt on external).
 #
-# EXTERNAL KEYBOARD MAPPINGS:
-#   - Control acts as Command.
-#   - Super acts as Option/Alt.
-#   - Option/Alt acts as Control.
+# SPECIAL KEY MAPPINGS:
+#   - Section Sign → Tilde
+#   - Right Shift → Delete
 #
-# `Aerospace` uses the physical keys as the input method so:
-#   - We are going to use Option/Alt as the main modifier key for window management.
-#   - Dual bindings (Control and Command) are provided for launching applications and system actions like `Spotlight` and input source switching.
-
-# TODO: Check if we can remove duplicate `CTRL` and `CMD` keybindings and keep only the `CMD` ones.
-# To do so, in a terminal type `aerospace debug-key-bindings` and then press the leftmost modifier on each keyboard.
-# If they both register as `CMD`, then we can safely remove the `CTRL` bindings.
 
 # Start `Aerospace` at login.
 start-at-login = true
@@ -138,47 +129,34 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-semicolon = 'mode service'
 
 # Language switch.
-ctrl-space = 'exec-and-forget osascript ~/.config/scripts/switch_input_source.scpt'
 cmd-space = 'exec-and-forget osascript ~/.config/scripts/switch_input_source.scpt'
 
 # Spotlight trigger script.
-ctrl-period = 'exec-and-forget ~/.config/scripts/open_spotlight.sh'
 cmd-period = 'exec-and-forget ~/.config/scripts/open_spotlight.sh'
 
 # Applications.
-ctrl-b = 'exec-and-forget open -a "/Applications/Google Chrome.app"'
 cmd-b = 'exec-and-forget open -a "/Applications/Google Chrome.app"'
 
-ctrl-e = 'exec-and-forget open -a "/Applications/Visual Studio Code.app"'
 cmd-e = 'exec-and-forget open -a "/Applications/Visual Studio Code.app"'
 
-ctrl-i = 'exec-and-forget open --background -a Docker'
 cmd-i = 'exec-and-forget open --background -a Docker'
 
-ctrl-backtick = 'exec-and-forget open -a Finder'
 cmd-backtick = 'exec-and-forget open -a Finder'
 
-ctrl-m = 'exec-and-forget open -a /Applications/Spotify.app'
 cmd-m = 'exec-and-forget open -a /Applications/Spotify.app'
 
-ctrl-k = 'exec-and-forget open -a /Applications/Obsidian.app'
 cmd-k = 'exec-and-forget open -a /Applications/Obsidian.app'
 
-ctrl-quote = 'exec-and-forget open -a "/System/Applications/System Settings.app"'
 cmd-quote = 'exec-and-forget open -a "/System/Applications/System Settings.app"'
 
-ctrl-slash = 'exec-and-forget open -a "/Applications/Perplexity.app"'
 cmd-slash = 'exec-and-forget open -a "/Applications/Perplexity.app"'
 
-ctrl-semicolon = 'exec-and-forget osascript ~/.config/scripts/open_wezterm.scpt'
 cmd-semicolon = 'exec-and-forget osascript ~/.config/scripts/open_wezterm.scpt'
 
 # Lock screen.
-ctrl-backslash = 'exec-and-forget ~/.config/scripts/lock_screen.sh'
 cmd-backslash = 'exec-and-forget ~/.config/scripts/lock_screen.sh'
 
 # Screen recording.
-ctrl-shift-b = 'exec-and-forget open -a Screenshot'
 cmd-shift-b = 'exec-and-forget open -a Screenshot'
 
 # TODO: Add keybindings to trigger system shutdown (SUPER + Esc) and restart (SUPER + Right square bracket).
