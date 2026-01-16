@@ -29,8 +29,6 @@ source $HOME/.config/fish/constants/colors.fish
 source $HOME/.config/fish/functions/files.fish
 source $HOME/.config/fish/functions/git.fish
 source $HOME/.config/fish/functions/logs.fish
-source $HOME/.config/fish/functions/copy.fish
-source $HOME/.config/fish/functions/trashy.fish
 source $HOME/.config/fish/functions/emulators.fish
 source $HOME/.config/fish/functions/keybindings.fish
 source $HOME/.config/fish/functions/aliases.fish

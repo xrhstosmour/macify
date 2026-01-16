@@ -79,7 +79,6 @@ The installer will prompt for approvals before making changes.
 - `eva`
 - `eza`
 - `fastfetch`
-- `fd`
 - `fdupes`
 - `ffmpeg`
 - `fish`
