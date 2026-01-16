@@ -16,8 +16,6 @@ macOS system configuration via shell scripts.
 
 ## Requirements
 
-Due to `macOS` security restrictions, configure the following:
-
 ### Before Installation
 
 - **Reduce Motion**: `System Settings` → `Accessibility` → `Display` → `Reduce motion`
