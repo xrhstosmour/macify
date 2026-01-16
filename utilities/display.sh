@@ -17,7 +17,6 @@ source "$DISPLAY_SCRIPT_DIRECTORY/../helpers/logs.sh"
 apply_display_configuration() {
     log_info "Applying Display configuration..."
 
-    # TODO: Disable `True Tone`.
     # TODO: Do not change the display resolution if it is already set to a non default one.
 
     # Change display resolution to hide the notch.

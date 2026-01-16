@@ -20,6 +20,8 @@ macOS system configuration via shell scripts.
 
 - **Reduce Motion**: `System Settings` → `Accessibility` → `Display` → `Reduce motion`
   - Enable it.
+- **True Tone**: `System Settings` → `Displays` → `True Tone`
+  - Disable it.
 - **Keyboard Modifier Keys**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Modifier Keys`
   - For Apple internal or external keyboards, select **Apple Internal Keyboard/Trackpad** or **Bluetooth keyboard** from the dropdown and configure:
     - Globe → Command
