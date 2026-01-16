@@ -31,6 +31,14 @@ else
 fi
 log_divider
 
+# Create `Developer` directory.
+if [ ! -d ~/Developer ]; then
+  log_info "Creating 'Developer' directory..."
+  mkdir ~/Developer
+else
+  log_warning "'Developer' directory already exists."
+fi
+
 # Install developer tools.
 if ! xcode-select -p &>/dev/null; then
   log_info "Installing 'Xcode' command line tools..."
