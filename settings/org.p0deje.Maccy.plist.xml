@@ -7,21 +7,21 @@
 	<key>KeyboardShortcuts_pin</key>
 	<string>{"carbonModifiers":2048,"carbonKeyCode":35}</string>
 	<key>KeyboardShortcuts_popup</key>
-	<string>{"carbonKeyCode":9,"carbonModifiers":4608}</string>
+	<string>{"carbonKeyCode":9,"carbonModifiers":2560}</string>
 	<key>NSStatusItem Visible Item-0</key>
 	<true/>
 	<key>NSStatusItem VisibleCC Item-1</key>
 	<false/>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>425 366 620 398 0 0 1470 887 </string>
+	<string>970 758 620 398 0 0 2560 1409 </string>
 	<key>NSWindow Frame com.sindresorhus.Settings.FrameAutosaveName</key>
-	<string>480 312 510 489 0 0 1470 887 </string>
+	<string>645 472 510 489 0 0 1800 1094 </string>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2026-01-03T00:19:32Z</date>
+	<date>2026-01-16T15:39:56Z</date>
 	<key>SUUpdateGroupIdentifier</key>
 	<integer>2370698874</integer>
 	<key>clearOnQuit</key>
@@ -30,11 +30,11 @@
 	<true/>
 	<key>enabledPasteboardTypes</key>
 	<array>
-		<string>public.rtf</string>
 		<string>public.file-url</string>
 		<string>public.html</string>
-		<string>public.utf8-plain-text</string>
 		<string>public.tiff</string>
+		<string>public.rtf</string>
+		<string>public.utf8-plain-text</string>
 		<string>public.png</string>
 	</array>
 	<key>menuIcon</key>
