@@ -20,7 +20,7 @@ function keybindings_cheat_sheet --description "Display all keybindings with des
     echo ""
 
     # Window Management.
-    echo "🪟 WINDOW MANAGEMENT:"
+    echo "🪟  WINDOW MANAGEMENT:"
     echo "  - Key 3 + SHIFT + T              Toggle floating/tiling"
     echo "  - Key 3 + SHIFT + F              Toggle fullscreen"
     echo "  - Key 3 + R                      Rotate layout"
