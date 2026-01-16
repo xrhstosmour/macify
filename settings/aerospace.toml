@@ -1,13 +1,19 @@
 # This configuration supports both internal and external keyboards with key mappings applied via `macOS` keyboard settings.
 #
-# EXPECTED KEYBOARD LAYOUT:
+# KEYBOARD LAYOUT:
+#   Physical keys:     1 (leftmost)  |  2 (middle)  |  3 (right)
+#   Internal:          fn            |  control     |  option
+#   External:          CTRL          |  WIN         |  ALT
+#
+# EXPECTED KEYBOARD CONFIGURATION:
 #   - Apple Internal Keyboard/Trackpad:
 #     - Globe → Command
 #     - Control → Option
 #     - Option → Control
 #   - Non-Apple Bluetooth Keyboard:
 #     - Control → Command
-#     - Command → Control
+#     - Command → Option
+#     - Option → Control
 #
 # SPECIAL KEY MAPPINGS:
 #   - Section Sign → Tilde
@@ -66,102 +72,101 @@ outer.right = 5
 [mode.main.binding]
 
 # Layout floating/tiling toggle.
-alt-shift-t = 'layout floating tiling'
+ctrl-shift-t = 'layout floating tiling'
 
 # Toggle fullscreen.
-alt-shift-f = 'fullscreen'
+ctrl-shift-f = 'fullscreen'
 
 # Join windows together.
-alt-shift-up = 'join-with up'
-alt-shift-down = 'join-with down'
-alt-shift-left = 'join-with left'
-alt-shift-right = 'join-with right'
+ctrl-shift-up = 'join-with up'
+ctrl-shift-down = 'join-with down'
+ctrl-shift-left = 'join-with left'
+ctrl-shift-right = 'join-with right'
 
 # Rotate windows.
-alt-r = 'layout tiles horizontal vertical'
+ctrl-r = 'layout tiles horizontal vertical'
 
 # Focus navigation.
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+ctrl-h = 'focus left'
+ctrl-j = 'focus down'
+ctrl-k = 'focus up'
+ctrl-l = 'focus right'
 
 # Move windows.
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
+ctrl-shift-h = 'move left'
+ctrl-shift-j = 'move down'
+ctrl-shift-k = 'move up'
+ctrl-shift-l = 'move right'
 
 # Resize focused window.
-alt-shift-minus = 'resize smart -50'
-alt-shift-equal = 'resize smart +50'
+ctrl-shift-minus = 'resize smart -50'
+ctrl-shift-equal = 'resize smart +50'
 
 # Workspace management.
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
-alt-0 = 'workspace 10'
+ctrl-1 = 'workspace 1'
+ctrl-2 = 'workspace 2'
+ctrl-3 = 'workspace 3'
+ctrl-4 = 'workspace 4'
+ctrl-5 = 'workspace 5'
+ctrl-6 = 'workspace 6'
+ctrl-7 = 'workspace 7'
+ctrl-8 = 'workspace 8'
+ctrl-9 = 'workspace 9'
+ctrl-0 = 'workspace 10'
 
 # Move window to specific workspace.
-alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
-alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
-alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
-alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
-alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
-alt-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
-alt-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
-alt-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
-alt-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
-alt-shift-0 = 'move-node-to-workspace 10 --focus-follows-window'
-
+ctrl-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
+ctrl-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
+ctrl-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
+ctrl-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
+ctrl-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
+ctrl-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
+ctrl-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
+ctrl-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
+ctrl-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
+ctrl-shift-0 = 'move-node-to-workspace 10 --focus-follows-window'
 # Change workspace and focus it.
-alt-right = 'workspace next'
-alt-left = 'workspace prev'
+ctrl-right = 'workspace next'
+ctrl-left = 'workspace prev'
 
 # Move workspace to next monitor.
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+ctrl-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # TODO: Cycle through active windows/applications using `OPT+Tab` (internal) or `ALT+Tab` (external).
 
 # Enter service mode.
-alt-semicolon = 'mode service'
+ctrl-semicolon = 'mode service'
 
 # Language switch.
-cmd-space = 'exec-and-forget osascript ~/.config/scripts/switch_input_source.scpt'
+alt-space = 'exec-and-forget osascript ~/.config/scripts/switch_input_source.scpt'
 
 # Spotlight trigger script.
-cmd-period = 'exec-and-forget ~/.config/scripts/open_spotlight.sh'
+alt-period = 'exec-and-forget ~/.config/scripts/open_spotlight.sh'
 
 # Applications.
-cmd-b = 'exec-and-forget open -a "/Applications/Google Chrome.app"'
+alt-b = 'exec-and-forget open -a "/Applications/Google Chrome.app"'
 
-cmd-e = 'exec-and-forget open -a "/Applications/Visual Studio Code.app"'
+alt-e = 'exec-and-forget open -a "/Applications/Visual Studio Code.app"'
 
-cmd-i = 'exec-and-forget open --background -a Docker'
+alt-i = 'exec-and-forget open --background -a Docker'
 
-cmd-backtick = 'exec-and-forget open -a Finder'
+alt-backtick = 'exec-and-forget open -a Finder'
 
-cmd-m = 'exec-and-forget open -a /Applications/Spotify.app'
+alt-m = 'exec-and-forget open -a /Applications/Spotify.app'
 
-cmd-k = 'exec-and-forget open -a /Applications/Obsidian.app'
+alt-k = 'exec-and-forget open -a /Applications/Obsidian.app'
 
-cmd-quote = 'exec-and-forget open -a "/System/Applications/System Settings.app"'
+alt-quote = 'exec-and-forget open -a "/System/Applications/System Settings.app"'
 
-cmd-slash = 'exec-and-forget open -a "/Applications/Perplexity.app"'
+alt-slash = 'exec-and-forget open -a "/Applications/Perplexity.app"'
 
-cmd-semicolon = 'exec-and-forget osascript ~/.config/scripts/open_wezterm.scpt'
+alt-semicolon = 'exec-and-forget osascript ~/.config/scripts/open_wezterm.scpt'
 
 # Lock screen.
-cmd-backslash = 'exec-and-forget ~/.config/scripts/lock_screen.sh'
+alt-backslash = 'exec-and-forget ~/.config/scripts/lock_screen.sh'
 
 # Screen recording.
-cmd-shift-b = 'exec-and-forget open -a Screenshot'
+alt-shift-b = 'exec-and-forget open -a Screenshot'
 
 # TODO: Add keybindings to trigger system shutdown (SUPER + Esc) and restart (SUPER + Right square bracket).
 

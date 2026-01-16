@@ -27,7 +27,8 @@ macOS system configuration via shell scripts.
     - Option → Control
   - For non-Apple keyboards, select **Bluetooth keyboard** from the dropdown and configure:
     - Control → Command
-    - Command → Control
+    - Command → Option
+    - Option → Control
 - **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`
   - Add Terminal application which will be used for running the installation script.
 - **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
