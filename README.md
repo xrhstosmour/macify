@@ -33,7 +33,7 @@ macOS system configuration via shell scripts.
     - Option → Control
   - Non-`Apple` external keyboards should **not** be set to macOS mode, use `Windows`/`PC` mode instead.
 - **Spotlight**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Spotlight`
-  - Enable only `Show Spotlight search` and set it to internal Control/external Super + `.`.
+  - Enable only `Show Spotlight search` and set it to internal Control/external Super + dot.
 - **Input Sources**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Input Sources`
   - Enable only `Select the previous input source` and set it to internal Control/external Super + space.
 - **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`
