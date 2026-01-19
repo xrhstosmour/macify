@@ -115,6 +115,7 @@ The installer will prompt for approvals before making changes.
 - `android-platform-tools`
 - `aerospace`
 - `brave-browser`
+- `datagrip`
 - `docker`
 - `filen`
 - `flameshot`
