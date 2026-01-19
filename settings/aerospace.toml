@@ -162,7 +162,6 @@ alt-slash = 'exec-and-forget open -a "/Applications/Perplexity.app"'
 
 alt-semicolon = 'exec-and-forget osascript ~/.config/scripts/open_wezterm.scpt'
 
-# TODO: Fix lock screen script not working.
 # Lock screen.
 alt-backslash = 'exec-and-forget ~/.config/scripts/lock_screen.sh'
 
