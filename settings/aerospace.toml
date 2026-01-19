@@ -165,10 +165,13 @@ alt-semicolon = 'exec-and-forget osascript ~/.config/scripts/open_wezterm.scpt'
 # Lock screen.
 alt-backslash = 'exec-and-forget ~/.config/scripts/lock_screen.sh'
 
+# Shutdown.
+alt-esc = 'exec-and-forget ~/.config/scripts/shutdown.sh'
+
 # Screen recording.
 alt-shift-b = 'exec-and-forget open -a Screenshot'
 
-# TODO: Add keybindings to trigger system shutdown (SUPER + Esc) and restart (SUPER + Right square bracket).
+# TODO: Add keybindings to trigger system restart (SUPER + Right square bracket).
 
 # 'service' binding mode declaration.
 [mode.service.binding]
