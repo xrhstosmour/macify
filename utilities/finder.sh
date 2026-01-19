@@ -89,6 +89,10 @@ apply_finder_configuration() {
     log_info "Disabling the warning when changing a file extension..."
     defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
+    # Remove `.DS_Store` files everywhere.
+    log_info "Removing all existing '.DS_Store' files..."
+    rm -rf ~/.DS_Store
+
     log_success "'Finder' configuration applied successfully."
     log_divider
 }
