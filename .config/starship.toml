@@ -38,13 +38,6 @@ style_root = "bold dimmed red"
 [package]
 disabled = false
 
-# Memory.
-[memory_usage]
-format = "$symbol[${ram}( | ${swap})]($style) "
-threshold = 70
-style = "bold dimmed white"
-disabled = false
-
 # Background jobs.
 [jobs]
 format = "[$symbol$jobs]($style) "
