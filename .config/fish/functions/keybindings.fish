@@ -62,6 +62,7 @@ function keybindings_cheat_sheet --description "Display all keybindings with des
     echo "  - Key 2 + .                      Spotlight search"
     echo "  - Key 2 + \\                     Lock screen"
     echo "  - Key 2 + Esc                    Shutdown"
+    echo "  - Key 2 + ]                      Restart"
     echo ""
 
     # Service Mode.

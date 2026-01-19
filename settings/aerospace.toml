@@ -168,10 +168,11 @@ alt-backslash = 'exec-and-forget ~/.config/scripts/lock_screen.sh'
 # Shutdown.
 alt-esc = 'exec-and-forget ~/.config/scripts/shutdown.sh'
 
+# Restart.
+alt-rightSquareBracket = 'exec-and-forget ~/.config/scripts/restart.sh'
+
 # Screen recording.
 alt-shift-b = 'exec-and-forget open -a Screenshot'
-
-# TODO: Add keybindings to trigger system restart (SUPER + Right square bracket).
 
 # 'service' binding mode declaration.
 [mode.service.binding]
