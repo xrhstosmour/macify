@@ -57,6 +57,10 @@ apply_finder_configuration() {
     log_info "Using list view in all 'Finder' windows by default..."
     defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
+    # Group files by Date creation date in `Finder`.
+    log_info "Grouping files by creation date in 'Finder'..."
+    defaults write com.apple.Finder FXPreferredGroupBy dateCreated
+
     # Stop `.DS_Store` creation at network shares and removable drives.
     log_info "Stopping '.DS_Store' creation at network shares and removable drives..."
     defaults write com.apple.desktopservices DSDontWriteNetworkStores true
