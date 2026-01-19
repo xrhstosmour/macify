@@ -139,4 +139,7 @@ The installer will prompt for approvals before making changes.
 - `wezterm`
 - `whatsapp`
 
-**App Store**: `Perplexity AI`, `Amphetamine`
+**App Store**:
+
+- `Perplexity AI`
+- `Amphetamine`
