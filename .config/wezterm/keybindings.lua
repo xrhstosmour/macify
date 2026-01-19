@@ -67,6 +67,5 @@ return function(config)
             mods = mod,
             action = wezterm.action.CloseCurrentTab { confirm = false }
         }
-        -- TODO: Add word navigation keybindings.
     }
 end
