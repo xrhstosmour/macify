@@ -73,6 +73,10 @@
 	<string>true</string>
 	<key>hideColoredCircles</key>
 	<string>true</string>
+	<key>hideSpaceNumberLabels</key>
+	<string>true</string>
+	<key>hideStatusIcons</key>
+	<string>true</string>
 	<key>holdShortcut</key>
 	<string>⌃</string>
 	<key>menubarIcon</key>
