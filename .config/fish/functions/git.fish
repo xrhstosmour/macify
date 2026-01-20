@@ -594,7 +594,7 @@ end
 #   github_pr_reviews
 function github_pr_reviews
     # Fetch open PRs where user is involved but is not the author.
-    set prs_list (gh pr list --state open --search "involves:@me -author:@me" --json number,title,author,reviews,url --template '{{range .}}{{.number}}|{{.title}}|{{.author.login}}|{{len .reviews}}|{{.url}}{{"\n"}}{{end}}')
+    set prs_list (gh pr list --state open --search "involves:@me -author:@me" --json number,title,author,reviews,url --template '{{range .}}{{.number}}|{{.title}}|{{.author.login}}|{{len .reviews}}|{{.url}}{{"\n"}}{{end}}' | string split '\n')
 
     # Check if the PR list is empty.
     if test -z "$prs_list"
@@ -602,8 +602,8 @@ function github_pr_reviews
         return 1
     end
 
-    # Format output.
-    set -l formatted_output (echo "$prs_list" | while IFS= read -r line
+    # Loop through the array.
+    for line in $prs_list
         set pr_number (echo "$line" | cut -d'|' -f1)
         set pr_title (echo "$line" | cut -d'|' -f2)
         set pr_author (echo "$line" | cut -d'|' -f3)
@@ -611,9 +611,7 @@ function github_pr_reviews
 
         # Print PR info (spaces won't be parsed as delimiters).
         echo -e "\033[1;33m$pr_number\033[0m \033[1;32m|\033[0m \033[1;33m$pr_author\033[0m \033[1;32m|\033[0m $pr_title"
-    end)
-
-    echo "$formatted_output" | fzf --ansi --bind 'enter:execute(gh pr view (echo {} | grep -oE "[0-9]+" | head -1) --json url --template "{{.url}}" | xargs open)+abort' --preview '
+    end | fzf --ansi --bind 'enter:execute(gh pr view (echo {} | grep -oE "[0-9]+" | head -1) --json url --template "{{.url}}" | xargs open)+abort' --preview '
         # Extract PR number from the line
         set pr_number (echo {} | grep -oE "[0-9]+" | head -1)
 
@@ -652,7 +650,7 @@ function github_my_prs
     end
 
     # Fetch PRs assigned to user with the specified state.
-    set prs_list (gh pr list --state $state --search "$search_query" --json number,title,url --template '{{range .}}{{.number}}|{{.title}}|{{.url}}{{"\n"}}{{end}}')
+    set prs_list (gh pr list --state $state --search "$search_query" --json number,title,url --template '{{range .}}{{.number}}|{{.title}}|{{.url}}{{"\n"}}{{end}}' | string split '\n')
 
     # Check if the PR list is empty.
     if test -z "$prs_list"
@@ -660,16 +658,14 @@ function github_my_prs
         return 1
     end
 
-    # Format output.
-    set -l formatted_output (echo "$prs_list" | while IFS= read -r line
+    # Loop through the array.
+    for line in $prs_list
         set pr_number (echo "$line" | cut -d'|' -f1)
         set pr_title (echo "$line" | cut -d'|' -f2)
 
         # Print PR ID and title.
         echo -e "\033[1;33m$pr_number\033[0m \033[1;32m|\033[0m $pr_title"
-    end)
-
-    echo "$formatted_output" | fzf --ansi --bind 'enter:execute(gh pr view (echo {} | grep -oE "[0-9]+" | head -1) --json url --template "{{.url}}" | xargs open)+abort'
+    end | fzf --ansi --bind 'enter:execute(gh pr view (echo {} | grep -oE "[0-9]+" | head -1) --json url --template "{{.url}}" | xargs open)+abort'
 end
 
 # Function to create a `GitHub PR` with a predefined template.
