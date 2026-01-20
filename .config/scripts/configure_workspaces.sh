@@ -55,10 +55,13 @@ configure_workspaces() {
     local monitor_ids=($(aerospace list-monitors | awk '{print $1}'))
 
     # Clean up any extra workspaces (keep only 1-10).
-    for workspace in $(aerospace list-workspaces --all | grep -v '^[1-9]$\|^10$'); do
-        if [[ "$workspace" =~ ^[0-9]+$ ]] && [ "$workspace" -gt 10 ]; then
-            # Move to workspace to delete it if it has windows, or it will be auto-removed when empty.
-            aerospace workspace "$workspace" 2>/dev/null || true
+    # Move windows from extra workspaces to workspace 10, then empty workspaces auto-close.
+    for workspace in $(aerospace list-workspaces --all); do
+        if [ "$workspace" -gt 10 ]; then
+            # Move all windows from this workspace to workspace 10.
+            for window_id in $(aerospace list-windows --workspace "$workspace" 2>/dev/null | awk '{print $1}'); do
+                aerospace move-node-to-workspace 10 --window-id "$window_id" 2>/dev/null || true
+            done
         fi
     done
 
