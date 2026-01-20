@@ -63,6 +63,8 @@ macOS system configuration via shell scripts.
 - **True Tone**: `System Settings` → `Displays` → `True Tone`
   - Disable it.
 - **Finder Sidebar**: Open `Finder` and configure sidebar items:
+  - Right-click `Recents` and select `Remove from Sidebar`.
+  - Right-click `Shared` and select `Remove from Sidebar`.
   - Drag root `/` folder to **Locations** section.
   - Drag `Music`, `Pictures`, `Movies`, and `Developer` folders to **Favorites** section.
 - **GitHub CLI**:
