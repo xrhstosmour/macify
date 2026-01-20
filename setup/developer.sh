@@ -31,6 +31,26 @@ else
 fi
 log_divider
 
+# Configure `1Password SSH` agent if `1password` and `1password-cli` are in `Brewfile`.
+BREWFILE_PATH="$DEVELOPER_SCRIPT_DIRECTORY/../packages/Brewfile"
+if grep -q "cask '1password'" "$BREWFILE_PATH" && grep -q "cask '1password-cli'" "$BREWFILE_PATH"; then
+  FISH_CONFIG="$HOME/.config/fish/config.fish"
+  SSH_AUTH_LINE="set -gx SSH_AUTH_SOCK ~/Library/Group\\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  if ! grep -q "2BUA8C4S2C.com.1password" "$FISH_CONFIG" 2>/dev/null; then
+    log_info "Configuring '1Password' SSH agent in 'Fish' config..."
+
+    # Insert after `HOMEBREW_NO_ENV_HINTS` line.
+    sed -i '' '/HOMEBREW_NO_ENV_HINTS/a\
+\
+# Use `1Password` as the `SSH` agent.\
+'"$SSH_AUTH_LINE"'' "$FISH_CONFIG"
+    log_success "'1Password' SSH agent configured."
+  else
+    log_warning "'1Password' SSH agent already configured in 'Fish' config."
+  fi
+fi
+log_divider
+
 # Create `Developer` directory.
 if [ ! -d ~/Developer ]; then
   log_info "Creating 'Developer' directory..."
