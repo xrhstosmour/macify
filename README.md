@@ -14,14 +14,10 @@ macOS system configuration via shell scripts.
 - Security (firewall, stealth mode, file-sharing whitelist)
 - Cleanup (remove default macOS applications)
 
-## Requirements
+## Manual Configuration
 
 ### Before Installation
 
-- **Reduce Motion**: `System Settings` → `Accessibility` → `Display` → `Reduce motion`
-  - Enable it.
-- **True Tone**: `System Settings` → `Displays` → `True Tone`
-  - Disable it.
 - **Keyboard Modifier Keys**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Modifier Keys`
   - For Apple internal or external keyboards, select **Apple Internal Keyboard/Trackpad** or **Bluetooth keyboard** from the dropdown and configure:
     - Globe → Command
@@ -62,6 +58,13 @@ macOS system configuration via shell scripts.
   - Add `WezTerm` application.
 - **Screen Recording**: `System Settings` → `Privacy & Security` → `Screen Recording`
   - Add `AltTab` application.
+- **Reduce Motion**: `System Settings` → `Accessibility` → `Display` → `Reduce motion`
+  - Enable it.
+- **True Tone**: `System Settings` → `Displays` → `True Tone`
+  - Disable it.
+- **Finder Sidebar**: Open `Finder` and configure sidebar items:
+  - Drag root `/` folder to **Locations** section.
+  - Drag `Music`, `Pictures`, `Movies`, and `Developer` folders to **Favorites** section.
 - **GitHub CLI**:
   - Run `gh auth login` to authenticate.
 - **OpenCode CLI**:
