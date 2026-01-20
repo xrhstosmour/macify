@@ -67,6 +67,7 @@ macOS system configuration via shell scripts.
   - Right-click `Shared` and select `Remove from Sidebar`.
   - Drag root `/` folder to **Locations** section.
   - Drag `Music`, `Pictures`, `Movies`, and `Developer` folders to **Favorites** section.
+- **1Password**: If you plan to use `1Password`, follow [this guide](https://1password.com/blog/git-commit-signing) to set up commit signing.
 - **GitHub CLI**:
   - Run `gh auth login` to authenticate.
 - **OpenCode CLI**:
