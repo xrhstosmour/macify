@@ -38,6 +38,7 @@ function keybindings_cheat_sheet --description "Display all keybindings with des
     echo "  - Key 3 + SHIFT + 1-9           Move window to workspace 1-9"
     echo "  - Key 3 + SHIFT + 0             Move window to workspace 10"
     echo "  - Key 3 + SHIFT + Tab           Move workspace to next monitor"
+    echo "  - Key 3 + Tab                   Cycle through active applications"
     echo ""
 
     # Applications.

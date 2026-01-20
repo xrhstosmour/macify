@@ -56,9 +56,12 @@ macOS system configuration via shell scripts.
   - Add `Visual Studio Code` application.
 - **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
   - Add `AeroSpace` application.
+  - Add `AltTab` application.
   - Add `Maccy` application.
   - Add `SwipeAeroSpace` application.
   - Add `WezTerm` application.
+- **Screen Recording**: `System Settings` → `Privacy & Security` → `Screen Recording`
+  - Add `AltTab` application.
 - **GitHub CLI**:
   - Run `gh auth login` to authenticate.
 - **OpenCode CLI**:
@@ -114,6 +117,7 @@ The installer will prompt for approvals before making changes.
 - `adobe-acrobat-reader`
 - `android-platform-tools`
 - `aerospace`
+- `alt-tab`
 - `brave-browser`
 - `datagrip`
 - `docker`

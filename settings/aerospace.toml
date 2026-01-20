@@ -138,8 +138,6 @@ ctrl-left = 'workspace prev'
 # Move workspace to next monitor.
 ctrl-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-# TODO: Cycle through active windows/applications using `OPT+Tab` (internal) or `ALT+Tab` (external).
-
 # Enter service mode.
 ctrl-semicolon = 'mode service'
 
