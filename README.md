@@ -30,6 +30,8 @@ macOS system configuration via shell scripts.
   - Non-`Apple` external keyboards should **not** be set to macOS mode, use `Windows`/`PC` mode instead.
 - **Mission Control**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Mission Control`
   - Disable all shortcuts to prevent conflicts with `AeroSpace` workspace switching.
+- **Trackpad Gestures**: `System Settings` → `Trackpad` → `More Gestures`
+  - Disable `Swipe between full-screen applications` to prevent conflicts with `SwipeAeroSpace`.
 - **Spotlight**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Spotlight`
   - Enable only `Show Spotlight search` and set it to internal Control/external Super + dot.
 - **Input Sources**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Input Sources`
