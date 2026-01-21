@@ -52,6 +52,8 @@ function keybindings_cheat_sheet --description "Display all keybindings with des
     echo "  - Key 2 + ;                      WezTerm"
     echo "  - Key 2 + ~                      Finder"
     echo "  - Key 2 + '                      System Settings"
+    echo "  - Key 2 + SHIFT + A              1Password Autofill"
+    echo "  - Key 2 + SHIFT + S              1Password Quick Access"
     echo "  - Key 2 + SHIFT + V              Maccy"
     echo "  - Key 2 + SHIFT + X              Flameshot Screenshot"
     echo "  - Key 2 + SHIFT + B              Screen Recording"

@@ -74,6 +74,11 @@ macOS system configuration via shell scripts.
 - **1Password**: If you plan to use `1Password`:
   - Follow [this guide](https://developer.1password.com/docs/ssh/get-started) to set up the `SSH` agent.
   - Follow [this guide](https://1password.com/blog/git-commit-signing) to set up commit signing.
+  - Configure keyboard shortcut: `Settings` → `General` → `Keyboard Shortcuts`:
+    - Set `Autofill` to `Key 2 + Shift + A`.
+    - Set `Show Quick Access` to `Key 2 + Shift + S`.
+    - Clear the the remaining shortcuts to avoid conflicts.
+  - If you choose not to use `1Password`, remove the corresponding lines from [keybindings.fish](.config/fish/functions/keybindings.fish).
 - **GitHub CLI**:
   - Run `gh auth login` to authenticate.
 - **OpenCode CLI**:
