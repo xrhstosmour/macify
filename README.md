@@ -8,11 +8,12 @@ macOS system configuration via shell scripts.
   - Setup: `Xcode`, `Homebrew`, `Git`, `Fish`, `Starship`, `mise`
   - Languages: `.NET Core`, `Go`, `Java`, `Node.js`, `Python`, `Ruby`
 - System configuration (`Finder`, Dock, Menu Bar, Display, Audio, Trackpad, `TouchID`)
-- Keyboard remapping with persistence and cheat sheet
+- Keyboard remapping with persistence and cheat sheet (`kbcs` command)
+- Command aliases with cheat sheet (`alcs` command)
 - Window/Tiling manager (`AeroSpace`)
 - Appearance (themes, wallpapers, dark mode)
 - Security (firewall, stealth mode, file-sharing whitelist)
-- Cleanup (remove default macOS applications)
+- Cleanup (remove default `macOS` applications)
 
 ## Manual Configuration
 
