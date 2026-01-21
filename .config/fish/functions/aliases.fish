@@ -15,6 +15,7 @@ function aliases_cheat_sheet --description "Display all command abbreviations an
     echo ""
 
     echo "🖥️  SYSTEM:"
+    echo "  - btm              System monitor"
     echo "  - ff               Show system info"
     echo "  - us               Update system"
     echo "  - cs               Clean system"

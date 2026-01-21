@@ -4,6 +4,7 @@ abbr efc "code ~/.config/fish/config.fish"
 abbr eff "code ~/.config/fish/functions"
 
 # System abbreviations.
+abbr sm "btm"
 abbr ff "fastfetch"
 abbr kbcs "keybindings_cheat_sheet"
 abbr alcs "aliases_cheat_sheet"
