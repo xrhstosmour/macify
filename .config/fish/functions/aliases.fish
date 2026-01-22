@@ -62,6 +62,8 @@ function aliases_cheat_sheet --description "Display all command abbreviations an
     echo "  - gst              Status"
     echo "  - ga               Add changes"
     echo "  - gap              Patch changes"
+    echo "  - gapl             Apply patch"
+    echo "  - gaplr            Reverse apply patch"
     echo "  - gc               Commit"
     echo "  - gca              Amend commit"
     echo "  - gps              Push"
