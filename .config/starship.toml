@@ -115,3 +115,6 @@ style = "bold cyan"
 [ruby]
 format = "💎$version "
 style = "bold red"
+
+[aws]
+disabled = true
