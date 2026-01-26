@@ -1,168 +1,123 @@
-# Dotfiles
+# mac-dots
 
-macOS system configuration via shell scripts.
+Opinionated `macOS` configuration via shell scripts.
+
+<!-- Screenshots coming soon -->
 
 ## Features
 
-- Developer Setup
-  - Setup: `Xcode`, `Homebrew`, `Git`, `Fish`, `Starship`, `mise`
-  - Languages: `.NET Core`, `Go`, `Java`, `Node.js`, `Python`, `Ruby`
-- System configuration (`Finder`, Dock, Menu Bar, Display, Audio, Trackpad, `TouchID`)
-- Keyboard remapping with persistence and cheat sheet (`kbcs` command)
-- Command aliases with cheat sheet (`alcs` command)
-- Window/Tiling manager (`AeroSpace`)
-- Appearance (themes, wallpapers, dark mode)
-- Security (firewall, stealth mode, file-sharing whitelist)
-- Cleanup (remove default `macOS` applications)
+| Category | Details |
+|----------|---------|
+| Shell | `Fish` + `Starship` + `Atuin` |
+| Terminal | `WezTerm` |
+| Editors | `Helix`, `VS Code`, `DataGrip` |
+| Window Manager | `AeroSpace` + `SwipeAeroSpace` + `AltTab` |
+| Development Languages | `Node.js`, `Python`, `Go`, `Java`, `Ruby`, `.NET` (via `mise`) |
+| Keyboard | Remapping with persistence (`kbcs` for cheat sheet) |
+| Shell Abbreviations | Custom aliases (`alcs` for cheat sheet) |
+| Display | Auto notch-hiding for `MacBook` Pro/Air |
+| Clipboard | `Maccy` |
+| Screenshots | `Flameshot` |
+| Keep Awake | `Amphetamine` |
+| Appearance | Dark mode + custom wallpapers |
+| Security | Firewall + stealth mode enabled |
+| Cleanup | Bloatware removal |
+| Automation | Login and `Dock` items auto-configured |
+| Authentication | `TouchID` for `sudo` |
+| Packages | See [Brewfile](packages/Brewfile) |
 
-## Manual Configuration
+## Pre-Installation
 
-### Before Installation
+Grant Terminal permissions (`System Settings → Privacy & Security`):
 
-- **Keyboard Modifier Keys**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Modifier Keys`
-  - For Apple internal or external keyboards, select **Apple Internal Keyboard/Trackpad** or **Bluetooth keyboard** from the dropdown and configure:
-    - Globe → Command
-    - Control → Option
-    - Option → Control
-  - For non-Apple keyboards, select **Bluetooth keyboard** from the dropdown and configure:
-    - Control → Command
-    - Command → Option
-    - Option → Control
-  - Non-`Apple` external keyboards should **not** be set to macOS mode, use `Windows`/`PC` mode instead.
-- **Mission Control**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Mission Control`
-  - Disable all shortcuts to prevent conflicts with `AeroSpace` workspace switching.
-- **Trackpad Gestures**: `System Settings` → `Trackpad` → `More Gestures`
-  - Disable `Swipe between full-screen applications` to prevent conflicts with `SwipeAeroSpace`.
-- **Spotlight**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Spotlight`
-  - Enable only `Show Spotlight search` and set it to internal Control/external Super + dot.
-- **Input Sources**: `System Settings` → `Keyboard` → `Keyboard Shortcuts` → `Input Sources`
-  - Enable only `Select the previous input source` and set it to internal Control/external Super + space.
-- **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`
-  - Add Terminal application which will be used for running the installation script.
-- **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
-  - Add Terminal application which will be used for running the installation script.
-- **Applications**: Edit [packages/Brewfile](packages/Brewfile)
-  - Modify the list of `CLI` tools and `GUI` applications to match your preferences.
-- **Abbreviations**: Edit [.config/fish/conf.d/abbr.fish](.config/fish/conf.d/abbr.fish)
-  - Modify or add `Fish` shell abbreviations as desired.
+- **Full Disk Access** → Add Terminal
+- **Accessibility** → Add Terminal
 
-### After Installation
-
-- **Full Disk Access**: `System Settings` → `Privacy & Security` → `Full Disk Access`
-  - Add `WezTerm` application.
-- **Developer Tools**: `System Settings` → `Privacy & Security` → `Developer Tools`
-  - Add `WezTerm` application.
-  - Add `Visual Studio Code` application.
-- **Accessibility**: `System Settings` → `Privacy & Security` → `Accessibility`
-  - Add `AeroSpace` application.
-  - Add `AltTab` application.
-  - Add `Maccy` application.
-  - Add `SwipeAeroSpace` application.
-  - Add `WezTerm` application.
-- **Screen Recording**: `System Settings` → `Privacy & Security` → `Screen Recording`
-  - Add `AltTab` application.
-- **Reduce Motion**: `System Settings` → `Accessibility` → `Display` → `Reduce motion`
-  - Enable it.
-- **True Tone**: `System Settings` → `Displays` → `True Tone`
-  - Disable it.
-- **Finder Sidebar**: Open `Finder` and configure sidebar items:
-  - Right-click `Recents` and select `Remove from Sidebar`.
-  - Right-click `Shared` and select `Remove from Sidebar`.
-  - Right-click `iCloud` and select `Remove from Sidebar`.
-  - Right-click `AirDrop` and select `Remove from Sidebar`.
-  - Drag root `/` folder to **Locations** section.
-  - Drag `Developer` folder to **Favorites** section.
-- **1Password**: If you plan to use `1Password`:
-  - Follow [this guide](https://developer.1password.com/docs/ssh/get-started) to set up the `SSH` agent.
-  - Follow [this guide](https://1password.com/blog/git-commit-signing) to set up commit signing.
-  - Configure keyboard shortcut: `Settings` → `General` → `Keyboard Shortcuts`:
-    - Set `Autofill` to `Key 2 + Shift + A`.
-    - Set `Show Quick Access` to `Key 2 + Shift + S`.
-    - Clear the the remaining shortcuts to avoid conflicts.
-  - If you choose not to use `1Password`, remove the corresponding lines from [keybindings.fish](.config/fish/functions/keybindings.fish).
-- **GitHub CLI**:
-  - Run `gh auth login` to authenticate.
-- **OpenCode CLI**:
-  - Run `opencode`, then type `/connect` and choose your provider.
+Customize packages: Edit [packages/Brewfile](packages/Brewfile)
 
 ## Installation
 
-Execute with administrative privileges: `./install.sh`
+```bash
+./install.sh
+```
 
-The installer will prompt for approvals before making changes.
+## Post-Installation
 
-## Packages
+### App Permissions
 
-**CLI Tools**
+`System Settings → Privacy & Security`:
 
-- `1password-cli`
-- `aria2`
-- `atuin`
-- `bat`
-- `bottom`
-- `displayplacer`
-- `eva`
-- `eza`
-- `fastfetch`
-- `fdupes`
-- `ffmpeg`
-- `fish`
-- `fisher`
-- `fzf`
-- `gh`
-- `goto-ssh`
-- `helix`
-- `jless`
-- `kdiff3`
-- `mas`
-- `mise`
-- `mole`
-- `opencode`
-- `scrcpy`
-- `sd`
-- `starship`
-- `superfile`
-- `telnet`
-- `tig`
-- `tmux`
-- `witr`
-- `xh`
-- `zoxide`
+| App | Full Disk Access | Accessibility | Screen Recording | Developer Tools |
+|-----|:----------------:|:-------------:|:----------------:|:---------------:|
+| `WezTerm` | ✓ | ✓ | | ✓ |
+| `VS Code` | | | | ✓ |
+| `AeroSpace` | | ✓ | | |
+| `AltTab` | | ✓ | ✓ | |
+| `Maccy` | | ✓ | | |
+| `SwipeAeroSpace` | | ✓ | | |
 
-**GUI Apps**
+### Keyboard Configuration
 
-- `1password`
-- `adobe-acrobat-reader`
-- `android-platform-tools`
-- `aerospace`
-- `alt-tab`
-- `brave-browser`
-- `datagrip`
-- `docker`
-- `filen`
-- `flameshot`
-- `font-fira-code`
-- `google-chrome`
-- `google-drive`
-- `localsend`
-- `maccy`
-- `macfuse`
-- `nordvpn`
-- `obsidian`
-- `postman`
-- `signal`
-- `spotify`
-- `sublime-text`
-- `syncthing`
-- `utm`
-- `veracrypt`
-- `viber`
-- `visual-studio-code`
-- `wailbrew`
-- `wezterm`
-- `whatsapp`
+**Modifier Keys** (`System Settings → Keyboard → Keyboard Shortcuts → Modifier Keys`):
 
-**App Store**:
+> Keys (left to right):
+>
+> - `Key 1` = Globe (`Apple`) / Control (`Windows/PC`)
+>   - `Key 2` = Control (`Apple`) / Super (`Windows/PC`)
+>   - `Key 3` = Option (`Apple`) / Alt (`Windows/PC`)
 
-- `Perplexity AI`
-- `Amphetamine`
+*Apple keyboards (internal/external):*
+
+| Key | Maps To |
+|-----|---------|
+| Globe | Command |
+| Control | Option |
+| Option | Control |
+
+*Non-Apple keyboards (use `Windows/PC` mode, not `macOS`):*
+
+| Key | Maps To |
+|-----|---------|
+| Control | Command |
+| Command | Option |
+| Option | Control |
+
+**Shortcuts** (`System Settings → Keyboard → Keyboard Shortcuts`):
+
+- **Mission Control** → Disable all (conflicts with `AeroSpace`)
+- **Spotlight** → Enable only `Show Spotlight search` → `Control + .`
+- **Input Sources** → Enable only `Select previous input source` → `Control + Space`
+
+### Trackpad
+
+`System Settings → Trackpad → More Gestures`:
+
+- Disable **Swipe between full-screen applications** (conflicts with `SwipeAeroSpace`)
+
+### Display
+
+`System Settings → Displays`:
+
+- Disable **`True Tone`**
+
+`System Settings → Accessibility → Display`:
+
+- Enable **Reduce motion**
+
+### `Finder`
+
+Open `Finder` and configure sidebar:
+
+- Remove: Recents, Shared, `iCloud`, `AirDrop`
+- Add to Locations: `/` (`root`), `Home` folder
+- Add to Favorites: `Developer` folder
+
+### `1Password`
+
+If not using, remove corresponding lines from [keybindings.fish](.config/fish/functions/keybindings.fish), otherwise configure:
+
+| Setup | Action |
+|-------|--------|
+| [SSH Agent](https://developer.1password.com/docs/ssh/get-started) | Enable SSH key management |
+| [Git Signing](https://1password.com/blog/git-commit-signing) | Enable commit signing |
+| Keyboard Shortcuts | `Settings → General → Keyboard Shortcuts`<br>• Autofill: `Key 2 + Shift + A`<br>• Quick Access: `Key 2 + Shift + S`<br>• Clear remaining |
