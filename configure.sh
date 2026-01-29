@@ -17,7 +17,7 @@ sh setup/developer.sh
 sh utilities/development.sh
 
 # Install and configure `Homebrew`.
-sh setup/homebrew.sh
+source setup/homebrew.sh
 
 # Install dependencies and applications.
 log_info "Installing needed dependencies and applications..."
