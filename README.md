@@ -56,6 +56,7 @@ Opinionated `macOS` configuration via shell scripts.
 | `VS Code` | | | | ✓ |
 | `AeroSpace` | | ✓ | | |
 | `AltTab` | | ✓ | ✓ | |
+| `Flameshot` | | | ✓ | |
 | `Maccy` | | ✓ | | |
 | `SwipeAeroSpace` | | ✓ | | |
 
