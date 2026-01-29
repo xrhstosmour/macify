@@ -17,7 +17,26 @@ sh setup/developer.sh
 sh utilities/development.sh
 
 # Install and configure `Homebrew`.
-source setup/homebrew.sh
+sh setup/homebrew.sh
+
+# Ensure `Homebrew` is in `PATH` for current shell session.
+if [ -x "/opt/homebrew/bin/brew" ]; then
+    HOMEBREW_PATH="/opt/homebrew/bin/brew"
+elif [ -x "/usr/local/bin/brew" ]; then
+    HOMEBREW_PATH="/usr/local/bin/brew"
+fi
+
+if [ -n "$HOMEBREW_PATH" ]; then
+    CURRENT_SHELL=$(basename "$SHELL")
+    case "$CURRENT_SHELL" in
+        fish)
+            eval "$($HOMEBREW_PATH shellenv | grep -v 'export' | sed 's/export /set -gx /')"
+            ;;
+        *)
+            eval "$($HOMEBREW_PATH shellenv)"
+            ;;
+    esac
+fi
 
 # Install dependencies and applications.
 log_info "Installing needed dependencies and applications..."
