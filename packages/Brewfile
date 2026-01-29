@@ -3,7 +3,6 @@ cask_args appdir: '/Applications'
 
 # Install necessary `homebrew`, `macOS` and third party taps.
 tap 'argon/mas'
-tap 'avasilic/goto'
 tap 'buo/cask-upgrade'
 tap 'wickenico/wailbrew'
 
@@ -22,7 +21,7 @@ brew 'fish'
 brew 'fisher'
 brew 'fzf'
 brew 'gh'
-brew 'goto-ssh'
+brew 'avasilic/goto/goto-ssh'
 brew 'helix'
 brew 'jless'
 brew 'mas'
