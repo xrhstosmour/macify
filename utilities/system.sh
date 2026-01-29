@@ -42,6 +42,10 @@ apply_system_configuration() {
     defaults write com.apple.Siri StatusMenuVisible -bool false
     defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 
+    # Remove all `Widgets` from `Desktop`.
+    log_info "Removing all 'Widgets' from 'Desktop'..."
+    defaults write com.apple.WindowManager StandardHideWidgets -bool false
+
     # Disable `Spotlight` from `Menu Bar`.
     log_info "Disabling 'Spotlight' from menu bar..."
     defaults write com.apple.Spotlight MenuItemHidden -int 1
