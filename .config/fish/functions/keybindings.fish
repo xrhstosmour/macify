@@ -48,7 +48,7 @@ function keybindings_cheat_sheet --description "Display all keybindings with des
     echo "  - Key 2 + I                      Docker daemon"
     echo "  - Key 2 + M                      Spotify"
     echo "  - Key 2 + K                      Obsidian"
-    echo "  - Key 2 + /                      Perplexity"
+    echo "  - Key 2 + /                      Gemini"
     echo "  - Key 2 + ;                      WezTerm"
     echo "  - Key 2 + ~                      Finder"
     echo "  - Key 2 + '                      System Settings"
