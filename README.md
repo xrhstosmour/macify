@@ -88,8 +88,8 @@ Opinionated `macOS` configuration via shell scripts.
 **Shortcuts** (`System Settings → Keyboard → Keyboard Shortcuts`):
 
 - **Mission Control** → Disable all (conflicts with `AeroSpace`)
-- **Spotlight** → Enable only `Show Spotlight search` → `Control + .`
-- **Input Sources** → Enable only `Select previous input source` → `Control + Space`
+- **Spotlight** → Enable only `Show Spotlight search` → `Key 2 + .`
+- **Input Sources** → Enable only `Select previous input source` → `Key 2 + Space`
 
 ### Trackpad
 
