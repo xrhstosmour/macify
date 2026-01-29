@@ -28,12 +28,14 @@ Opinionated `macOS` configuration via shell scripts.
 
 ## Pre-Installation
 
-Grant Terminal permissions (`System Settings → Privacy & Security`):
+1. Install `Xcode Command Line Tools` by typing `xcode-select --install` and follow the on-screen instructions.
 
-- **Full Disk Access** → Add Terminal
-- **Accessibility** → Add Terminal
+2. Grant Terminal permissions (`System Settings → Privacy & Security`):
 
-Customize packages: Edit [packages/Brewfile](packages/Brewfile)
+    - **Full Disk Access** → Add Terminal
+    - **Accessibility** → Add Terminal
+
+3. Customize packages: Edit [packages/Brewfile](packages/Brewfile)
 
 ## Installation
 

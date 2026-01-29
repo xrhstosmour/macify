@@ -58,12 +58,3 @@ if [ ! -d ~/Developer ]; then
 else
   log_warning "'Developer' directory already exists."
 fi
-
-# Install developer tools.
-if ! xcode-select -p &>/dev/null; then
-  log_info "Installing 'Xcode' command line tools..."
-  xcode-select --install
-  log_info "Please follow on-screen instructions for 'Xcode' tools."
-else
-  log_warning "'Xcode' command line tools are already installed."
-fi
