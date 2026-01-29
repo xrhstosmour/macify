@@ -32,6 +32,7 @@ Opinionated `macOS` configuration via shell scripts.
 
 2. Grant Terminal permissions (`System Settings → Privacy & Security`):
 
+    - **Files & Folders** → Add Terminal
     - **Full Disk Access** → Add Terminal
     - **Accessibility** → Add Terminal
 
