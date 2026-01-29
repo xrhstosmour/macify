@@ -33,4 +33,23 @@ if ! command -v brew &>/dev/null; then
 else
   log_warning "'Homebrew' is already installed."
 fi
+
+# Ensure `Homebrew` is in `PATH` for current shell session.
+if [ -x "/opt/homebrew/bin/brew" ]; then
+    HOMEBREW_PATH="/opt/homebrew/bin/brew"
+elif [ -x "/usr/local/bin/brew" ]; then
+    HOMEBREW_PATH="/usr/local/bin/brew"
+fi
+
+if [ -n "$HOMEBREW_PATH" ]; then
+    CURRENT_SHELL=$(basename "$SHELL")
+    case "$CURRENT_SHELL" in
+        fish)
+            eval "$($HOMEBREW_PATH shellenv | grep -v 'export' | sed 's/export /set -gx /')"
+            ;;
+        *)
+            eval "$($HOMEBREW_PATH shellenv)"
+            ;;
+    esac
+fi
 log_divider
