@@ -44,7 +44,7 @@ apply_system_configuration() {
 
     # Remove all `Widgets` from `Desktop`.
     log_info "Removing all 'Widgets' from 'Desktop'..."
-    defaults write com.apple.WindowManager StandardHideWidgets -bool false
+    defaults write com.apple.WindowManager StandardHideWidgets -bool true
 
     # Disable `Spotlight` from `Menu Bar`.
     log_info "Disabling 'Spotlight' from menu bar..."
