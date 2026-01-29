@@ -13,11 +13,11 @@ CONFIGURE_SCRIPT_DIRECTORY=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 source "$CONFIGURE_SCRIPT_DIRECTORY/helpers/logs.sh"
 
 # Install and configure `Homebrew`.
-sh setup/homebrew.sh
+source setup/homebrew.sh
 
 # Install developer tools & programming languages.
-sh setup/developer.sh
-sh utilities/development.sh
+source setup/developer.sh
+source utilities/development.sh
 
 # Install dependencies and applications.
 log_info "Installing needed dependencies and applications..."
