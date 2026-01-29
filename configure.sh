@@ -12,12 +12,12 @@ CONFIGURE_SCRIPT_DIRECTORY=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 # Import functions and flags.
 source "$CONFIGURE_SCRIPT_DIRECTORY/helpers/logs.sh"
 
+# Install and configure `Homebrew`.
+sh setup/homebrew.sh
+
 # Install developer tools & programming languages.
 sh setup/developer.sh
 sh utilities/development.sh
-
-# Install and configure `Homebrew`.
-sh setup/homebrew.sh
 
 # Ensure `Homebrew` is in `PATH` for current shell session.
 if [ -x "/opt/homebrew/bin/brew" ]; then

@@ -58,3 +58,12 @@ if [ ! -d ~/Developer ]; then
 else
   log_warning "'Developer' directory already exists."
 fi
+log_divider
+
+# Install `mise` version manager.
+if ! command -v mise &>/dev/null; then
+    log_info "Installing 'mise' version manager..."
+    brew install mise
+    log_success "'mise' installed successfully."
+fi
+log_divider
