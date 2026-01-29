@@ -30,7 +30,6 @@ apply_dock_configuration() {
         "/Applications/Viber.app"
         "/Applications/WhatsApp.app"
         "/Applications/Visual Studio Code.app"
-        "/Applications/Sublime Text.app"
         "/Applications/DataGrip.app"
         "/Applications/Docker.app"
         "/Applications/Postman.app"
