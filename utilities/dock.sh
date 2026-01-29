@@ -28,7 +28,6 @@ apply_dock_configuration() {
         "/Applications/Google Chrome.app"
         "/Applications/Brave Browser.app"
         "/Applications/Viber.app"
-        "/Applications/WhatsApp.app"
         "/Applications/Visual Studio Code.app"
         "/Applications/DataGrip.app"
         "/Applications/Docker.app"
