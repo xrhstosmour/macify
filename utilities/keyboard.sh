@@ -86,7 +86,8 @@ configure_password_less_sudo() {
         return
     fi
 
-    echo "$USER ALL=(ALL) NOPASSWD: /usr/bin/hidutil" | sudo tee /etc/sudoers.d/hidutil-mapping >/dev/null
+    # Create or append to the file safely.
+    echo "$USER ALL=(ALL) NOPASSWD: /usr/bin/hidutil" | sudo tee -a /etc/sudoers.d/hidutil-mapping >/dev/null
     sudo chmod 440 /etc/sudoers.d/hidutil-mapping
     log_success "Password-less 'sudo' configured for 'hidutil'."
 }
