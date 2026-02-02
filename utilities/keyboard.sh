@@ -73,6 +73,24 @@ keyboard_clear_hidutil_mappings() {
     log_success "'hidutil' mappings cleared."
 }
 
+# Function to configure password-less `sudo` for `hidutil`.
+# Required for `LaunchAgent` to run `hidutil` without password prompt.
+# Usage:
+#   configure_password_less_sudo
+configure_password_less_sudo() {
+    log_info "Configuring password-less 'sudo' for 'hidutil'..."
+
+    # Check if already configured.
+    if sudo grep -q "^$USER ALL=(ALL) NOPASSWD: /usr/bin/hidutil$" /etc/sudoers.d/hidutil-mapping 2>/dev/null; then
+        log_info "Password-less 'sudo' for 'hidutil' already configured."
+        return
+    fi
+
+    echo "$USER ALL=(ALL) NOPASSWD: /usr/bin/hidutil" | sudo tee /etc/sudoers.d/hidutil-mapping >/dev/null
+    sudo chmod 440 /etc/sudoers.d/hidutil-mapping
+    log_success "Password-less 'sudo' configured for 'hidutil'."
+}
+
 # Function to apply special key mappings via `hidutil`.
 # Maps Section Sign → Tilde and Right Shift → Delete.
 # These mappings cannot be configured via System Settings.
@@ -81,7 +99,11 @@ keyboard_clear_hidutil_mappings() {
 keyboard_apply_special_key_mappings() {
     log_info "Applying Section Sign → Tilde and Right Shift → Delete mappings..."
 
-    /usr/bin/hidutil property --set '{"UserKeyMapping":[
+    # Configure password-less `sudo`, required for `LaunchAgent`.
+    configure_password_less_sudo
+
+    # Apply mappings immediately for this session.
+    sudo /usr/bin/hidutil property --set '{"UserKeyMapping":[
         {
           "HIDKeyboardModifierMappingSrc": 0x700000064,
           "HIDKeyboardModifierMappingDst": 0x700000035
@@ -118,6 +140,7 @@ keyboard_create_launch_agent() {
     <string>com.local.KeyRemapping</string>
     <key>ProgramArguments</key>
     <array>
+        <string>/usr/bin/sudo</string>
         <string>/usr/bin/hidutil</string>
         <string>property</string>
         <string>--set</string>
