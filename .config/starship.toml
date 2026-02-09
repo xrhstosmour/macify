@@ -116,5 +116,17 @@ style = "bold cyan"
 format = " $version "
 style = "bold red"
 
+[php]
+format = "󰑄 $version "
+style = "bold purple"
+
+[lua]
+format = " $version "
+style = "bold blue"
+
+[cpp]
+format = " $version "
+style = "bold blue"
+
 [aws]
 disabled = true
