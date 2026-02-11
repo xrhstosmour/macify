@@ -36,7 +36,11 @@ Opinionated `macOS` configuration via shell scripts.
     - **Full Disk Access** → Add Terminal
     - **Accessibility** → Add Terminal
 
-3. Customize packages: Edit [packages/Brewfile](packages/Brewfile)
+3. Customize packages and app lists:
+
+- Edit [packages/Brewfile](packages/Brewfile).
+- Edit [packages/pwa_applications.txt](packages/pwa_applications.txt).
+- Edit [packages/store_applications_ids.txt](packages/store_applications_ids.txt).
 
 ## Installation
 
