@@ -1,4 +1,4 @@
-# mac-dots
+# macify
 
 Opinionated `macOS` configuration via shell scripts.
 
