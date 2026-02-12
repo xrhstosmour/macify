@@ -24,7 +24,7 @@ Opinionated `macOS` configuration via shell scripts.
 | Cleanup | Bloatware removal |
 | Automation | Login and `Dock` items auto-configured |
 | Authentication | `TouchID` for `sudo` |
-| Packages | See [Brewfile](packages/Brewfile) |
+| Packages | See [Brewfile](packages/Brewfile), [PWA](packages/pwa_applications.txt) and [Store applications](packages/store_applications_ids.txt) |
 
 ## Pre-Installation
 
