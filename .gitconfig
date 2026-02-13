@@ -4,6 +4,7 @@
 	conflictstyle = diff3
 [push]
 	default = current
+	autoSetupRemote = true
 [core]
 	editor = code --wait
 [http]
