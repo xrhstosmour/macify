@@ -29,10 +29,6 @@ apply_finder_configuration() {
     log_info "Showing status bar in 'Finder' windows..."
     defaults write com.apple.finder ShowStatusBar -bool true
 
-    # Show hidden files in `Finder` windows.
-    log_info "Showing hidden files in 'Finder' windows..."
-    defaults write com.apple.finder AppleShowAllFiles true
-
     # Show files's extensions.
     log_info "Showing files' extensions in 'Finder' windows..."
     defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -88,10 +84,6 @@ apply_finder_configuration() {
     # Disable the warning when changing a file extension.
     log_info "Disabling the warning when changing a file extension..."
     defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-
-    # Remove `.DS_Store` files everywhere.
-    log_info "Removing all existing '.DS_Store' files..."
-    rm -rf ~/.DS_Store
 
     log_success "'Finder' configuration applied successfully."
     log_divider
