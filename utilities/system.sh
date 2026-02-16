@@ -162,7 +162,7 @@ apply_system_configuration() {
     done
 
     if [ $items_to_add -eq 0 ]; then
-        log_info "All needed login items are already included."
+        log_warning "All needed login items are already included."
     fi
 
     log_success "System configuration applied successfully."

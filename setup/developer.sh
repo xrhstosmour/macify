@@ -12,6 +12,10 @@ DEVELOPER_SCRIPT_DIRECTORY=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 # Import functions and flags.
 source "$DEVELOPER_SCRIPT_DIRECTORY/../helpers/logs.sh"
 
+# Declare `1Password SSH IdentityAgent` constants.
+SSH_CONFIG=~/.ssh/config
+IDENTITY_AGENT_BLOCK=$'  # Used by `1Password SSH Agent`.\n  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'
+
 # Copy `Git` configuration file and configure credentials.
 if [ ! -f ~/.gitconfig ]; then
   log_info "Copying 'Git' configuration..."
@@ -27,7 +31,20 @@ if [ ! -f ~/.gitconfig ]; then
     echo "	email = $git_email"
   } | cat - ~/.gitconfig > ~/.gitconfig.tmp && mv ~/.gitconfig.tmp ~/.gitconfig
 else
-  log_info "'Git' is already configured."
+  log_warning "'Git' is already configured."
+fi
+log_divider
+
+# Ensure `~/.ssh/config` contains the correct `1Password SSH IdentityAgent` directive.
+if [ ! -f "$SSH_CONFIG" ]; then
+  log_info "Creating '.ssh/config' with '1Password SSH IdentityAgent'..."
+  mkdir -p ~/.ssh
+  echo -e "Host *\n$IDENTITY_AGENT_BLOCK" > "$SSH_CONFIG"
+elif ! grep -q 'IdentityAgent.*1password/t/agent.sock' "$SSH_CONFIG"; then
+  log_info "Appending '1Password SSH IdentityAgent' to end of '.ssh/config'..."
+  echo -e "\n$IDENTITY_AGENT_BLOCK" >> "$SSH_CONFIG"
+else
+  log_warning "'1Password SSH IdentityAgent' is already configured in '.ssh/config'."
 fi
 log_divider
 
