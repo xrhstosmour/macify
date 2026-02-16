@@ -4,6 +4,9 @@ fish_add_path "/opt/homebrew/bin/"
 # Disable `Homebrew` environment update hints.
 set -gx HOMEBREW_NO_ENV_HINTS 1
 
+# Use `1Password` as the `SSH` agent.
+set -gx SSH_AUTH_SOCK ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
 # Enable `Starship` as `Fish` prompt.
 starship init fish | source
 

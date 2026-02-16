@@ -20,8 +20,8 @@ Opinionated `macOS` configuration via shell scripts.
 | Screenshots | `Flameshot` |
 | Keep Awake | `Amphetamine` |
 | Appearance | Dark mode + custom wallpapers |
-| Security | Firewall + stealth mode enabled |
-| Cleanup | Bloatware removal |
+| Security | `1Password` + Firewall + stealth mode enabled |
+| Cleanup | `Mole` + Bloatware removal |
 | Automation | Login and `Dock` items auto-configured |
 | Authentication | `TouchID` for `sudo` |
 | Packages | See [Brewfile](packages/Brewfile), [PWA](packages/pwa_applications.txt) and [Store applications](packages/store_applications_ids.txt) |
@@ -121,8 +121,6 @@ Open `Finder` and configure sidebar:
 - Add to Favorites: `Developer` folder
 
 ### `1Password`
-
-If not using, remove corresponding lines from [keybindings.fish](.config/fish/functions/keybindings.fish), otherwise configure:
 
 | Setup | Action |
 |-------|--------|
