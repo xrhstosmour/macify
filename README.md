@@ -76,7 +76,7 @@ Opinionated `macOS` configuration via shell scripts.
 
 *Apple keyboards (internal/external):*
 
-| Key | Maps To |
+| Key | Mapping |
 |-----|---------|
 | Globe | Command |
 | Control | Option |
@@ -84,7 +84,7 @@ Opinionated `macOS` configuration via shell scripts.
 
 *Non-Apple keyboards (use `Windows/PC` mode, not `macOS`):*
 
-| Key | Maps To |
+| Key | Mapping |
 |-----|---------|
 | Control | Command |
 | Command | Option |
