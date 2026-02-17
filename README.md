@@ -137,3 +137,4 @@ Open `Finder` and configure sidebar:
     - [`Google Photos`](https://photos.google.com/)
 2. In the right side of `URL` bar, look for a small computer screen with a down arrow, click it and then select **Install**.
 3. If the icon doesn't appear, open the `Google Chrome` menu, navigate to `Cast, Save, and Share → Install Page as App...` and then select **Install**.
+4. Open `Google Chrome` and navigate to `chrome://settings/content`. Under `Additional content settings → On-device site data`, enable **Allow sites to save data on your device**.
