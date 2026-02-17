@@ -137,6 +137,6 @@ Open `Finder` and configure sidebar:
 - [`Google Messages`](https://messages.google.com/web)
 - [`Google Photos`](https://photos.google.com/)
 
-1. For each site, go to `Chrome main menu → Cast, Save, and Share → Install Page as App...` and follow the on-screen instructions.
+2. For each site, go to `Chrome main menu → Cast, Save, and Share → Install Page as App...` and follow the on-screen instructions.
 
-2. Enable `chrome://settings/content → Additional content settings → On-device site data → Allow sites to save data on your device`
+3. Enable `chrome://settings/content → Additional content settings → On-device site data → Allow sites to save data on your device`
