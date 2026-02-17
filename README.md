@@ -24,7 +24,8 @@ Opinionated `macOS` configuration via shell scripts.
 | Cleanup | `Mole` + Bloatware removal |
 | Automation | Login and `Dock` items auto-configured |
 | Authentication | `TouchID` for `sudo` |
-| Packages | See [Brewfile](packages/Brewfile), [PWA](packages/pwa_applications.txt) and [Store applications](packages/store_applications_ids.txt) |
+| `PWA`s | via `Google Chrome` |
+| Packages | See [Brewfile](packages/Brewfile) and [Store applications](packages/store_applications_ids.txt) |
 
 ## Pre-Installation
 
@@ -36,10 +37,9 @@ Opinionated `macOS` configuration via shell scripts.
     - **Full Disk Access** → Add Terminal
     - **Accessibility** → Add Terminal
 
-3. Customize packages and app lists:
+3. Customize packages and application lists:
 
 - Edit [packages/Brewfile](packages/Brewfile).
-- Edit [packages/pwa_applications.txt](packages/pwa_applications.txt).
 - Edit [packages/store_applications_ids.txt](packages/store_applications_ids.txt).
 
 ## Installation
@@ -128,3 +128,12 @@ Open `Finder` and configure sidebar:
   - Autofill: `Key 2 + Shift + A`
   - Quick Access: `Key 2 + Shift + S`
   - Clear remaining shortcuts to avoid conflicts.
+
+### `PWA`s
+
+1. Open `Google Chrome` and navigate to the below `URL`s:
+    - [`Gemini`](https://gemini.google.com/app)
+    - [`Google Messages`](https://messages.google.com/web)
+    - [`Google Photos`](https://photos.google.com/)
+2. In the right side of `URL` bar, look for a small computer screen with a down arrow, click it and then select **Install**.
+3. If the icon doesn't appear, open the `Chrome` menu, navigate to `Cast, Save, and Share → Install Page as App..` and then select **Install**.

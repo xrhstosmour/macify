@@ -27,9 +27,9 @@ apply_dock_configuration() {
     dock_apps=(
         "/Applications/Google Chrome.app"
         "/Applications/Brave Browser.app"
-        "/Applications/Google Messages.app"
+        "$HOME/Applications/Chrome Apps.localized/Google Messages.app"
         "/Applications/Viber.app"
-        "/Applications/Google Photos.app"
+        "$HOME/Applications/Chrome Apps.localized/Google Photos.app"
         "/Applications/Visual Studio Code.app"
         "/Applications/DataGrip.app"
         "/Applications/Docker.app"
