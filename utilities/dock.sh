@@ -25,11 +25,11 @@ apply_dock_configuration() {
     # Add applications to the `Dock`.
     log_info "Adding applications to the 'Dock'..."
     dock_apps=(
+        "$HOME/Applications/Chrome Apps.localized/Google Photos.app"
         "/Applications/Google Chrome.app"
         "/Applications/Brave Browser.app"
         "$HOME/Applications/Chrome Apps.localized/Messages.app"
         "/Applications/Viber.app"
-        "$HOME/Applications/Chrome Apps.localized/Google Photos.app"
         "/Applications/Visual Studio Code.app"
         "/Applications/DataGrip.app"
         "/Applications/Docker.app"
