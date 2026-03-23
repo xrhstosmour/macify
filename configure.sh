@@ -27,14 +27,21 @@ brew bundle install --file=packages/Brewfile
 # Loop through the list of app IDs in `packages/store_applications_ids.txt`.
 if command -v mas &>/dev/null; then
     while IFS= read -r application_id || [[ -n "$application_id" ]]; do
-        # Skip empty lines and comments.
         [[ -z "$application_id" || "$application_id" =~ ^# ]] && continue
 
         mas purchase "$application_id"
     done <packages/store_applications_ids.txt
 fi
 
+# Install additional packages from various sources by executing custom installation commands.
+if [[ -f packages/additional_packages.txt ]]; then
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        [[ -z "$line" || "$line" =~ ^# ]] && continue
 
+        bash -c "$line"
+    done <packages/additional_packages.txt
+fi
+log_divider
 
 # Restore installed applications' configurations.
 sh setup/applications.sh

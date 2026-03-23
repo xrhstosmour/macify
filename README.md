@@ -25,7 +25,7 @@ Opinionated `macOS` configuration via shell scripts.
 | Automation | Login and `Dock` items auto-configured |
 | Authentication | `TouchID` for `sudo` |
 | Progressive Web Applications | via `Google Chrome` |
-| Packages | See [Brewfile](packages/Brewfile) and [Store applications](packages/store_applications_ids.txt) |
+| Packages | See [Brewfile](packages/Brewfile), [Additional Packages](packages/additional_packages.txt), and [Store applications](packages/store_applications_ids.txt) |
 
 ## Pre-Installation
 
@@ -40,6 +40,7 @@ Opinionated `macOS` configuration via shell scripts.
 3. Customize packages and application lists:
 
 - Edit [packages/Brewfile](packages/Brewfile).
+- Edit [packages/additional_packages.txt](packages/additional_packages.txt).
 - Edit [packages/store_applications_ids.txt](packages/store_applications_ids.txt).
 
 ## Installation
