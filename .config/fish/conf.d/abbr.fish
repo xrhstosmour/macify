@@ -40,6 +40,7 @@ abbr dl "aria2c -x 10 "
 abbr ct "gg"
 abbr fm "spf"
 abbr oc "opencode"
+abbr c "code"
 
 # `Git` abbreviations.
 abbr egc "code ~/.gitconfig"
