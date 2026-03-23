@@ -36,6 +36,7 @@ apply_dock_configuration() {
         "/Applications/Bruno.app"
         "/Applications/Spotify.app"
         "/Applications/LocalSend.app"
+        "/Applications/AirSync.app"
         "/Applications/Obsidian.app"
         "/Applications/1Password.app"
         "/Applications/NordVPN.app"
