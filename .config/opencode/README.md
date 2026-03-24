@@ -1,45 +1,29 @@
-# OpenCode Config
+# OpenCode Configuration
 
-Minimal specialist setup.
+Minimal specialist setup for pragmatic software development.
 
-Flow: `/plan -> /code -> /test`
+## Workflow
 
-## Agent Architecture
+1. `/plan` - review plan with user, iterate until approved
+2. `/code` - show changes, iterate until approved
+3. `/test` - run tests and quality checks (standalone)
+4. `/review` - code review (standalone)
 
-Primary:
+## Agents
 
-- `agent/leader.md`
+| Agent | Purpose |
+| --- | --- |
+| `leader` | Orchestration, delegates only when needed |
+| `clarifier` | Requirements clarification |
+| `architect` | Architecture decisions |
+| `designer` | UI/UX design (frontend only) |
+| `implementor` | Bounded implementation |
+| `tester` | Tests and quality checks |
+| `reviewer` | Code review |
 
-Specialists:
+## Context
 
-- `agent/clarifier.md`
-- `agent/architect.md`
-- `agent/designer.md`
-- `agent/implementor.md`
-- `agent/tester.md`
-
-## Command Routing
-
-- `/plan` -> `leader`
-- `/code` -> `implementor`
-- `/test` -> `tester`
-
-## Context Files
-
-- `context/communication.md`
-- `context/models.md`
-- `context/versioning.md`
-
-## Definition of Done
-
-- Scope confirmed.
-- Tests pass.
-- Reviewer testing steps are concrete and executable.
-- No obvious security or performance regressions.
-- Follow-ups and risks are documented.
-
-## Start
-
-```bash
-/plan "Add password reset"
-```
+- `communication.md` - Communication style
+- `knowledge.md` - qmd knowledge search
+- `models.md` - Model selection
+- `versioning.md` - Git conventions, gh CLI

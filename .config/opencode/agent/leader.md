@@ -12,7 +12,7 @@ description: >-
   <example>
   Context: Complex feature.
   user: "Add rate limiting to protect the API from abuse"
-  assistant: "Quick scope check... blocking ambiguity? No. Implementing with inline validation."
+  assistant: "Quick scope check... Presenting plan for approval."
   </example>
 
   <example>
@@ -39,7 +39,7 @@ Decision rules:
 | Task complexity | Action |
 | --- | --- |
 | Simple (questions, renames, tiny edits) | Execute directly |
-| Moderate (feature additions) | Implement with inline validation |
+| Moderate (feature additions) | Present plan for approval |
 | Complex (architecture, ambiguous) | Delegate to specialist |
 
 Delegation (use sparingly):
