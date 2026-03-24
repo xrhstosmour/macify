@@ -33,14 +33,37 @@ fix/<name>
 refactor/<name>
 ```
 
+## Fixup vs Amend
+
+- **Amend**: Use when changing the tip of the current branch (the latest commit)
+- **Fixup**: Use when changing an earlier commit on the branch
+
 ## Fixup Workflow
 
-Use fixups for review changes on existing branch commits:
+When a branch already has commits and you need to amend a specific earlier commit (e.g. addressing review feedback, fixing a typo):
 
 ```bash
-git commit --fixup <sha>
-git rebase -i --autosquash origin/main
+# Stage the fix, then create a fixup commit targeting the original
+git add <file>
+git commit --fixup <SHA_of_original_commit>
 ```
+
+This creates a commit named `fixup! <original message>`. Before merging, clean up with:
+
+```bash
+git rebase -i --autosquash master
+```
+
+**When to use fixup:**
+
+- Fixing something introduced in a previous commit on the same branch
+- Addressing PR review comments that apply to a specific commit
+- Correcting typos, missing files, or small oversights in earlier commits
+
+**When NOT to use fixup:**
+
+- The branch has a single commit (use `git commit --amend` instead)
+- The change is genuinely new functionality (make a normal commit)
 
 ## GitHub Access
 
@@ -93,17 +116,21 @@ Rules:
 
 ```markdown
 ## What
+
 One-line change summary.
 
 ## Why
+
 Problem being solved.
 
 Resolves [issue_task_id](link/to/issue_or_task).
 
 ## Testing
+
 Reviewer validation flow:
 
 ### UI flow checks
+
 1. Open `<environment_url_or_page>`.
 2. Navigate to `<page_or_section>`.
 3. Perform user action: `<click/type/select exact action>`.
@@ -111,6 +138,7 @@ Reviewer validation flow:
 5. Confirm expected result: `<visible message/state/value>`.
 
 ### Data/CLI checks
+
 1. Fetch/setup required data:
    - `<command to seed or fetch db entry>`
 2. Execute changed behavior:
@@ -119,6 +147,7 @@ Reviewer validation flow:
    - `<expected output, db change, or log line>`
 
 ### Regression checks
+
 1. Run tests:
    - `<test command>`
 2. Run lint/static checks:
