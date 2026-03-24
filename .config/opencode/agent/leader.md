@@ -49,6 +49,7 @@ Delegation (use sparingly):
 - `designer`: Only when frontend/UI changes are needed.
 - `implementor`: For bounded implementation tasks.
 - `tester`: For test execution and quality checks.
+- `reviewer`: For code review before commit/PR.
 
 Quality:
 
