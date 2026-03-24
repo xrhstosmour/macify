@@ -2,16 +2,28 @@
 
 ## Commit Format
 
-Use conventional commits:
+Use conventional commits with backtick-wrapped technical terms:
 
 ```text
-feat(scope): short description
-fix(scope): short description
-refactor(scope): short description
-test(scope): short description
-docs(scope): short description
-chore(scope): short description
+feat(scope): short description with `TechnicalTerm`
+fix(scope): fix `APIEndpoint` timeout issue
+refactor(scope): rename `UserService` to `AccountService`
+test(scope): add tests for `AuthMiddleware`
+docs(scope): update `README.md` with new `CLI` commands
+chore(scope): upgrade `npm` dependencies
 ```
+
+**Wrap in backticks:**
+
+- Names (classes, functions, variables, services): `UserService`, `getUserById`
+- Technical terms and acronyms: `API`, `CLI`, `SQL`, `HTTP`
+- File names and paths: `config.yaml`, `src/auth/`
+- Commands and tools: `npm`, `docker`, `gh`
+
+**Do NOT wrap:**
+
+- Natural language words
+- Regular descriptive text
 
 ## Branch Naming
 
@@ -32,12 +44,43 @@ git rebase -i --autosquash origin/main
 
 ## GitHub Access
 
-Use `gh` CLI for pull request workflows.
+**Always use `gh` CLI for GitHub operations. Never use WebFetch for GitHub URLs.**
 
 ```bash
+# File contents.
+gh api repos/<owner>/<repo>/contents/<path> --jq '.[].download_url'
+gh api repos/<owner>/<repo>/contents/<path> --raw
+
+# Pull requests.
 gh pr create --title "<title>" --body-file <file>
 gh pr view --web
 gh pr comment <number> --body "<comment>"
+gh pr merge --squash
+gh pr checkout <number>
+
+# Issues.
+gh issue create --title "<title>" --body "<body>"
+gh issue view <number>
+gh issue list
+gh issue comment <number> --body "<comment>"
+
+# Repositories.
+gh repo clone <owner>/<repo>
+gh repo view --web
+gh repo list <owner>
+
+# Releases.
+gh release create <tag> --title "<title>" --notes "<notes>"
+gh release list
+
+# Workflows and Actions.
+gh run list
+gh run watch <run-id>
+gh workflow list
+
+# Search.
+gh search repos <query> --limit 10
+gh search issues <query> --limit 10
 ```
 
 ## PR Template
