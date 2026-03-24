@@ -1,4 +1,9 @@
 {
   "model": "opencode/big-pickle",
-  "autoupdate": true
+  "autoupdate": true,
+  "tui": {
+    "scroll_acceleration": {
+      "enabled": true
+    }
+  }
 }
