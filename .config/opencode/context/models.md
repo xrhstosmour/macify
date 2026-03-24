@@ -1,8 +1,10 @@
-# Model Routing
+# Models
+
+## Routing
 
 Default to FREE models. Switch to PREMIUM only when user approves.
 
-## Model Selection
+## Selection
 
 Ask at session start: "Use free models or switch to premium models?"
 
@@ -15,10 +17,8 @@ Ask at session start: "Use free models or switch to premium models?"
 
 To switch: `/model <model-name>`
 
-## Complexity Escalation
+## Escalation
 
 If using premium and hitting complexity issues, escalate:
 
 1. `big-pickle` → `minimax-m2.5-free` → `claude-haiku-4.5` → `gpt-5.3-codex`
-
-**Rule:** Start free, upgrade only when needed.

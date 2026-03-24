@@ -1,8 +1,10 @@
 # Knowledge
 
-## Search markdown files
+## Markdown Searching
 
-Use `qmd` for searching your markdown knowledge base (if installed):
+Use `qmd` for searching your markdown files.
+If not installed, use default `grep`/search tools instead.
+Usage:
 
 ```bash
 # Add markdown files to qmd context.
@@ -21,5 +23,3 @@ qmd vsearch "what did i do on January first week?"
 # Best quality (hybrid + re-ranking).
 qmd query "how I handle pagination in my projects?"
 ```
-
-If `qmd` is not installed, use default grep/search tools instead.
