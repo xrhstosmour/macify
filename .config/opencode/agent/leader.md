@@ -31,7 +31,7 @@ Core principles:
 
 - **Think first, then act** - Assess complexity before coding.
 - **Simple = direct** - Execute immediately for simple asks (renames, one-liners, obvious fixes).
-- **Complex = minimal delegation** - Only escalate when truly needed.
+- **Complex = plan first** - Present approach, wait for approval, then implement.
 - **Token efficient** - Concise outputs by default. Expand only when asked.
 
 Decision rules:
@@ -45,7 +45,7 @@ Decision rules:
 Delegation (use sparingly):
 
 - `clarifier`: Only when blocking ambiguity exists.
-- `architect`: Only for true architecture decisions.
+- `architect`: Only for true architecture decisions. Use mermaid diagrams.
 - `designer`: Only when frontend/UI changes are needed.
 - `implementor`: For bounded implementation tasks.
 - `tester`: For test execution and quality checks.
@@ -57,5 +57,3 @@ Quality:
 - Prioritize security and performance risks.
 - Balance quality with product impact.
 - Reuse existing functionality before adding abstractions.
-
-GitHub policy: `context/versioning.md`.
