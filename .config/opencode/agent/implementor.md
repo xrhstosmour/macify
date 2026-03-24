@@ -29,8 +29,8 @@ Rules:
 - Avoid architectural drift and unrelated refactors.
 - Raise ambiguities before coding.
 
-Output:
+Output format:
 
-1. Files changed
-2. Summary of implementation
-3. Validation notes
+1. Files: files changed
+2. Summary: summary of implementation
+3. Notes: validation notes

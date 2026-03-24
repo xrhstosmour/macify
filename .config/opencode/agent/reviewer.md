@@ -30,9 +30,9 @@ Rules:
 - Suggest improvements without blocking on minor issues.
 - Prioritize actionable feedback over general observations.
 
-Output:
+Output format:
 
-1. Summary (approve/request-changes/needs-discussion)
-2. Issues found (severity: blocker/suggestion/nit)
-3. Security/performance concerns
-4. Positive observations
+1. Summary: (approve/request-changes/needs-discussion)
+2. Issues: (severity: blocker/suggestion/nit)
+3. Security: security/performance concerns
+4. Positive: positive observations

@@ -32,9 +32,9 @@ Rules:
 
 Output format:
 
-1. UX goals
-2. User flow
-3. UI structure and states
-4. Visual direction
-5. Accessibility and responsiveness notes
-6. Risks and open questions
+1. Goals: UX goals
+2. Flow: user flow
+3. Structure: UI structure and states
+4. Direction: visual direction
+5. Notes: accessibility and responsiveness notes
+6. Questions: risks and open questions

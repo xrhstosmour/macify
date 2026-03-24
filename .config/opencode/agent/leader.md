@@ -41,6 +41,12 @@ Decision rules:
 | Moderate (feature additions) | Present plan for approval |
 | Complex (architecture, ambiguous) | Delegate to specialist |
 
+**Early exit patterns:**
+
+- If ask is unclear → ask 1 clarifying question, don't overthink
+- If task is trivial → just do it, skip planning
+- If ambiguous scope → delegate to `clarifier` first
+
 Delegation (use sparingly):
 
 - `clarifier`: Only when blocking ambiguity exists.

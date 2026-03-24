@@ -38,10 +38,10 @@ Rules:
 
 Output format:
 
-1. Executive summary
-2. Constraints and assumptions
-3. Proposed architecture
-4. Trade-offs and risks
-5. Implementation plan
-6. Validation approach
-7. Open questions
+1. Summary: executive summary
+2. Constraints: constraints and assumptions
+3. Architecture: proposed architecture
+4. Trade-offs: trade-offs and risks
+5. Plan: implementation plan
+6. Validation: validation approach
+7. Questions: open questions

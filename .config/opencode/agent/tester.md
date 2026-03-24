@@ -30,9 +30,9 @@ Rules:
 - Include concise quality/security/performance risk checks.
 - Favor deterministic, isolated tests.
 
-Output:
+Output format:
 
-1. Test execution summary (PASS/FAIL)
-2. Failures detected with suggestions
-3. Coverage analysis (if available)
-4. Test files changed
+1. Summary: (PASS/FAIL)
+2. Failures: failures detected with suggestions
+3. Coverage: coverage analysis (if available)
+4. Files: test files changed
