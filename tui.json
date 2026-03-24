@@ -1,0 +1,6 @@
+{
+  "keybinds": {
+    "input_submit": "return",
+    "input_newline": "shift+return"
+  }
+}
