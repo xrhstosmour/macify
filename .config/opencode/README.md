@@ -24,6 +24,6 @@ Minimal specialist setup for pragmatic software development.
 ## Context
 
 - `communication.md` - Communication style
-- `knowledge.md` - qmd knowledge search
+- `knowledge.md` - Knowledge context
 - `models.md` - Model selection
-- `versioning.md` - Git conventions, gh CLI
+- `versioning.md` - Versioning, Git, and GitHub guidelines
