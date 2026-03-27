@@ -6,14 +6,20 @@ Minimal specialist setup for pragmatic software development.
 
 1. `/plan` - review plan with user, iterate until approved
 2. `/code` - show changes, iterate until approved
-3. `/test` - run tests and quality checks (standalone)
-4. `/review` - code review (standalone)
+3. `/test` - run tests and quality checks (standalone too)
+4. `/review` - code review (standalone too)
+
+## Commands
+
+1. `/resolve` - resolve `PR` review comments using `resolve_pr_comments` skill
 
 ## Skills
 
-| Skill | Purpose |
-| --- | --- |
-| `resolve_pr_comments` | Review `PR` comments, assess validity, plan fixes with user, make fixup commits, push, reply with `SHA` links and re-request reviews. |
+Skills are loaded by agents and can be triggered via commands (e.g., `/resolve`).
+
+| Skill | Command | Purpose |
+| --- | --- | --- |
+| `resolve_pr_comments` | `/resolve` | Review `PR` comments, assess validity, plan fixes with user, make fixup commits, push, reply with `SHA` links and re-request reviews. |
 
 ## Agents
 
