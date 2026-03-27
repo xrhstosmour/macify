@@ -5,7 +5,7 @@ description: Review `PR` review comments, assess validity, plan fixes with user,
 
 # Resolve PR Comments
 
-## When To Use This Skill
+## When to use this skill
 
 Invoke this skill when the user says things like:
 
@@ -55,6 +55,12 @@ query($owner:String!, $repo:String!, $number:Int!){\
 }' -F owner=<owner> -F repo=<repo> -F number=<pr_number>
 ```
 
+Pagination requirement:
+- Do not assume one page is enough.
+- Paginate `reviewThreads` and nested comments until `hasNextPage=false`.
+- If comments exceed a single page, continue fetching with `after` cursor.
+- If pagination is incomplete or uncertain, report uncertainty and stop before proposing fixes.
+
 Identify comments to review:
 - Unresolved threads: include by default (including bot comments).
 - Already addressed comments: skip when user/assistant already replied with `SHA` link(s) and no newer follow-up exists.
@@ -96,6 +102,8 @@ React to the review comment with thumbs up (not a new comment):
 gh api "repos/<owner>/<repo>/pulls/comments/<comment_id>/reactions" -X POST -H "Accept: application/vnd.github+json" -F content='+1'
 ```
 
+If reaction already exists (`HTTP 422`), treat it as success and continue.
+
 If NOT VALID:
 ```text
 [NOT VALID] Comment by @author
@@ -113,7 +121,12 @@ React to the review comment with eyes (not a new comment) until the not-valid re
 gh api "repos/<owner>/<repo>/pulls/comments/<comment_id>/reactions" -X POST -H "Accept: application/vnd.github+json" -F content='eyes'
 ```
 
-If user approves posting the reply, post a reply and mark the thread as resolved after posting.
+If reaction already exists (`HTTP 422`), treat it as success and continue.
+
+If user approves posting the reply, post a reply and mark the thread as resolved after posting:
+```bash
+gh api "repos/<owner>/<repo>/pulls/<pr_number>/comments/<comment_id>/replies" -X POST -F body="<reason_text>"
+```
 
 User can override your assessment if they disagree.
 
@@ -122,6 +135,11 @@ Iteration rule for Step 2:
 - For each comment, always provide an explicit verdict: `[VALID]` or `[NOT VALID]`.
 - Wait for user decision on that comment before moving to the next one.
 - Do not skip validity assessment and jump directly to implementation.
+
+Per-comment state machine:
+- Track each comment through: `validated -> planned -> approved -> committed -> replied -> resolved`.
+- Never move a comment to the next state without completing the current one.
+- Do not start the next comment until the current one reaches `resolved` or `skipped` by user.
 
 ### Step 3 — Plan fix (if valid)
 
@@ -141,49 +159,22 @@ Once user approves the changes:
 
 User gave explicit final approval to proceed.
 
-Create fixup commit(s) with strict commit mapping:
-- Build a mapping of each changed hunk to its introducing commit `SHA`.
-- Use the comment `original_commit_id` when applicable.
-- If needed, use `git blame` on changed lines to find the correct original commit.
-- Group changes by original commit `SHA`.
-- Create exactly one fixup commit per target original commit `SHA`.
-- Never combine changes from different original commits into one fixup commit.
-- Do not assume a single target commit. Verify every changed hunk first.
-- Target only commits from the current feature branch/PR commit set.
-- If a mapped commit is outside the current branch, remap it to the corresponding commit in this feature branch that introduced the PR change.
-- If a valid review comment requests a genuinely new change that does not belong to any existing commit in this feature branch, create a new regular commit instead of a fixup commit.
+Follow commit mapping and fixup rules from `~/.config/opencode/context/versioning.md` (`Commits` -> `Review fixups`).
 
-Suggested flow:
-```bash
-# Inspect changed files/hunks and map each hunk to original commit `SHA`.
-git diff
-
-# Verify introducing commit per changed line/hunk.
-git blame -L <start>,<end> <file>
-
-# Restrict target commits to current `PR` branch commits.
-git log --format="%H" <base_branch>..HEAD
-
-# Stage only hunks for commit A.
-git add -p <file_or_files>
-git commit --fixup <original_commit_sha_A>
-
-# Stage only hunks for commit B.
-git add -p <file_or_files>
-git commit --fixup <original_commit_sha_B>
-```
-
-Before pushing, report the fixup plan to user and wait for explicit approval:
+Before pushing, report the commit plan to user and wait for explicit approval:
 - `original_commit_sha_A` -> `fixup_sha_A` -> files/hunks included
 - `original_commit_sha_B` -> `fixup_sha_B` -> files/hunks included
+- `new_commit_sha_X` -> files/hunks included (only for genuinely new work)
 - Proceed to push only after user confirms.
 
 Mandatory pre-push check:
 - Show a hunk-to-commit mapping table for all changed hunks.
-- If two hunks map to different original commits, create separate fixup commits.
+- Confirm every fixup target `SHA` is in `<base_branch>..HEAD`.
 - If mapping is uncertain for any hunk, stop and ask user before committing.
-- Confirm every target `SHA` is in `<base_branch>..HEAD` before creating fixup commits.
-- If any hunk has no valid fixup target in `<base_branch>..HEAD`, classify it as new work and use a new regular commit (after user approval).
+
+Pre-push safety checks:
+- Show `git status --short` and `git log --oneline <base_branch>..HEAD` before pushing.
+- Wait for explicit user approval immediately before `git push`.
 
 Push the fixup(s):
 ```bash
@@ -195,18 +186,16 @@ Get the new `SHA`(s):
 git log --format="%H" -n <number_of_fixups>
 ```
 
-Post a REPLY to the original comment (not a new comment):
-- Single `SHA`: `https://github.com/<owner>/<repo>/commit/<sha>`
-- Multiple `SHA`s: join with ` & ` separator
+Post a REPLY to the original comment (not a new comment) using rules in `~/.config/opencode/context/github.md` (`Review replies and resolution`):
 ```bash
 gh api "repos/<owner>/<repo>/pulls/<pr_number>/comments/<comment_id>/replies" -X POST -F body="<sha_link_1> & <sha_link_2> & ..."
 ```
 
-For each resolved review comment, post the corresponding fixup `SHA` link(s) as a reply to that specific comment.
+For each resolved review comment, post only the corresponding fixup/new-work `SHA` link(s) to that specific comment.
 
 Mark the comment thread as resolved:
 ```bash
-# 1) Find the review thread node ID that contains this comment ID
+# 1) Find the review thread node `ID` that contains this comment `ID`.
 gh api graphql -f query='\
 query($owner:String!, $repo:String!, $number:Int!){\
   repository(owner:$owner,name:$repo){\
@@ -221,7 +210,7 @@ query($owner:String!, $repo:String!, $number:Int!){\
   }\
 }' -F owner=<owner> -F repo=<repo> -F number=<pr_number>
 
-# 2) Resolve the matching thread by node ID
+# 2) Resolve the matching thread by node `ID`.
 gh api graphql -f query='\
 mutation($threadId:ID!){\
   resolveReviewThread(input:{threadId:$threadId}){\
@@ -240,12 +229,17 @@ Confirm to user:
 
 When all comments have been processed, re-request reviews from reviewers who commented:
 ```bash
-# Get list of reviewers who left unresolved comments.
+# Get list of reviewers from review comments and filter bots/self.
 gh api repos/<owner>/<repo>/pulls/<pr_number>/comments --jq '.[].user.login' | sort -u
 
 # Re-request review from each reviewer.
 gh pr edit <pr_number> --add-reviewer <reviewer1> --add-reviewer <reviewer2>
 ```
+
+Do not request review from:
+- Bot accounts.
+- The current authenticated user.
+- Users already requested in the PR reviewer list.
 
 Provide a summary with links:
 - `PR` link: `https://github.com/<owner>/<repo>/pull/<pr_number>`.
@@ -257,9 +251,8 @@ Ask user if they want to do anything else.
 
 ## Rules
 
-- Never perform any action (push, reply, resolve, re-request review) without explicit user approval.
-- Always wait for user confirmation before executing commands that modify remote state.
-- Post replies to existing comments, not new comments.
-- Never create a mixed fixup commit that targets multiple original commits.
-- Never claim a single-target fixup without showing verified hunk-to-commit mapping.
-- Use fixup commits for changes tied to existing commits; use a new regular commit only for truly new work.
+- Never execute remote-state actions (push, reply, resolve, re-request review) without explicit user approval.
+- Never push review-fix commits to `main`/`master`.
+- Post replies to existing review comments, not top-level `PR` comments.
+- Follow commit/fixup rules from `~/.config/opencode/context/versioning.md` and reply/resolution rules from `~/.config/opencode/context/github.md`.
+- If any command fails, show exact command and error, then stop and ask user.
