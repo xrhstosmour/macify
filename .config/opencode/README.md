@@ -9,6 +9,12 @@ Minimal specialist setup for pragmatic software development.
 3. `/test` - run tests and quality checks (standalone)
 4. `/review` - code review (standalone)
 
+## Skills
+
+| Skill | Purpose |
+| --- | --- |
+| `resolve_pr_comments` | Review `PR` comments, assess validity, plan fixes with user, make fixup commits, push, reply with `SHA` links and re-request reviews. |
+
 ## Agents
 
 | Agent | Purpose |
