@@ -39,4 +39,4 @@ Skills are loaded by agents and can be triggered via commands (e.g., `/resolve`)
 - `knowledge.md` - Knowledge context
 - `preferences.md` - Writing and formatting preferences
 - `rules.md` - Implementation rules
-- `versioning.md` - Versioning, `Git`, and `GitHub` guidelines
+- `versioning.md` - Versioning and `Git` commands and guidelines
