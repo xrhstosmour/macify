@@ -8,10 +8,11 @@ Enclose all technical identifiers, code elements, file names, and paths in backt
 Example:
 
 ```text
-feat(scope): short description
-fix(scope): fix `APIEndpoint` timeout
-refactor(scope): rename `UserService` to `AccountService`
-test(scope): add tests for `AuthMiddleware`
+feat: Add `Sentry` integration
+feat: Add startup scripts
+fix: Fix `APIEndpoint` timeout
+refactor: Rename `UserService` to `AccountService`
+test: Add tests for `AuthMiddleware`
 ```
 
 Use fixup for fixing review comments, correcting typos, small oversights in earlier commits.
