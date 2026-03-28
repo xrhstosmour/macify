@@ -2,7 +2,7 @@
 
 ## Writing
 
-Sentences end with period, except bullet points with short phrases.
+Sentences and comments end with period, except bullet points with short phrases and headings.
 
 ## Formatting
 
