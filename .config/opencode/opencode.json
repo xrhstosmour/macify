@@ -7,6 +7,10 @@
   "tui": {
     "scroll_acceleration": {
       "enabled": true
+    },
+    "keybinds": {
+      "input_submit": "return",
+      "input_newline": "shift+return"
     }
   },
   "watcher": {
