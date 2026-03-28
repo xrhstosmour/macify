@@ -20,6 +20,8 @@ Use amend for single commit changes.
 
 For new changes, split into multiple commits by context rather than bundling everything into one. Each commit should represent a logical unit of work.
 
+Tests (unit or integration) for a feature, method, or change should be included in the same commit as the code they test, not in a separate commit.
+
 Example:
 
 ```bash
