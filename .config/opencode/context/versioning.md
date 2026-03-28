@@ -29,7 +29,7 @@ git commit --amend --no-edit
 
 ### Git safety
 
-- Never force-push to `main`/`master`.
+- Never force-push to `main` or `master`.
 - Never commit `.env`, secrets, or credential files. Warn user immediately if such files are staged.
 
 ### Review fixups
@@ -42,7 +42,7 @@ When addressing review comments:
 - Use `git add -p` to split hunks by target `SHA`.
 - If mapping is uncertain, stop and clarify before committing.
 - If change is genuinely new work (no valid fixup target), use a regular conventional commit.
-- Never push review-fix commits to `main`/`master`; push feature branch with `--force-with-lease`.
+- Never push review-fix commits to `main` or `master`. Push to feature branch with `--force-with-lease`.
 
 Example:
 

@@ -6,5 +6,4 @@ Sentences end with period, except bullet points with short phrases.
 
 ## Formatting
 
-Backtick-wrapped technical terms.
-Enclose all technical identifiers, code elements, file names, and paths in backticks, while leaving natural language words unformatted.
+Enclose all technical identifiers, code elements, file names, and paths in backticks, while leaving natural language words, headings and `YAML` frontmatter fields unformatted.
