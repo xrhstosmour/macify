@@ -1,5 +1,5 @@
 ---
-name: resolve_pr_comments
+name: resolve-pr-comments
 description: Review PR review comments, assess validity, plan fixes with user, make fixup commits, push, reply with SHA links and re-request reviews.
 ---
 
