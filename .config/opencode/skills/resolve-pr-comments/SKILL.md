@@ -1,258 +1,141 @@
 ---
 name: resolve-pr-comments
-description: Review PR review comments, assess validity, plan fixes with user, make fixup commits, push, reply with SHA links and re-request reviews.
+description: Review PR review comments, assess validity, make fixes, create fixup commits, push, reply with SHA links.
 ---
 
 # Resolve PR Comments
 
-## When to use this skill
+## When to use
 
-Invoke this skill when the user says things like:
+"resolve pr comments" / "fix pr comments" / "/resolve <pr_url>"
 
-- "resolve pr comments"
-- "fix pr comments"
-- "/resolve <pr_url>"
-- "/resolve (current branch's `PR` if exists)"
+## 1. Prepare
 
-## Workflow
+1. Fetch `PR`:
+   ```bash
+   gh pr view --json number,headRepository,url,title
+   ```
+2. Extract `owner/repo/pr_number`
+3. Fetch comments:
+   ```bash
+   gh api graphql -f query='query($owner:String!,$repo:String!,$number:Int!){repository(owner:$owner,name:$repo){pullRequest(number:$number){reviewThreads(first:100){nodes{id,isResolved,comments(first:50){nodes{databaseId,author{login,isBot},body,createdAt,path,line,originalCommit{oid}}}}}}}}' -F owner=<owner> -F repo=<repo> -F number=<pr_number>
+   ```
+4. Filter: include unresolved, skip resolved bots + already addressed (`SHA` reply, no follow-up)
 
-Follow these steps in order.
+## 2. Assess
 
-### Step 1 — Fetch comments
+For each comment, show (author, date, file:line, content) and assess:
 
-First, try to get the `PR` details from the current branch:
+- [VALID] + fix approach + target `SHA` (must be in `<base>..HEAD`)
+- [NOT VALID] + reason
+
+Group results:
+
+```
+VALID (N):
+#1: @author <file>:<line> -> fixup of `SHA`
+#2: @author <file>:<line> -> fixup of `SHA`
+
+NOT VALID (N):
+#3: @author - <reason>
+```
+
+Get user confirmation before proceeding.
+
+## 3. Batch Reactions
+
+1. VALID: add `:+1` reaction to each
+2. NOT VALID: add `:eyes` reaction to each
+
 ```bash
-gh pr view --json number,headRepository,url
+gh api "repos/<owner>/<repo>/pulls/comments/<id>/reactions" -X POST -F content='+1'
+gh api "repos/<owner>/<repo>/pulls/comments/<id>/reactions" -X POST -H "Accept: application/vnd.github+json" -F content='eyes'
 ```
 
-If there is an open `PR` for the current branch, extract owner, repo, and `PR` number from the response.
-If no `PR` is found or user provides a `PR` URL, parse it to extract owner, repo, and `PR` number.
-Fetch review threads with resolved state using `gh` via `GraphQL`:
+## 4. Make Changes
+
+For each VALID comment:
+
+1. Read relevant files, make changes for THIS comment only
+2. Show changes: `file:line - preview`
+3. Get user approval before next
+
+After all approved, show final fixup plan:
+
+```
+#1: file1.ex -> fixup of abc123
+#2: file2.ex -> fixup of def456
+```
+
+Get user confirmation to commit.
+
+## 5. Batch Commit
+
+Commit each fixup in comment order:
+
 ```bash
-gh api graphql -f query='\
-query($owner:String!, $repo:String!, $number:Int!){\
-  repository(owner:$owner,name:$repo){\
-    pullRequest(number:$number){\
-      reviewThreads(first:100){\
-        nodes{\
-          id\
-          isResolved\
-          comments(first:100){\
-            nodes{\
-              databaseId\
-              author{login}\
-              body\
-              createdAt\
-              path\
-              line\
-              originalCommit{oid}\
-            }\
-          }\
-        }\
-      }\
-    }\
-  }\
-}' -F owner=<owner> -F repo=<repo> -F number=<pr_number>
+# Comment #1.
+git add <file1> && git commit --fixup <sha1>
+
+# Comment #2.
+git add <file2> && git commit --fixup <sha2>
 ```
 
-Pagination requirement:
-- Do not assume one page is enough.
-- Paginate `reviewThreads` and nested comments until `hasNextPage=false`.
-- If comments exceed a single page, continue fetching with `after` cursor.
-- If pagination is incomplete or uncertain, report uncertainty and stop before proposing fixes.
-
-Identify comments to review:
-- Unresolved threads: include by default (including bot comments).
-- Already addressed comments: skip when user/assistant already replied with `SHA` link(s) and no newer follow-up exists.
-- Resolved bot threads: always skip (do not interfere).
-- Resolved threads with follow-up: include only if there is a newer human follow-up after our `SHA` reply that requests further changes.
-
-Present the list to user:
-- Show total count of comments to review.
-- For each: show author, date, and first 255 chars of content.
-- Indicate if it is a new reply to our `SHA` post.
-- Ask user to confirm to start review.
-- Do not ask user to pick a batch of comments.
-
-### Step 2 — Review each comment
-
-Display the full comment (author, date, content, file/line reference, original commit `SHA`).
-
-Assess validity:
-- Is this a legitimate request?
-- Is it actionable (can be fixed in code)?
-- Is it out of scope?
-- Is it a duplicate of another comment?
-- Is it already addressed by existing commits?
-
-State your assessment to user:
-
-If VALID:
-```text
-[VALID] Comment by @author on <file>:<line>
-
-Assessment: This is a valid suggestion.
-Proposed approach: <brief idea>
-
-Should I proceed with planning a fix? (yes/no)
-```
-
-React to the review comment with thumbs up (not a new comment):
+Verify:
 ```bash
-gh api "repos/<owner>/<repo>/pulls/comments/<comment_id>/reactions" -X POST -H "Accept: application/vnd.github+json" -F content='+1'
+git status --short && git log --oneline <base>..HEAD
 ```
 
-If reaction already exists (`HTTP 422`), treat it as success and continue.
+Get user confirmation to push.
 
-If NOT VALID:
-```text
-[NOT VALID] Comment by @author
+## 6. Push
 
-Reason: <explain why not actionable>
-- e.g., "Out of scope for this PR"
-- e.g., "Won't fix because..."
-- e.g., "This was already addressed in commit X"
-
-Should I post a reply explaining this? (yes/no/reply-with-text)
-```
-
-React to the review comment with eyes (not a new comment) until the not-valid reason is posted:
 ```bash
-gh api "repos/<owner>/<repo>/pulls/comments/<comment_id>/reactions" -X POST -H "Accept: application/vnd.github+json" -F content='eyes'
+git push origin <branch> --force-with-lease
 ```
 
-If reaction already exists (`HTTP 422`), treat it as success and continue.
+## 7. Post Valid
 
-If user approves posting the reply, post a reply and mark the thread as resolved after posting:
+Get all new `SHA`s (newest first, so reverse for oldest first = comment order):
+
 ```bash
-gh api "repos/<owner>/<repo>/pulls/<pr_number>/comments/<comment_id>/replies" -X POST -F body="<reason_text>"
+git log --format="%H" -n <valid_count>
 ```
 
-User can override your assessment if they disagree.
+Reply to each VALID comment in order (SHA[n] = comment #n):
 
-Iteration rule for Step 2:
-- Process comments one by one, never as a batch.
-- For each comment, always provide an explicit verdict: `[VALID]` or `[NOT VALID]`.
-- Wait for user decision on that comment before moving to the next one.
-- Do not skip validity assessment and jump directly to implementation.
-
-Per-comment state machine:
-- Track each comment through: `validated -> planned -> approved -> committed -> replied -> resolved`.
-- Never move a comment to the next state without completing the current one.
-- Do not start the next comment until the current one reaches `resolved` or `skipped` by user.
-
-### Step 3 — Plan fix (if valid)
-
-User approved fixing this comment.
-
-Iterate on the fix with the user:
-- Understand the comment fully: read context, check referenced files/lines, look at related code.
-- Make code changes locally.
-- Show proposed changes to the user.
-- Back-and-forth until user is satisfied with the changes.
-- User can request modifications, and repeat until approved.
-
-Once user approves the changes:
-- Wait for explicit approval to proceed ("yes"/"proceed"/"go").
-
-### Step 4 — Post fix
-
-User gave explicit final approval to proceed.
-
-Follow commit mapping and fixup rules from `~/.config/opencode/context/versioning.md` (`Commits` -> `Review fixups`).
-
-Before pushing, report the commit plan to user and wait for explicit approval:
-- `original_commit_sha_A` -> `fixup_sha_A` -> files/hunks included
-- `original_commit_sha_B` -> `fixup_sha_B` -> files/hunks included
-- `new_commit_sha_X` -> files/hunks included (only for genuinely new work)
-- Proceed to push only after user confirms.
-
-Mandatory pre-push check:
-- Show a hunk-to-commit mapping table for all changed hunks.
-- Confirm every fixup target `SHA` is in `<base_branch>..HEAD`.
-- If mapping is uncertain for any hunk, stop and ask user before committing.
-
-Pre-push safety checks:
-- Show `git status --short` and `git log --oneline <base_branch>..HEAD` before pushing.
-- Wait for explicit user approval immediately before `git push`.
-
-Push the fixup(s):
 ```bash
-git push origin <current_branch> --force-with-lease
+gh api "repos/<owner>/<repo>/pulls/<pr_number>/comments/<id1>/replies" -X POST -F body="https://github.com/<owner>/<repo>/commit/<sha1>"
+gh api "repos/<owner>/<repo>/pulls/<pr_number>/comments/<id2>/replies" -X POST -F body="https://github.com/<owner>/<repo>/commit/<sha2>"
 ```
 
-Get the new `SHA`(s):
+Resolve threads:
+
 ```bash
-git log --format="%H" -n <number_of_fixups>
+gh api graphql -f query='mutation($threadId:ID!){resolveReviewThread(input:{threadId:$threadId}){thread{isResolved}}}' -F threadId=<thread_id>
 ```
 
-Post a REPLY to the original comment (not a new comment) using rules in `~/.config/opencode/context/github.md` (`Review replies and resolution`):
+## 8. Post Not Valid
+
+For each NOT VALID comment:
+
 ```bash
-gh api "repos/<owner>/<repo>/pulls/<pr_number>/comments/<comment_id>/replies" -X POST -F body="<sha_link_1> & <sha_link_2> & ..."
+gh api "repos/<owner>/<repo>/pulls/<pr_number>/comments/<id>/replies" -X POST -F body="<reason>"
+gh api graphql -f query='mutation($threadId:ID!){resolveReviewThread(input:{threadId:$threadId}){thread{isResolved}}}' -F threadId=<thread_id>
 ```
 
-For each resolved review comment, post only the corresponding fixup/new-work `SHA` link(s) to that specific comment.
+## 9. Finish
 
-Mark the comment thread as resolved:
-```bash
-# 1) Find the review thread node `ID` that contains this comment `ID`.
-gh api graphql -f query='\
-query($owner:String!, $repo:String!, $number:Int!){\
-  repository(owner:$owner,name:$repo){\
-    pullRequest(number:$number){\
-      reviewThreads(first:100){\
-        nodes{\
-          id\
-          comments(first:100){nodes{databaseId}}\
-        }\
-      }\
-    }\
-  }\
-}' -F owner=<owner> -F repo=<repo> -F number=<pr_number>
-
-# 2) Resolve the matching thread by node `ID`.
-gh api graphql -f query='\
-mutation($threadId:ID!){\
-  resolveReviewThread(input:{threadId:$threadId}){\
-    thread{isResolved}\
-  }\
-}' -F threadId=<thread_node_id>
-```
-
-Confirm to user:
-- Show the `SHA` link(s).
-- Show the reply was posted.
-- Show the thread was marked as resolved.
-- Ask to continue to next comment or finish.
-
-### Step 5 — Finish
-
-When all comments have been processed, re-request reviews from reviewers who commented:
-```bash
-# Get list of reviewers from review comments and filter bots/self.
-gh api repos/<owner>/<repo>/pulls/<pr_number>/comments --jq '.[].user.login' | sort -u
-
-# Re-request review from each reviewer.
-gh pr edit <pr_number> --add-reviewer <reviewer1> --add-reviewer <reviewer2>
-```
-
-Do not request review from:
-- Bot accounts.
-- The current authenticated user.
-- Users already requested in the PR reviewer list.
-
-Provide a summary with links:
-- `PR` link: `https://github.com/<owner>/<repo>/pull/<pr_number>`.
-- List of resolved comments and their `SHA` links.
-- List of not-valid comments with reasons (if any).
-- List of reviewers re-requested.
-
-Ask user if they want to do anything else.
+1. Re-request reviews:
+   ```bash
+   gh api repos/<owner>/<repo>/pulls/<pr_number>/comments --jq '.[].user.login' | sort -u | grep -v bot | grep -v <user>
+   gh pr edit <pr_number> --add-reviewer <reviewer1> --add-reviewer ...
+   ```
+2. Summary: `PR` link, resolved `SHA`s, not-valid reasons
 
 ## Rules
 
-- Never execute remote-state actions (push, reply, resolve, re-request review) without explicit user approval.
-- Never push review-fix commits to `main`/`master`.
-- Post replies to existing review comments, not top-level `PR` comments.
-- Follow commit/fixup rules from `~/.config/opencode/context/versioning.md` and reply/resolution rules from `~/.config/opencode/context/github.md`.
-- If any command fails, show exact command and error, then stop and ask user.
+- No remote actions without user approval
+- Reply to review comments, not `PR` body
+- On command failure: show error, stop, ask user
+- Commit order must match comment order for correct `SHA` mapping
