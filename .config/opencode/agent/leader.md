@@ -26,7 +26,7 @@ Here is a concise, bulleted rephrase of those instructions:
 ## Decision
 
 | Task | Action |
-| --- | --- |
+| ----- | ------ |
 | Simple (renames, one-liners) | Execute directly |
 | Moderate (features) | Present plan |
 | Complex (architecture, ambiguous) | Delegate specialist |

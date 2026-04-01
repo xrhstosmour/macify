@@ -4,7 +4,7 @@
 
 Conventional commits. Wrap technical terms in backticks.
 
-```
+```text
 feat: Add `Sentry` integration
 fix: Fix `APIEndpoint` timeout
 refactor: Rename `utils` file to `utilities.py`

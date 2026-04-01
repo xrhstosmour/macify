@@ -1,4 +1,4 @@
-# macify
+# macsify
 
 Opinionated `macOS` configuration via shell scripts.
 
@@ -7,7 +7,7 @@ Opinionated `macOS` configuration via shell scripts.
 ## Features
 
 | Category | Details |
-|----------|---------|
+| -------- | ------- |
 | Shell | `Fish` + `Starship` + `Atuin` |
 | Terminal | `WezTerm` |
 | Editors | `Helix`, `VS Code`, `DataGrip` |
@@ -56,7 +56,7 @@ Opinionated `macOS` configuration via shell scripts.
 `System Settings → Privacy & Security`:
 
 | App | Full Disk Access | Accessibility | Screen Recording | Developer Tools |
-|-----|:----------------:|:-------------:|:----------------:|:---------------:|
+| --- | ---------------- | ------------- | ---------------- | --------------- |
 | `WezTerm` | ✓ | ✓ | | ✓ |
 | `VS Code` | | | | ✓ |
 | `AeroSpace` | | ✓ | | |
@@ -78,7 +78,7 @@ Opinionated `macOS` configuration via shell scripts.
 *Apple keyboards (internal/external):*
 
 | Key | Mapping |
-|-----|---------|
+| ---- | ------- |
 | Globe | Command |
 | Control | Option |
 | Option | Control |
@@ -86,7 +86,7 @@ Opinionated `macOS` configuration via shell scripts.
 *Non-Apple keyboards (use `Windows/PC` mode, not `macOS`):*
 
 | Key | Mapping |
-|-----|---------|
+| ---- | ------- |
 | Control | Command |
 | Command | Option |
 | Option | Control |
@@ -133,10 +133,9 @@ Open `Finder` and configure sidebar:
 ### `PWA`s
 
 1. Open `Google Chrome` and visit:
-
-- [`Google Gemini`](https://gemini.google.com/app)
-- [`Google Messages`](https://messages.google.com/web)
-- [`Google Photos`](https://photos.google.com/)
+   - [`Google Gemini`](https://gemini.google.com/app)
+   - [`Google Messages`](https://messages.google.com/web)
+   - [`Google Photos`](https://photos.google.com/)
 
 2. For each site, go to `Chrome main menu → Cast, Save, and Share → Install Page as App...` and follow the on-screen instructions.
 
