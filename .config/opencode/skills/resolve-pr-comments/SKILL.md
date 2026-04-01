@@ -64,7 +64,7 @@ echo '{"content":"eyes"}' | gh api "repos/<owner>/<repo>/pulls/comments/<id>/rea
 For each VALID comment:
 
 1. Read relevant files, make changes for THIS comment only
-2. Run lint/syntax check, ensure code still works as before, fix any errors immediately
+2. Run lint/syntax check, ensure code still works as before, fix any logic or indentation errors immediately
 3. Show changes: `file:line - preview`
 4. Get user approval before next
 
@@ -75,10 +75,12 @@ After all approved, show final fixup plan:
 #2: file2.ex -> fixup of def456
 ```
 
+Group changes by target `SHA` and make sure each file goes to the correct fixup commit.
 Get user confirmation to commit.
 
 ## 5. Batch Commit
 
+Create commits locally first. Do NOT push until user explicitly approves.
 Commit each fixup in comment order:
 
 ```bash
@@ -153,6 +155,7 @@ gh api graphql -f query='mutation($threadId:ID!){resolveReviewThread(input:{thre
 ## Rules
 
 - No remote actions without user approval
+- Create fixup commits locally, show them to user first and get approval before pushing
 - Reply to review comments, not `PR` body
 - On command failure: show error, stop, ask user
 - Commit order must match comment order for correct `SHA` mapping
