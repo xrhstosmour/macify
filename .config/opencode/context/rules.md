@@ -14,10 +14,6 @@
 - Use absolute paths or verify them before destructive commands.
 - Inform user of long-running processes.
 
-## Model Selection
-
-- Start using free models, upgrade to premium only when needed and approved by user.
-
 ## Self-Critique
 
 After implementing code, pause and self-critique:
