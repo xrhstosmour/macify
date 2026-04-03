@@ -5,6 +5,8 @@ description: Review PR review comments, assess validity, make fixes, create fixu
 
 # Resolve PR Comments
 
+Recommended model `github-copilot/gpt-5.4-mini`
+
 ## When to use
 
 "resolve pr comments" / "fix pr comments" / "/resolve <pr_url>"

@@ -64,10 +64,10 @@ Skills are loaded by agents and triggered via commands.
 
 | Agent | Model | Purpose |
 | ----- | ----- | ------- |
-| `leader` | `github-copilot/gpt-5` | Orchestration, delegates only when needed |
-| `clarifier` | `github-copilot/gpt-5-mini` | Requirements clarification |
-| `architect` | `github-copilot/gpt-5.4` | Architecture decisions |
-| `designer` | `github-copilot/gpt-5-mini` | `UI`/`UX` design (frontend only) |
+| `leader` | `github-copilot/gpt-5.4` | Orchestration, delegates only when needed |
+| `clarifier` | `github-copilot/grok-code-fast-1` | Requirements clarification |
+| `architect` | `github-copilot/gpt-5.4-mini` | Architecture decisions |
+| `designer` | `github-copilot/gpt-5.4-mini` | `UI`/`UX` design (frontend only) |
 | `implementor` | `github-copilot/gpt-5.3-codex` | Bounded implementation |
-| `tester` | `github-copilot/gpt-5.2-codex` | Tests and quality checks |
-| `reviewer` | `github-copilot/gpt-5.4` | Code review |
+| `tester` | `github-copilot/gpt-5.4-mini` | Tests and quality checks |
+| `reviewer` | `github-copilot/gpt-5.4-mini` | Code review |

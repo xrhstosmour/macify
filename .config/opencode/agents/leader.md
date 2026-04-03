@@ -1,5 +1,5 @@
 ---
-model: "github-copilot/gpt-5"
+model: "github-copilot/gpt-5.4"
 variant: "max"
 description: >-
   Primary orchestration agent for pragmatic software development.

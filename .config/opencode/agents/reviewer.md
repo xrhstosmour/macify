@@ -1,5 +1,5 @@
 ---
-model: "github-copilot/gpt-5.4"
+model: "github-copilot/gpt-5.4-mini"
 variant: "max"
 description: >-
   Subagent for code review and quality assessment.

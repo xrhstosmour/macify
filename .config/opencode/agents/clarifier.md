@@ -1,5 +1,5 @@
 ---
-model: "github-copilot/gpt-5-mini"
+model: "github-copilot/grok-code-fast-1"
 variant: "max"
 description: >-
   Subagent for transforming vague requests into clear requirements.
