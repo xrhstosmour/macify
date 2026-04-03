@@ -13,6 +13,8 @@
 - Always use non-interactive mode.
 - Use absolute paths or verify them before destructive commands.
 - Inform user of long-running processes.
+- Apply all explicit user-provided context (links, images, constraints) in the next actions.
+- Do not skip user-provided context unless it directly conflicts with safety.
 
 ## Self-Critique
 
