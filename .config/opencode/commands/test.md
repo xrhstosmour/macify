@@ -10,7 +10,7 @@ Write, run, and report tests for approved scope, including bug/security/performa
 ## Entry Criteria
 
 - Code changes are complete.
-- User approves running tests.
+- Run tests without waiting for extra approval.
 
 ## Exit Criteria
 
