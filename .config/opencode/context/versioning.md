@@ -2,7 +2,17 @@
 
 ## Commits
 
-Conventional commits. Wrap technical terms in backticks.
+Conventional commits. Wrap in backticks:
+
+- technical identifiers
+- code elements
+- file names and paths
+
+while leaving unformatted:
+
+- natural language words
+- headings
+- `YAML` frontmatter fields
 
 ```text
 feat: Add `Sentry` integration
