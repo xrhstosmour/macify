@@ -1,6 +1,16 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "opencode/big-pickle",
+  "agent": {
+    "explore": {
+      "mode": "subagent",
+      "model": "opencode/big-pickle"
+    },
+    "compaction": {
+      "mode": "subagent",
+      "model": "opencode/big-pickle"
+    }
+  },
   "autoupdate": true,
   "instructions": [
     "~/.config/opencode/context/*.md"
