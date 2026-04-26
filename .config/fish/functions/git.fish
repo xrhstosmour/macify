@@ -14,7 +14,7 @@ function git_stash
 end
 
 
-# Function to get the deafult branch.
+# Function to get the default branch.
 # Usage:
 #   git_get_default_branch
 function git_get_default_branch
