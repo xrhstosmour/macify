@@ -40,6 +40,7 @@ abbr dl "aria2c -x 10 "
 abbr ct "gg"
 abbr fm "spf"
 abbr oc "opencode"
+abbr ocl "opencode_session_list"
 abbr c "code"
 
 # `Git` abbreviations.
