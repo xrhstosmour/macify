@@ -37,7 +37,7 @@ Minimal specialist setup for pragmatic software development.
 | `/code` | `implementor` | Implement changes |
 | `/test` | `tester` | Run tests and checks |
 | `/review` | `reviewer` | Review code quality |
-| `/resolve` | - | Resolve `PR` review comments |
+| `/review-pr` | - | Multi-agent `PR` review, can post inline comments |
 
 ## Context Files
 
@@ -57,6 +57,7 @@ Skills are loaded by agents and triggered via commands.
 | Skill | Command | Purpose |
 | ----- | ------ | ------- |
 | `resolve_pr_comments` | `/resolve` | Review `PR` comments, assess validity, plan fixes, make fixup commits, push, reply with `SHA` links |
+| `pr_review` | `/review-pr` | Multi-agent `PR` review, spawns agents in parallel, can post inline comments |
 
 ## Agents
 
@@ -68,4 +69,4 @@ Skills are loaded by agents and triggered via commands.
 | `designer` | `github-copilot/gpt-5.4-mini` | `UI`/`UX` design (frontend only) |
 | `implementor` | `github-copilot/gpt-5.3-codex` | Bounded implementation |
 | `tester` | `github-copilot/gpt-5.4-mini` | Tests and quality checks |
-| `reviewer` | `github-copilot/gpt-5.4-mini` | Code review |
+| `reviewer` | `github-copilot/gpt-5.4-mini` | Code review, security, performance analysis |
