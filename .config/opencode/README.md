@@ -58,7 +58,7 @@ Skills are loaded by agents and triggered via commands.
 | Skill | Command | Purpose |
 | ----- | ------ | ------- |
 | `resolve_pr_comments` | `/resolve-pr-comments` | Review `PR` comments, assess validity, make fixup commits, push, reply with `SHA` links |
-| `pr_review` | `/review-pr` | Multi-agent `PR` review, spawns agents in parallel, can post inline comments |
+| `review_pr` | `/review-pr` | Multi-agent `PR` review, spawns agents in parallel, can post inline comments |
 
 ## Agents
 

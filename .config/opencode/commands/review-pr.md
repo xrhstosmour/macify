@@ -4,4 +4,4 @@ description: Multi-agent PR review. Fetches PR by URL or branch, spawns architec
 
 # Review PR
 
-Review a `PR` by URL or branch using the `pr_review` skill instructions. After the report, asks whether to post findings as inline comments on the `PR`.
+Review a `PR` by URL or branch using the `review_pr` skill instructions. After the report, asks whether to post findings as inline comments on the `PR`.

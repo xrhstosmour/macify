@@ -1,5 +1,5 @@
 ---
-name: pr-review
+name: review-pr
 description: >
   Multi-agent PR code review orchestrator. Fetches a PR by URL or branch name,
   spawns specialist sub-agents for architecture and quality review, then
