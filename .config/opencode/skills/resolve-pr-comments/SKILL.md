@@ -5,17 +5,44 @@ description: Review PR review comments, assess validity, make fixes, create fixu
 
 # Resolve PR Comments
 
-Recommended model `github-copilot/gpt-5.4-mini`
-
 ## When to use
 
-"resolve pr comments" / "fix pr comments" / "/resolve <pr_url>"
+"resolve pr comments" / "fix pr comments" / "/resolve-pr-comments <pr_url>"
+
+## 0. Resolve the PR
+
+If the user provides a GitHub PR URL, extract `owner`, `repo`, and `pr_number`:
+
+```
+# From URL: https://github.com/<owner>/<repo>/pull/<number>
+```
+
+If the user provides a branch name, fetch it:
+
+```bash
+gh pr view <branch> --json number,title,body,headRepository,url
+```
+
+If no URL or branch given, check if the current branch is a PR branch (not master/main):
+
+```bash
+git branch --show-current
+```
+
+If on master or main, abort and ask the user for a PR URL or branch name.
+Otherwise, use the current branch:
+
+```bash
+gh pr view --json number,title,body,headRepository,url
+```
+
+Store `owner/repo/pr_number`.
 
 ## 1. Prepare
 
 1. Fetch `PR`:
    ```bash
-   gh pr view --json number,headRepository,url,title
+   gh pr view <pr_number> --repo <owner>/<repo> --json number,headRepository,url,title
    ```
 2. Extract `owner/repo/pr_number`
 3. Fetch review threads:
@@ -81,8 +108,8 @@ For each VALID comment:
 After all approved, show final fixup plan:
 
 ```
-#1: file1.ex -> fixup of abc123
-#2: file2.ex -> fixup of def456
+#1: file1.ext -> fixup of abc123
+#2: file2.ext -> fixup of def456
 ```
 
 Group changes by target `SHA` and make sure each file goes to the correct fixup commit.

@@ -37,6 +37,7 @@ Minimal specialist setup for pragmatic software development.
 | `/code` | `implementor` | Implement changes |
 | `/test` | `tester` | Run tests and checks |
 | `/review` | `reviewer` | Review code quality |
+| `/resolve-pr-comments` | - | Resolve `PR` review comments |
 | `/review-pr` | - | Multi-agent `PR` review, can post inline comments |
 
 ## Context Files
@@ -56,7 +57,7 @@ Skills are loaded by agents and triggered via commands.
 
 | Skill | Command | Purpose |
 | ----- | ------ | ------- |
-| `resolve_pr_comments` | `/resolve` | Review `PR` comments, assess validity, plan fixes, make fixup commits, push, reply with `SHA` links |
+| `resolve_pr_comments` | `/resolve-pr-comments` | Review `PR` comments, assess validity, make fixup commits, push, reply with `SHA` links |
 | `pr_review` | `/review-pr` | Multi-agent `PR` review, spawns agents in parallel, can post inline comments |
 
 ## Agents
