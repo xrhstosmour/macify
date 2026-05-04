@@ -15,6 +15,7 @@
 - Inform user of long-running processes.
 - Apply all explicit user-provided context (links, images, constraints) in the next actions.
 - Do not skip user-provided context unless it directly conflicts with safety.
+- Never fabricate findings. If nothing is wrong, say so explicitly.
 
 ## Self-Critique
 
