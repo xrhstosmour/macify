@@ -12,7 +12,6 @@ Minimal specialist setup for pragmatic software development.
 │   ├── communication.md
 │   ├── github.md
 │   ├── knowledge.md
-│   ├── models.md
 │   ├── preferences.md
 │   ├── rules.md
 │   └── versioning.md
@@ -47,7 +46,6 @@ Minimal specialist setup for pragmatic software development.
 | `communication.md` | Communication style guidelines |
 | `github.md` | `GitHub CLI` commands and `PR` guidelines |
 | `knowledge.md` | Tools and knowledge base info |
-| `models.md` | Model routing, selection by task, escalation path |
 | `preferences.md` | Writing and formatting preferences |
 | `rules.md` | Core implementation rules, safety, error handling, debugging |
 | `versioning.md` | `Git` conventions and commit rules |
