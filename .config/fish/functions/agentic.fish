@@ -65,7 +65,7 @@ function opencode_session_list
         return 1
     end
 
-    set -l selected_sid (for line in $lines[3..-1]
+    set -l output (for line in $lines[3..-1]
         set -l sid (string match -r '^ses_[^[:space:]]+' -- "$line")
         if test -z "$sid"
             continue
@@ -75,9 +75,24 @@ function opencode_session_list
         set -l title (string replace -r '\s+[0-9]{1,2}:[0-9]{2}\s+[AP]M(\s+·\s+[0-9]{1,2}/[0-9]{1,2}/[0-9]{4})?$' '' -- "$title_with_updated")
 
         printf '%s\t\033[1;33m%s\033[0m \033[1;32m|\033[0m %s\n' "$sid" "$sid" "$title"
-    end | fzf --ansi --height=20 --delimiter='\t' --with-nth=2.. --bind 'enter:accept,delete:execute(opencode session delete {1})+abort,?:toggle-preview' --preview '
-        __opencode_session_preview {1}
-    ' --preview-window=right:50%:hidden:wrap | cut -f1)
+    end | fzf --ansi --height=20 --delimiter='\t' --with-nth=2.. \
+        --expect=delete \
+        --bind '?:toggle-preview' \
+        --preview '
+            __opencode_session_preview {1}
+        ' --preview-window=right:50%:hidden:wrap)
+
+    if test (count $output) -lt 2
+        return 0
+    end
+
+    set -l key $output[1]
+    set -l selected_sid (echo "$output[2]" | cut -f1)
+
+    if test "$key" = delete -a -n "$selected_sid"
+        opencode session delete "$selected_sid"
+        return 0
+    end
 
     if test -n "$selected_sid"
         opencode -s "$selected_sid"
