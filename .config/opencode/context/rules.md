@@ -27,6 +27,59 @@ After implementing code, pause and self-critique:
 4. Max 3 iterations, then ask user for help.
 5. If you realize you made a mistake or ignored a rule, acknowledge it immediately, revert, and explain.
 
+## Implementation
+
+### Increment Cycle
+
+``` text
+Implement → Test → Verify → Commit → Next slice
+```
+
+Build in vertical slices, one complete path through the stack at a time. After each slice the system must build and existing tests must pass.
+
+### Scope Discipline
+
+Touch only what the task requires. Do not clean up adjacent code, refactor unrelated imports, add non requested features, or remove comments you don't fully understand.
+
+If you notice something worth improving outside scope, note it, don't fix it:
+
+``` text
+NOTICED BUT NOT TOUCHING:
+- src/utils/format has an unused import (unrelated)
+- The auth middleware could use better error messages (separate task)
+```
+
+### Simplicity
+
+Before writing code, ask: "What is the simplest thing that could work?" After writing, review: can this be done in fewer lines? Are these abstractions earning their complexity? Am I building for hypothetical future requirements?
+
+Three similar lines of code is better than a premature abstraction. Implement the naive version first. Optimize after correctness is proven.
+
+### Chesterton's Fence
+
+Before changing or removing anything, understand why it exists. What calls it, what does it call, what are the edge cases? Check git blame if needed. If you can't answer these, read more context first.
+
+### Dead Code Hygiene
+
+After refactoring, identify code that became unreachable or unused. List it explicitly and ask before deleting:
+
+``` text
+DEAD CODE IDENTIFIED:
+- formatLegacyDate() in src/utils/date — replaced by formatDate()
+- OldWidget in src/widgets/ replaced by Widget
+-> Safe to remove these?
+```
+
+Don't leave dead code lying around, it confuses future readers and agents. Don't silently delete things you're not sure about.
+
+### Implementation Rules
+
+- One thing at a time, don't mix refactors with features in the same commit.
+- Feature flags: Gate incomplete features behind a flag so you can merge increments safely.
+- Safe defaults: New code should be opt-in, conservative.
+- Rollback-friendly: Each increment should be independently revertable. Prefer additive changes.
+- Keep it compilable: Project must build and tests pass after each increment.
+
 ## Verification Before Code
 
 Before writing any code:
@@ -35,6 +88,7 @@ Before writing any code:
 - Verify the file you need to edit exists and is the right one.
 - Check for existing patterns in the codebase.
 - Run lint/typecheck early to establish baseline.
+- If using unfamiliar library APIs, verify against official docs first, never assume an API exists.
 
 After writing code:
 
@@ -66,12 +120,88 @@ When code fails:
 3. Propose fix approach before implementing.
 4. Re-test after fix.
 
+## Stop the Line
+
+When anything unexpected happens, STOP adding features. Preserve evidence (error output, logs, repro steps). Diagnose using the triage below. Fix the root cause, not the symptom. Guard with a regression test. Resume only after verification passes.
+
+Do not push past a failing test or broken build to work on the next feature.
+
 ## Debugging
 
-When investigating issues:
+Follow this triage checklist in order:
 
-1. Reproduce the issue first (if possible).
-2. Isolate the cause by narrowing scope.
-3. Check logs, error messages, and stack traces.
-4. Look for recent changes that could have caused it.
-5. Test hypothesis before proposing fix.
+### 1. Reproduce
+
+Make the failure happen reliably. For test failures:
+
+```bash
+<test command> --filter "test name"
+<test command> --path "specific-file" --isolated
+```
+
+### 2. Localize
+
+Narrow down which layer fails: UI, API, database, build, external service, or the test itself. For regressions, find the commit:
+
+```bash
+git bisect start
+git bisect bad HEAD
+git bisect good <known-good-commit>
+git bisect run <test command> --filter "failing test"
+```
+
+### 3. Reduce
+
+Create the minimal failing case, remove unrelated code until only the bug remains.
+
+### 4. Fix the Root Cause
+
+Fix the underlying issue, not the symptom. Ask "why does this happen?" until you reach the actual cause. Example: duplicate entries in UI. Symptom fix is de-dup in component, root cause fix is correcting the query.
+
+### 5. Guard Against Recurrence
+
+Write a regression test that fails without the fix and passes with it.
+
+### 6. Verify End-to-End
+
+```bash
+<test command> # Full suite or specific test.
+<build command> # Type/compilation.
+```
+
+## Confusion Management
+
+When encountering inconsistencies, conflicting requirements, or unclear specifications:
+
+1. STOP. Do not proceed with a guess.
+2. Name the specific confusion: "I see X in the spec but Y in the existing code."
+3. Present the tradeoff or ask the clarifying question.
+4. Wait for resolution before continuing.
+
+Surface assumptions before implementing:
+
+``` text
+ASSUMPTIONS I'M MAKING:
+1. [assumption about requirements]
+2. [assumption about architecture]
+3. [assumption about scope]
+```
+
+For multi-step tasks, emit a lightweight plan before executing:
+
+``` text
+PLAN:
+1. [first step]
+2. [second step]
+3. [third step]
+```
+
+## Context Anti-Patterns
+
+| Anti-Pattern | Fix |
+| --- | --- |
+| Agent invents APIs, ignores conventions | Load rules file and relevant source files before each task |
+| Agent loses focus with too much context | Include only what is relevant to the current task |
+| Agent guesses when it should ask | Surface ambiguity explicitly |
+| Agent invents new style instead of following yours | Include one example of the pattern to follow |
+| Agent doesn't know project-specific rules | Write it down in rules files, if it's not written, it doesn't exist |
