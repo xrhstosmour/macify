@@ -115,6 +115,9 @@ gh api repos/<owner>/<repo>/issues/comments/<id>/reactions --jq '.[] | select(.u
 
 ## 4. Make Changes
 
+Step 3 reactions must be applied and verified before making any code changes.
+If reactions have not been applied, STOP and return to Step 3.
+
 For each VALID comment:
 
 1. Read relevant files, make changes for THIS comment only
@@ -218,7 +221,7 @@ echo '{"body":"> <original_comment_text>\n\n<reason>"}' | gh api "repos/<owner>/
 
 ## 9. Finish
 
-1. Re-request reviews (skip reviewers who already approved):
+1. Re-request reviews (skip reviewers who already approved, and skip bots):
    ```bash
    # Get approved reviewers.
    gh pr view <pr_number> --json reviews \
