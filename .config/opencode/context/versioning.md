@@ -18,7 +18,7 @@ while leaving unformatted:
 ```text
 feat: Add `Sentry` integration
 fix: Fix `APIEndpoint` timeout
-refactor: Rename `utils` file to `utilities.py`
+refactor: Rename `utils` file to `utilities`
 test: Add tests for `User` model
 docs: Update `README.md` with setup instructions
 ```
@@ -64,6 +64,43 @@ def456 fixup! feat: Add feature X
 # Another fix -> fixup ORIGINAL, NOT def456.
 git commit --fixup abc123
 ```
+
+## Save-Point Pattern
+
+Commit locally each tested increment per the increment cycle in rules.md. Commits are save points, if the next change breaks something, revert to the last known-good state.
+
+## Commit Size
+
+Target ~100 lines per commit. Split commits over ~300 lines.
+
+## Change Summaries
+
+After any modification, provide a structured summary:
+
+``` text
+CHANGES MADE:
+- src/path/to/file: What was changed and why
+
+THINGS I DIDN'T TOUCH (intentionally):
+- src/other/file: Has a similar issue but out of scope
+
+POTENTIAL CONCERNS:
+- Any risks, trade-offs, or open questions
+```
+
+## Worktrees
+
+For parallel agent work on multiple features:
+
+```bash
+git worktree add ../project-feature-a feature/task-creation
+git worktree add ../project-feature-b feature/user-settings
+
+# When done, merge and clean up.
+git worktree remove ../project-feature-a
+```
+
+Each worktree is a separate directory with its own branch. Agents work in parallel without interfering.
 
 ## Branch
 
