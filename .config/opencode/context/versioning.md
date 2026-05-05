@@ -2,7 +2,9 @@
 
 ## Commits
 
-Conventional commits, without agent co-authors.
+Descriptive commits, without agent co-authors.
+Use either general descriptions or project-scoped prefixes.
+
 Wrap in backticks:
 
 - technical identifiers
@@ -16,11 +18,14 @@ while leaving unformatted:
 - `YAML` frontmatter fields
 
 ```text
-feat: Add `Sentry` integration
-fix: Fix `APIEndpoint` timeout
-refactor: Rename `utils` file to `utilities`
-test: Add tests for `User` model
-docs: Update `README.md` with setup instructions
+Add `Sentry` integration
+Fix `APIEndpoint` timeout
+Rename `utils` file to `utilities`
+Add tests for `User` model
+Update `README.md` with setup instructions
+`opencode`: Update `resolve-pr-comments` skill
+`DHL`: Add new endpoint for courier pickup capabilities
+`macsify`: Refactor `WindowManager` to use `NSScreen`
 ```
 
 - fixup: for review comment fixes, typos, small oversights
