@@ -192,3 +192,5 @@ Each comment references one finding, written conversationally in English.
 - Keep findings tied to specific files and line references.
 - Do not suggest architectural rewrites unless the PR introduces a clear regression.
 - For large PRs, ask the user if they want focused review on specific areas.
+- No emojis, no markdown dividers, no decorative formatting anywhere in the review or inline comments.
+- Write like a human teammate in a code review thread. Skip preambles and get to the point.
