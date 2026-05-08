@@ -10,11 +10,13 @@ Minimal specialist setup for pragmatic software development.
 ├── AGENTS.md                 # Startup instructions
 ├── context/                  # Base context (loaded always)
 │   ├── communication.md
-│   ├── github.md
 │   ├── knowledge.md
-│   ├── preferences.md
 │   ├── rules.md
-│   └── versioning.md
+│   ├── versioning.md
+│   └── tools/
+│       ├── github.md
+│       ├── phabricator.md
+│       └── sentry.md
 ├── commands/                 # Workflow commands
 ├── agents/                   # Agent definitions
 └── skills/                   # Reusable skills
@@ -45,11 +47,12 @@ Minimal specialist setup for pragmatic software development.
 | File | Purpose |
 | ---- | ------- |
 | `communication.md` | Communication style guidelines |
-| `github.md` | `GitHub CLI` commands and `PR` guidelines |
 | `knowledge.md` | Tools and knowledge base info |
-| `preferences.md` | Writing and formatting preferences |
 | `rules.md` | Core implementation rules, safety, error handling, debugging |
 | `versioning.md` | `Git` conventions and commit rules |
+| `tools/github.md` | `GitHub CLI` commands and `PR` guidelines |
+| `tools/phabricator.md` | Phabricator `Conduit` API integration |
+| `tools/sentry.md` | Sentry error tracking and issue analysis |
 
 ## Skills
 
