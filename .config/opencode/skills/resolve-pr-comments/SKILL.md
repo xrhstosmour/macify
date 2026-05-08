@@ -70,6 +70,9 @@ For each comment, show (author, date, file:line, content) and assess:
 - [VALID] + fix approach + target `SHA` (must be in `<base>..HEAD`)
 - [NOT VALID] + reason
 
+Always map each VALID comment to a target `SHA` before coding.
+If mapping is unclear, stop and ask the user.
+
 Group results:
 
 ```
@@ -138,15 +141,23 @@ Get user confirmation to commit.
 ## 5. Batch Commit
 
 Create commits locally first. Do NOT push until user explicitly approves.
-Commit each fixup in comment order. One fixup per original commit.
-If a comment touches files from different commits, split into multiple fixups.
+Resolve target `SHA`s from current branch history.
+Group changes by target `SHA`.
+Never mix different target `SHA`s in one fixup commit.
+For further details see versioning.md.
 
 ```bash
-# Comment #1.
-git add <file1> && git commit --fixup <sha1>
+# SHA group #1, all files mapped to sha1.
+git add <files_for_sha1> && git commit --fixup <sha1>
 
-# Comment #2.
-git add <file2> && git commit --fixup <sha2>
+# SHA group #2, all files mapped to sha2.
+git add <files_for_sha2> && git commit --fixup <sha2>
+```
+
+Before each fixup commit, verify staged files belong only to that SHA group:
+
+```bash
+git diff --cached --name-only
 ```
 
 Verify:
@@ -182,11 +193,11 @@ git branch -r --contains <fixup_sha> | grep "origin/<branch>"
 Before posting any valid-comment reply, Step 3 reactions must be applied and verified, and Step 6 push must be completed and verified. If push has not happened yet, stop and ask for push approval.
 
 Get all new `SHA`s and verify mapping before replying.
-Commits are returned newest-first, reverse to match comment order (oldest fixup = comment #1).
-Always cross-check each `SHA` against its fixup message (`git log --oneline`) before mapping to a comment.
+Always map each comment to the fixup commit of its target `SHA`.
+Do not assume one comment == one fixup commit.
 
 ```bash
-git log --format="%H %s" -n <valid_count>
+git log --format="%H %s" -n <fixup_commit_count>
 ```
 
 Reply and resolve for review thread comments (any author, bot or human). For standalone comments from non-bot authors: quote reply with fixup SHA(s). Bot standalones are skipped no reply, no resolve.
@@ -255,6 +266,5 @@ echo '{"body":"> <original_comment_text>\n\n<reason>"}' | gh api "repos/<owner>/
 - Verify reactions exist before posting any reply/resolve actions
 - Reply to review comments, not `PR` body
 - On command failure: show error, stop, ask user
-- Commit order must match comment order for correct `SHA` mapping
 - Reply with just the SHA URL(s), no extra text for valid comments
 - Reply with concise reason for not valid comments
