@@ -4,6 +4,7 @@
 
 - Sentences and comments end with period, except bullet points with short phrases and headings.
 - Use commas for lists and connecting ideas, not dashes or hyphens.
+- Do not use semicolons.
 - Be compact, short, direct responses with no fluff.
 - Use a casual tone, like talking to a teammate.
 - Skip preambles and get straight to the point.
