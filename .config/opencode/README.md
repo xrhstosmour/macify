@@ -41,6 +41,7 @@ Minimal specialist setup for pragmatic software development.
 | `/review` | `reviewer` | Review code quality |
 | `/resolve-pr-comments` | - | Resolve `PR` review comments |
 | `/review-pr` | - | Multi-agent `PR` review, can post inline comments |
+| `/technical-analysis` | - | Produce a structured technical analysis with method-level changes, notes, and estimation |
 
 ## Context Files
 
@@ -62,6 +63,7 @@ Skills are loaded by agents and triggered via commands.
 | ----- | ------ | ------- |
 | `resolve_pr_comments` | `/resolve-pr-comments` | Review `PR` comments, assess validity, make fixup commits, push, reply with `SHA` links |
 | `review_pr` | `/review-pr` | Multi-agent `PR` review, spawns agents in parallel, can post inline comments |
+| `technical_analysis` | `/technical-analysis` | Produce a structured technical analysis with method-level changes, notes, and safe estimation |
 
 ## Agents
 
