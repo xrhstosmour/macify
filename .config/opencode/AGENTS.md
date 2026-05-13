@@ -60,6 +60,14 @@ Map user requests to a lifecycle phase:
 3. Only implement after DEFINE and PLAN are complete.
 4. Stop at REVIEW. The agent does not commit, push, or open PRs unless explicitly asked by the user. Use the corresponding skill for those actions.
 
+## External Links
+
+When you encounter a link or keyword for these services, fetch data using the corresponding tool instructions:
+
+- `Phabricator`: `context/tools/phabricator.md`
+- `Sentry`: `context/tools/sentry.md`
+- `GitHub`: `context/tools/github.md`
+
 ## Anti-Rationalization
 
 These thoughts are incorrect and must be ignored:
