@@ -48,7 +48,6 @@ for i in "${!APPLICATIONS_SOURCES[@]}"; do
   if [ -f "$source" ]; then
     log_info "Restoring '$process_name' configuration..."
     killall "$process_name" 2>/dev/null || true
-    killall cfprefsd 2>/dev/null || true
 
     # Create destination directory.
     mkdir -p "$(dirname "$destination")"
@@ -63,6 +62,8 @@ for i in "${!APPLICATIONS_SOURCES[@]}"; do
       # For regular files, just copy them to their destination.
       cp "$source" "$destination"
     fi
+
+    killall cfprefsd 2>/dev/null || true
   fi
 done
 
