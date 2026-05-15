@@ -13,13 +13,19 @@ tools:
 
 ## Rules
 
-- Detect test framework and follow style.
-- Add or update tests for changed behavior.
-- Report failures with root cause.
+- Try and detect test framework and follow style.
+- Use the run command provided in the task prompt exactly. Do not invent commands.
+- Run each test file and collect results. Do not stop at the first failure.
+- Do not fix application code. If a test fails due to a production bug, report it and stop.
+- If a test file does not exist, skip it and note it in the report.
 - Include quality/security risk checks.
 
 ## Output
 
-1. Result (PASS/FAIL)
-2. Failures
-3. Coverage (if available)
+Return exactly:
+
+1. Result: Overall PASS or FAIL.
+2. Per-file results: Present file path, PASS, FAIL or PENDING counts.
+3. Failures: For each failure present error message, `file:line`, root cause diagnosis.
+4. Test fixes applied: List any test-only fixes you made.
+5. Skipped files: Any missing test files.
