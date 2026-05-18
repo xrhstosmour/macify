@@ -1,6 +1,21 @@
 # GitHub
 
-When reading content from any GitHub URL, use `gh` CLI instead of `WebFetch`. Fallback to `WebFetch` only if `gh` is unavailable.
+Never use `WebFetch` for `GitHub` URLs. The `HTML` pages are too large and get truncated, losing content. Always use `gh` CLI or `gh api` instead.
+
+## Reading issues and PRs
+
+```bash
+# Read an issue (body + comments).
+gh issue view <number> --repo <owner>/<repo> --comments
+
+# Read a PR (description + diff + files).
+gh pr view <number> --repo <owner>/<repo> --json title,body,files
+gh pr diff <number> --repo <owner>/<repo>
+
+# Raw API access for anything else.
+gh api repos/<owner>/<repo>/issues/<number> --jq .body
+gh api repos/<owner>/<repo>/pulls/<number> --jq .title
+```
 
 ## Common commands
 
@@ -10,7 +25,7 @@ gh issue create --title "<title>" --body "<body>" --label <label>
 gh issue view <number>
 gh issue comment <number> --body "<comment>"
 
-# `PRs`.
+# PRs.
 gh pr create --title "<title>" --body "<body>" --base <branch> --head <branch>
 gh pr view <number>
 gh pr diff <number>
